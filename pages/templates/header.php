@@ -1,9 +1,10 @@
 <head>
-    <link rel="stylesheet" href="../css/main.min.css" />
-    <link rel="stylesheet" href="../css/style.css" />
-    
-    
+  <link rel="stylesheet" href="../css/main.min.css" />
+  <link rel="stylesheet" href="../css/style.css" />
+
+
 </head>
+
 <body class="">
   <!-- navbar -->
   <nav class="shadow navbar navbar-expand-md navbar-light bg-primary mb-5">
@@ -12,7 +13,7 @@
       <a class="navbar-brand" href="index.php">
         <span class="text-dark fw-bold">
           <i class="bi bi-book-half"></i>
-          Name 
+          Name
         </span>
       </a>
       <!-- toggle button for mobile nav -->
@@ -38,7 +39,7 @@
           <li class="nav-item  ms-2 d-none d-md-inline">
             <a class="btn btn-outline-dark rounded-pill" href="../add.php">HI</a>
           </li>
-          
+
         </ul>
       </div>
     </div>
