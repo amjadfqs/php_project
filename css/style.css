@@ -1,0 +1,8 @@
+.hovered_footer:hover {
+  color: #f5f5f5;
+}
+
+.hovered_footer {
+  color: #3b413c;
+  text-decoration: none;
+}
