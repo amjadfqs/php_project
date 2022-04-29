@@ -1,4 +1,4 @@
- <footer class="bg-primary container-fluid p-1 mt-5">
+ <footer class=" bg-primary container-fluid p-1 mt-5">
    <div class="container d-lg-flex justify-content-lg-between d-md-flex justify-content-md-between">
      <div class="text-center my-5">
        <a class="text-dark" href="">logo<img class="" src="" alt="" /></a>
