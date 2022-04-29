@@ -1,7 +1,6 @@
 <head>
-  <link rel="stylesheet" href="../css/main.min.css" />
-  <link rel="stylesheet" href="../css/style.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+  <link rel="stylesheet" href="../../assets/css/main.min.css" />
+  <link rel="stylesheet" href="../../assets/css/style.css" />
 
 
 </head>
@@ -12,7 +11,7 @@
     <div class="container-xxl ">
       <!-- navbar brand / title -->
       <a class=" navbar-brand" href="index.php">
-        <img src="../../images/facebook.svg"></img>
+        <img src="../../assets/images/facebook.svg"></img>
         <span class="fw-bolder">Name</apan>
       </a>
       <!-- toggle button for mobile nav -->
@@ -41,18 +40,26 @@
         </ul>
       </div>
       <ul class="navbar-nav d-sm-none d-md-inline-flex ml-auto mt-lg-0">
-        <li class="nav-item"> <a class="nav-link" href="#">
-            <i class="fab fa-twitter"></i><span class="d-md-none ml-3">Twitter</span>
-          </a> </li>
-        <li class="nav-item"> <a class="nav-link" href="#">
-            <i class="fab fa-facebook"></i><span class="d-md-none ml-3">Facebook</span>
-          </a> </li>
-        <li class="nav-item"> <a class="nav-link" href="#">
-            <i class="fab fa-instagram"></i><span class="d-md-none ml-3">Instagram</span>
-          </a> </li>
-        <li class="nav-item"> <a class="nav-link" href="#">
-            <i class="fab fa-linkedin"></i><span class="d-md-none ml-3">Linkedin</span>
-          </a> </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">
+            <img style="width:15px" , src="../../assets/images/facebook-brands.svg"></img><span class="d-md-none ml-3">Facebook</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">
+            <img style="width:15px" , src="../../assets/images/twitter-brands.svg"></img><span class="d-md-none ml-3">Twitter</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">
+            <img style="width:15px" , src="../../assets/images/instagram-brands.svg"></img><span class="d-md-none ml-3">Instagram</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">
+            <img style="width:15px" , src="../../assets/images/whatsapp-brands.svg"></img><span class="d-md-none ml-3">Whatsapp</span>
+          </a>
+        </li>
       </ul>
     </div>
   </nav>

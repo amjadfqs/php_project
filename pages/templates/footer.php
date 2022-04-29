@@ -24,16 +24,16 @@
      <p class="text-center text-dark">Social media</p>
      <div class="d-flex justify-content-center">
        <a href="" class="mx-2">
-         <img style="width: 38px" src="../../images/facebook.svg" alt="" />
+         <img style="width: 38px" src="../../assets/images/facebook.svg" alt="" />
        </a>
        <a href="" class="mx-2">
-         <img style="width: 40px" src="../../images/instagram.svg" alt="" />
+         <img style="width: 40px" src="../../assets/images/twitter.svg" alt="" />
        </a>
        <a href="" class="mx-2">
-         <img style="width: 40px" src="../../images/twitter.svg" alt="" />
+         <img style="width: 40px" src="../../assets/images/instagram.svg" alt="" />
        </a>
        <a href="" class="mx-2">
-         <img style="width: 37px" src="../../images/whatsapp.svg" alt="" />
+         <img style="width: 37px" src="../../assets/images/whatsapp.svg" alt="" />
        </a>
      </div>
    </div>
@@ -42,6 +42,9 @@
    </div>
  </footer>
  </body>
- <script src="../../script/jquery-3.6.0.min.js"></script>
- <script src="../../script/main.js"></script>
- <script src="../../script/bootstrap.bundle.js"></script>
+ <script src="../../assets/script/jquery-3.6.0.min.js"></script>
+ <script src="../../assets/script/bootstrap.bundle.js"></script>
+ <script src="../../assets/script/main.js"></script>
+ <script src="../../assets/script/fontawesome/solid.min.js"></script>
+ <script src="../../assets/script/fontawesome/regular.min.js"></script>
+ <script src="../../assets/script/fontawesome/fontawesome.min.js"></script>
