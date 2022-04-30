@@ -1,17 +1,19 @@
+<!DOCTYPE html>
+<html>
+
 <head>
-  <link rel="stylesheet" href="../../assets/css/main.min.css" />
-  <link rel="stylesheet" href="../../assets/css/style.css" />
-
-
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+  <link rel="stylesheet" href="<?php echo $css; ?>main.min.css" />
+  <link rel="stylesheet" href="<?php echo $css; ?>style.css" />
 </head>
 
-<body id="HDbody">
+<body id="HDbody" class="bg-secondary">
   <!-- navbar -->
   <nav id="navbar" class=" shadow navbar navbar-expand-md navbar-light bg-primary mb-5">
     <div class="container-xxl ">
       <!-- navbar brand / title -->
       <a class=" navbar-brand" href="index.php">
-        <img src="../../assets/images/facebook.svg"></img>
+        <img src="<?php echo $img; ?>facebook.svg"></img>
         <span class="fw-bolder">Name</apan>
       </a>
       <!-- toggle button for mobile nav -->
@@ -42,22 +44,22 @@
       <ul class="navbar-nav d-sm-none d-md-inline-flex ml-auto mt-lg-0">
         <li class="nav-item">
           <a class="nav-link" href="#">
-            <img style="width:15px" , src="../../assets/images/facebook-brands.svg"></img><span class="d-md-none ml-3">Facebook</span>
+            <img style="width:15px" , src="<?php echo $img; ?>facebook-brands.svg"></img><span class="d-md-none ml-3">Facebook</span>
           </a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">
-            <img style="width:15px" , src="../../assets/images/twitter-brands.svg"></img><span class="d-md-none ml-3">Twitter</span>
+            <img style="width:15px" , src="<?php echo $img; ?>twitter-brands.svg"></img><span class="d-md-none ml-3">Twitter</span>
           </a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">
-            <img style="width:15px" , src="../../assets/images/instagram-brands.svg"></img><span class="d-md-none ml-3">Instagram</span>
+            <img style="width:15px" , src="<?php echo $img; ?>instagram-brands.svg"></img><span class="d-md-none ml-3">Instagram</span>
           </a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">
-            <img style="width:15px" , src="../../assets/images/whatsapp-brands.svg"></img><span class="d-md-none ml-3">Whatsapp</span>
+            <img style="width:15px" , src="<?php echo $img; ?>whatsapp-brands.svg"></img><span class="d-md-none ml-3">Whatsapp</span>
           </a>
         </li>
       </ul>
