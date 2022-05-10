@@ -1,5 +1,5 @@
 <?php
-$temp = './../include/templates/';
+$temp = './../include/template/';
 $func = './../include/functions/';
 $img = './..//assets/images/';
 $css = './../assets/css/';
