@@ -1,9 +1,300 @@
-  <?php
-  $pageTitle = "Home Page";
-  include './ini.php';
-  include $temp . 'header.php';
-  ?>
-  <div class="mt-5 container">
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore, aut! Earum nam eius porro veniam explicabo corrupti ullam voluptatum perferendis, labore ea, aut odit commodi, magni harum. Optio accusamus fugit eveniet laudantium eum, vitae voluptatum sequi! A dolores incidunt magni iste, vero sed aliquam excepturi, officiis nulla cum dolorum necessitatibus tempora. Cumque sit veniam magnam perferendis itaque quos facilis molestiae eveniet, voluptate veritatis soluta! Dolore maiores expedita, optio ullam eaque aperiam autem dignissimos distinctio ab tempore assumenda animi repudiandae! Ipsam doloribus quae a dicta. Totam laborum quos pariatur porro ut aut minus ratione itaque repudiandae consequatur animi error corporis facere aliquid provident, esse accusamus, molestias ipsam nam voluptates vero possimus rem, optio voluptatum? Dolorum voluptatibus placeat ducimus illum aspernatur in error porro necessitatibus vero laudantium dolor harum temporibus hic ipsa deleniti aperiam consectetur praesentium facere, ea molestiae nostrum corrupti natus quibusdam! Dolor possimus, suscipit sapiente porro architecto impedit quibusdam laboriosam reiciendis. Ipsum iure a odit, perferendis fugiat harum recusandae incidunt ex hic non, libero in, adipisci laudantium? Alias ducimus consequatur error quisquam distinctio aliquid at, nulla, quos commodi minus tenetur, deleniti possimus voluptatum architecto. Est fugiat autem iste, fugit, accusamus ut ex in quos dolores, eius dicta voluptatum reiciendis. Cumque veritatis porro ea ipsa dolorum tenetur quibusdam nam modi recusandae? Dolor beatae, facere molestias unde voluptatum expedita quod quibusdam id explicabo quo velit ratione laborum. Totam, vero deleniti non, labore facilis nesciunt maxime delectus natus numquam beatae qui assumenda ab aut et, nostrum iure voluptatum saepe soluta. Nihil aperiam omnis ea, ipsa mollitia dicta ipsum tempore quisquam ab corrupti rerum quis sunt saepe sed libero explicabo? Illum voluptatibus ab ex debitis enim repudiandae molestiae! Deserunt sint nesciunt eaque cupiditate eius corrupti, consectetur velit, illo officia dignissimos magni nam in sed repellendus inventore neque temporibus eveniet, quo nobis repudiandae! Vitae accusamus dolores deserunt magni maxime nostrum est id! Qui ab reprehenderit assumenda ipsam, est at iste cumque earum nulla rem. Voluptate temporibus repellat officia! Unde modi consectetur asperiores dolor inventore doloremque labore ipsum amet voluptate distinctio! Provident assumenda consequuntur ratione laboriosam, nesciunt facere ab, illum itaque asperiores eaque quae adipisci enim consectetur veniam harum eligendi possimus laborum inventore. Deleniti neque tenetur qui! Sequi dolore sapiente quis, fuga nisi ipsa unde animi asperiores a laborum officiis officia veniam totam voluptas perferendis distinctio ducimus aut temporibus itaque ea! Quod dolorem voluptatum eius! Natus illo doloribus voluptate ullam labore odio fuga mollitia, nam magnam ipsam? Asperiores dolores porro temporibus. Iste tempora quae corporis voluptates ipsa. Necessitatibus, et! Veritatis explicabo ipsum harum a nesciunt amet nisi atque facere? Atque iste sapiente architecto, dolore totam aliquid. Perspiciatis, magnam itaque. A perferendis non blanditiis voluptatibus neque! Ducimus eveniet quia ipsa aspernatur, odit dolore inventore ad perspiciatis eaque nihil cum corporis unde eligendi illum rerum sequi libero qui, nulla ratione laboriosam repellendus? Quae accusamus ab dolor cumque facere adipisci repellat pariatur dolorem ipsum praesentium. Commodi quos fuga dolorem molestiae ea? Excepturi dolores, id repellat vero quia quaerat qui sit libero, iste magni similique facere officiis dolore deserunt voluptate.
-  </div>
-  <?php include $temp . 'footer.php'; ?>
+<?php
+$pageTitle = "Home Page";
+include './ini.php';
+include $temp . 'header.php';
+?>
+<div class="container">
+    <nav class="overflow-auto">
+        <ul class="d-flex justify-content-center mt-5">
+            <li class="nav-item line-before">
+                <a class="nav-link text-black" href="#">Art</a>
+            </li>
+            <li class="nav-item line-before">
+                <a class="nav-link text-black" href="#">Comics</a>
+            </li>
+            <li class="nav-item line-before">
+                <a class="nav-link text-black" href="#">Illustration</a>
+            </li>
+            <li class="nav-item line-before">
+                <a class="nav-link text-black" href="#">Film</a>
+            </li>
+            <li class="nav-item line-before">
+                <a class="nav-link text-black" href="#">Design</a>
+            </li>
+            <li class="nav-item line-before">
+                <a class="nav-link text-black" href="#">Food</a>
+            </li>
+            <li class="nav-item line-before">
+                <a class="nav-link text-black" href="#">Music</a>
+            </li>
+            <li class="nav-item line-before">
+                <a class="nav-link text-black" href="#">Games</a>
+            </li>
+        </ul>
+    </nav>
+</div>
+<hr class="text-black-50 m-0">
+
+<!-- Carousel -->
+<div>
+    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active bg-primary" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" class="bg-primary" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" class="bg-primary" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item mb-5 active" data-bs-interval="10000">
+                <div class="container mt-lg-5">
+                    <div class="row">
+                        <div class="col mt-5 text-center text-sm-start">
+                            <h1 class="mt-5"> Get funded now </h1>
+                            <p>
+                                Lorem ipsum dolor sit amet consectetur adipisicing <br />e
+                                Lorem ipsum dolor sit amet consectetur adipisicing
+                                <br /> Lorem ipsum consectetur adipisicing ?
+                            </p>
+                            <a class="btn btn-primary mt-3" role="button" href="#">Start a project</a>
+                        </div>
+                        <!-- to break between them -->
+                        <div class="col-md-auto my-3">
+                        </div>
+                        <!-- to break between them -->
+                        <div class="col active">
+                            <img class="w-100 img-fluid" src="<?php echo $img; ?>slide3.svg">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item mb-5" data-bs-interval="2000">
+                <div class="container mt-lg-5">
+                    <div class="row">
+                        <div class="col mt-5 text-center text-sm-start">
+                            <h1 class="mt-5"> Funding projects </h1>
+                            <p class="g-sm-5">
+                                Lorem ipsum dolor sit amet consectetur adipisicing <br />e
+                                Lorem ipsum dolor sit amet consectetur adipisicing
+                                <br /> Lorem ipsum consectetur adipisicing ?
+                            </p>
+                            <a class="btn btn-primary mt-3" role="button" href="#">Founding project now</a>
+                        </div>
+                        <div class="col-md-auto my-5">
+                        </div>
+                        <div class="col">
+                            <img class="w-100 img-fluid" src="<?php echo $img; ?>slide2.svg">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item mb-5">
+                <!-- content -->
+                <div class="container mt-lg-5">
+                    <div class="row">
+                        <div class="col mt-5 text-center text-sm-start">
+                            <h1 class="mt-5 "> User view </h1>
+                            <p class="">
+                                Lorem ipsum dolor sit amet consectetur adipisicing <br />e
+                                Lorem ipsum dolor sit amet consectetur adipisicing
+                                <br /> Lorem ipsum consectetur adipisicing ?
+                            </p>
+                            <a class="btn btn-primary mt-3" role="button" href="#">Learn more</a>
+                        </div>
+                        <div class="col-md-auto my-5">
+                        </div>
+                        <div class="col">
+                            <img class="w-100 img-fluid" src="<?php echo $img; ?>slide1.svg">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end of Carousel -->
+<!-- funding info -->
+<div class="container-fluid bg-secondary mt-5">
+    <div class="container">
+        <div class="p-2">
+            <h1 class="mt-5 color-a text-center">Information About Fundation</h1>
+            <p class="text-muted my-3 text-center">Creative work shows us what’s possible.
+                Help fund it here.</p>
+        </div>
+        <div class="container text-center">
+            <div class="d-xl-flex d-lg-flex d-md-flex justify-content-evenly d-sm-block d-xs-block">
+                <!-- 1 -->
+                <div class="my-5">
+                    <img src="<?php echo $img; ?>fund/funded.svg" alt="">
+                    <p class="my-3"><span class="color-a">30</span> funded</p>
+                </div>
+                <!-- 2 -->
+                <div class="my-5">
+                    <img src="<?php echo $img; ?>fund/funders.svg" alt="">
+                    <p class="my-3"><span class="color-a">30</span> Funders</p>
+                </div>
+                <!-- 3 -->
+                <div class="my-5 pb-5">
+                    <img src="<?php echo $img; ?>fund/Likes.svg" alt="">
+                    <p class="my-3"><span class="color-a">30</span> Likes</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end funding info-->
+
+<!-- starting Card -->
+<div class="container mt-5 overflow-auto">
+    <div class="d-inline-flex">
+        <div class="card mx-2 my-4 shadow" style="width: 25rem;">
+            <a href="#"><img src="<?php echo $img; ?>card1.svg" class="card-img-top" alt=""></a>
+            <div class="card-body">
+                <h5 class="card-title text-primary">Donate To Educate</h5>
+                <p class="card-text">The FIFTH 200 PAGE HARDBACK BOOK
+                    of Lorenzo Etherington HOW TO THINK
+                    WHEN YOU DRAW series + reprinting
+                    ALL original SOLD OUT BOOKS! By
+                    Lorenzo Etherington of Lorenzo Etherington HOW TO THINK
+                    WHEN YOU DRAW series + reprinting
+                    ALL original SOLD OUT BOOKS! By. </p>
+                <div class="card-text">
+                    <div class="text-muted mb-2">
+                        <img class="me-2" src="<?php echo $img; ?>Card/start.svg">
+                        <i>Art & Design</i>
+                    </div>
+                    <div class="text-muted mb-2">
+                        <img class="me-2" src="<?php echo $img; ?>Card/start.svg">
+                        <i>Started at: 2021-05-20</i>
+                    </div>
+                    <div class="text-muted">
+                        <img class="me-2" src="<?php echo $img; ?>Card/location.svg">
+                        <i>Taizz,Yemen</i>
+                    </div>
+                </div> <br />
+                <span class="">By<a href="#" class="mx-1 text-primary">Adham Mustafa</a></span>
+            </div>
+        </div>
+        <div class="card mx-2 my-4 shadow" style="width: 25rem;">
+            <a href="#"><img src="<?php echo $img; ?>card1.svg" class="card-img-top" alt=""></a>
+            <div class="card-body">
+                <h5 class="card-title text-primary">Donate To Educate</h5>
+                <p class="card-text">The FIFTH 200 PAGE HARDBACK BOOK
+                    of Lorenzo Etherington HOW TO THINK
+                    WHEN YOU DRAW series + reprinting
+                    ALL original SOLD OUT BOOKS! By
+                    Lorenzo Etherington of Lorenzo Etherington HOW TO THINK
+                    WHEN YOU DRAW series + reprinting
+                    ALL original SOLD OUT BOOKS! By. </p>
+                <div class="card-text">
+                    <div class="text-muted mb-2">
+                        <img class="me-2" src="<?php echo $img; ?>Card/start.svg">
+                        <i>Art & Design</i>
+                    </div>
+                    <div class="text-muted mb-2">
+                        <img class="me-2" src="<?php echo $img; ?>Card/start.svg">
+                        <i>Started at: 2021-05-20</i>
+                    </div>
+                    <div class="text-muted">
+                        <img class="me-2" src="<?php echo $img; ?>Card/location.svg">
+                        <i>Taizz,Yemen</i>
+                    </div>
+                </div> <br />
+                <span class="">By<a href="#" class="mx-1 text-primary">Adham Mustafa</a></span>
+            </div>
+        </div>
+        <div class="card mx-2 my-4 shadow" style="width: 25rem;">
+            <a href="#"><img src="<?php echo $img; ?>card1.svg" class="card-img-top" alt=""></a>
+            <div class="card-body">
+                <h5 class="card-title text-primary">Donate To Educate</h5>
+                <p class="card-text">The FIFTH 200 PAGE HARDBACK BOOK
+                    of Lorenzo Etherington HOW TO THINK
+                    WHEN YOU DRAW series + reprinting
+                    ALL original SOLD OUT BOOKS! By
+                    Lorenzo Etherington of Lorenzo Etherington HOW TO THINK
+                    WHEN YOU DRAW series + reprinting
+                    ALL original SOLD OUT BOOKS! By. </p>
+                <div class="card-text">
+                    <div class="text-muted mb-2">
+                        <img class="me-2" src="<?php echo $img; ?>Card/start.svg">
+                        <i>Art & Design</i>
+                    </div>
+                    <div class="text-muted mb-2">
+                        <img class="me-2" src="<?php echo $img; ?>Card/start.svg">
+                        <i>Started at: 2021-05-20</i>
+                    </div>
+                    <div class="text-muted">
+                        <img class="me-2" src="<?php echo $img; ?>Card/location.svg">
+                        <i>Taizz,Yemen</i>
+                    </div>
+                </div> <br />
+                <span class="">By<a href="#" class="mx-1 text-primary">Adham Mustafa</a></span>
+            </div>
+        </div>
+        <div class="card mx-2 my-4 shadow" style="width: 25rem;">
+            <a href="#"><img src="<?php echo $img; ?>card1.svg" class="card-img-top" alt=""></a>
+            <div class="card-body">
+                <h5 class="card-title text-primary">Donate To Educate</h5>
+                <p class="card-text">The FIFTH 200 PAGE HARDBACK BOOK
+                    of Lorenzo Etherington HOW TO THINK
+                    WHEN YOU DRAW series + reprinting
+                    ALL original SOLD OUT BOOKS! By
+                    Lorenzo Etherington of Lorenzo Etherington HOW TO THINK
+                    WHEN YOU DRAW series + reprinting
+                    ALL original SOLD OUT BOOKS! By. </p>
+                <div class="card-text">
+                    <div class="text-muted mb-2">
+                        <img class="me-2" src="<?php echo $img; ?>Card/start.svg">
+                        <i>Art & Design</i>
+                    </div>
+                    <div class="text-muted mb-2">
+                        <img class="me-2" src="<?php echo $img; ?>Card/start.svg">
+                        <i>Started at: 2021-05-20</i>
+                    </div>
+                    <div class="text-muted">
+                        <img class="me-2" src="<?php echo $img; ?>Card/location.svg">
+                        <i>Taizz,Yemen</i>
+                    </div>
+                </div> <br />
+                <span class="">By<a href="#" class="mx-1 text-primary">Adham Mustafa</a></span>
+            </div>
+        </div>
+        <div class="card mx-2 my-4 shadow" style="width: 25rem;">
+            <a href="#"><img src="<?php echo $img; ?>card1.svg" class="card-img-top" alt=""></a>
+            <div class="card-body">
+                <h5 class="card-title text-primary">Donate To Educate</h5>
+                <p class="card-text">The FIFTH 200 PAGE HARDBACK BOOK
+                    of Lorenzo Etherington HOW TO THINK
+                    WHEN YOU DRAW series + reprinting
+                    ALL original SOLD OUT BOOKS! By
+                    Lorenzo Etherington of Lorenzo Etherington HOW TO THINK
+                    WHEN YOU DRAW series + reprinting
+                    ALL original SOLD OUT BOOKS! By. </p>
+                <div class="card-text">
+                    <div class="text-muted mb-2">
+                        <img class="me-2" src="<?php echo $img; ?>Card/start.svg">
+                        <i>Art & Design</i>
+                    </div>
+                    <div class="text-muted mb-2">
+                        <img class="me-2" src="<?php echo $img; ?>Card/start.svg">
+                        <i>Started at: 2021-05-20</i>
+                    </div>
+                    <div class="text-muted">
+                        <img class="me-2" src="<?php echo $img; ?>Card/location.svg">
+                        <i>Taizz,Yemen</i>
+                    </div>
+                </div> <br />
+                <span class="">By<a href="#" class="mx-1 text-primary">Adham Mustafa</a></span>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end the card -->
+
+<!-- best funders -->
+<div class="backgroundForFunders">
+    <div>
+
+
+    </div>
+</div>
+<!-- end of  best funders -->
+<?php include $temp . 'footer.php'; ?>

@@ -8,61 +8,37 @@
   <link rel="stylesheet" href="<?php echo $css; ?>style.css" />
 </head>
 
-<body id="HDbody" class="bg-secondary">
-  <!-- navbar -->
-  <nav id="navbar" class=" shadow navbar navbar-expand-md navbar-light bg-primary mb-5">
-    <div class="container-xxl ">
-      <!-- navbar brand / title -->
-      <a class=" navbar-brand" href="index.php">
-        <img src="<?php echo $img; ?>facebook.svg"></img>
-        <span class="fw-bolder">Name</apan>
+<body id="HDbody">
+  <nav id="navbar" class="navbar navbar-light navbar-expand-md border-3 bg-white">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="#">
+        <span> <img class="mb-2 me-2 img-fluid" src="<?php echo $img; ?>logo.svg">HASH</span>
       </a>
-      <!-- toggle button for mobile nav -->
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main-nav" aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <!-- navbar links -->
-      <div class="collapse navbar-collapse ps-5 " id="main-nav">
-        <ul class="navbar-nav text-center text-dark">
-          <li class="nav-item">
-            <a class="nav-link " href="#topics">Explore</a>
+      <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navcol-4">
+        <span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+      <div id="navcol-4" class="collapse navbar-collapse flex-grow-0 order-md-first show">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item ">
+            <a class="nav-link text-black" href="#">Discover</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#reviews">Category</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#contact">About Us</a>
-          </li>
-          <li class="nav-item d-md-none">
-            <a class="nav-link" href="#pricing">Sign Up</a>
-          </li>
-          <li class="nav-item  ms-2 d-none d-md-inline">
-            <a class="btn btn-outline-dark rounded-pill" href="">Sign Up</a>
+            <a class="nav-link text-black" href="#">Search</a>
           </li>
         </ul>
+        <!-- botton for small screen -->
+        <div class="d-md-none my-2">
+          <button class="btn btn-primary me-2" type="button">Login</button>
+          <button class="btn btn-primary" type="button">Start a project</button>
+        </div>
       </div>
-      <ul class="navbar-nav d-sm-none d-md-inline-flex ml-auto mt-lg-0">
-        <li class="nav-item">
-          <a class="nav-link" href="#">
-            <img style="width:15px" , src="<?php echo $img; ?>facebook-brands.svg"></img><span class="d-md-none ml-3">Facebook</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">
-            <img style="width:15px" , src="<?php echo $img; ?>twitter-brands.svg"></img><span class="d-md-none ml-3">Twitter</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">
-            <img style="width:15px" , src="<?php echo $img; ?>instagram-brands.svg"></img><span class="d-md-none ml-3">Instagram</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">
-            <img style="width:15px" , src="<?php echo $img; ?>whatsapp-brands.svg"></img><span class="d-md-none ml-3">Whatsapp</span>
-          </a>
-        </li>
-      </ul>
+      <!-- end of botton for small screen-->
+      <!--botton for lg and md screen   -->
+      <div class="d-none d-md-block">
+        <button class="btn btn-primary me-2" type="button">Login</button>
+        <a class="btn btn-primary" role="button" href="#">Start a project</a>
+      </div>
+      <!--end of botton for lg and md screen   -->
     </div>
   </nav>
+  </nav>
+  <hr class="m-0 text-black-50">
