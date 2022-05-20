@@ -2,6 +2,7 @@
 <html>
 
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title><?php echo isset($pageTitle) ? $pageTitle : "Default" ?></title>
   <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
   <link rel="stylesheet" href="<?php echo $css; ?>main.min.css" />
@@ -16,26 +17,26 @@
       </a>
       <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navcol-4">
         <span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
-      <div id="navcol-4" class="collapse navbar-collapse flex-grow-0 order-md-first show">
+      <div id="navcol-4" class="collapse navbar-collapse flex-grow-0 order-md-first">
         <ul class="navbar-nav me-auto">
-          <li class="nav-item ">
+          <li class="nav-item text-center">
             <a class="nav-link text-black" href="#">Discover</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item text-center">
             <a class="nav-link text-black" href="#">Search</a>
           </li>
         </ul>
         <!-- botton for small screen -->
-        <div class="d-md-none my-2">
-          <button class="btn btn-primary me-2" type="button">Login</button>
+        <div class="d-md-none my-2 d-flex justify-content-center">
+          <button class="btn btn-primary me-2 " type="button">Login</button>
           <button class="btn btn-primary" type="button">Start a project</button>
         </div>
       </div>
       <!-- end of botton for small screen-->
       <!--botton for lg and md screen   -->
       <div class="d-none d-md-block">
-        <button class="btn btn-primary me-2" type="button">Login</button>
-        <a class="btn btn-primary" role="button" href="#">Start a project</a>
+        <button class="btn btn-primary me-2 rounded-pill" type="button">Login</button>
+        <a class="btn btn-primary rounded-pill" role="button" href="#">Start a project</a>
       </div>
       <!--end of botton for lg and md screen   -->
     </div>

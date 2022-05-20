@@ -1,33 +1,33 @@
 .hovered_footer:hover {
-    color: #f5f5f5;
+  color: #f5f5f5;
 }
 
 .hovered_footer {
-    color: #3b413c;
-    text-decoration: none;
+  color: #3b413c;
+  text-decoration: none;
 }
 
 .line-before::before {
-    content: "";
-    display: block;
-    margin-bottom: -33px;
+  content: "";
+  display: block;
+  margin-bottom: -33px;
 }
 
 .line-before:hover {
-    background-color: #4dd5ac;
-    height: 2px;
-    transition: 500ms ease-in-out;
-    border-radius: 15px;
+  background-color: #4dd5ac;
+  height: 2px;
+  transition: 500ms ease-in-out;
+  border-radius: 15px;
 }
 
 .carousel-indicators {
-    margin-bottom: -1rem;
+  margin-bottom: -1rem;
 }
 
 .color-a {
-    color: #FF6584;
+  color: #ff6584;
 }
 
 ul li {
-    list-style: none;
+  list-style: none;
 }

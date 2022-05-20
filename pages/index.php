@@ -3,11 +3,11 @@ $pageTitle = "Home Page";
 include './ini.php';
 include $temp . 'header.php';
 ?>
-<div class="container">
-    <nav class="overflow-auto">
+<div class="container ">
+    <nav class="overflow-auto ">
         <ul class="d-flex justify-content-center mt-5">
             <li class="nav-item line-before">
-                <a class="nav-link text-black" href="#">Art</a>
+                <a class="nav-link text-black ms-sm-5 ms-md-auto" href="#">Art</a>
             </li>
             <li class="nav-item line-before">
                 <a class="nav-link text-black" href="#">Comics</a>
@@ -33,7 +33,7 @@ include $temp . 'header.php';
         </ul>
     </nav>
 </div>
-<hr class="text-black-50 m-0">
+<hr class="d-sm-none d-md-block text-black-50 m-0">
 
 <!-- Carousel -->
 <div>
