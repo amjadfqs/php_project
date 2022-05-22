@@ -158,16 +158,16 @@ include $temp . 'header.php';
                     ALL original SOLD OUT BOOKS! By. </p>
                 <div class="card-text">
                     <div class="text-muted mb-2">
-                        <img class="me-2" src="<?php echo $img; ?>Card/start.svg">
-                        <i>Art & Design</i>
+                        <i class="fas fa-tags fa-flip-horizontal"></i>
+                        Art & Design
                     </div>
                     <div class="text-muted mb-2">
-                        <img class="me-2" src="<?php echo $img; ?>Card/start.svg">
-                        <i>Started at: 2021-05-20</i>
+                        <i class="fas fa-clock"></i>
+                        Started at: 2021-05-20
                     </div>
                     <div class="text-muted">
-                        <img class="me-2" src="<?php echo $img; ?>Card/location.svg">
-                        <i>Taizz,Yemen</i>
+                        <i class="fas fa-location-arrow"></i>
+                        Taizz,Yemen
                     </div>
                 </div> <br />
                 <span class="">By<a href="#" class="mx-1 text-primary">Adham Mustafa</a></span>
