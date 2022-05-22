@@ -1,7 +1,8 @@
 <?php
 $pageTitle = "Home Page";
-include './ini.php';
+include '../conf/ini.php';
 include $temp . 'header.php';
+
 ?>
 <div class="container ">
     <nav class="overflow-auto ">
