@@ -1,6 +1,6 @@
 <?php
 $pageTitle = "Discover";
-include './ini.php';
+include '../conf/ini.php';
 include $temp . 'header.php';
 ?>
 <div class="container">

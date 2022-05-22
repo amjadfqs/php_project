@@ -1,13 +1,14 @@
 <?php
 $pageTitle = "Home Page";
-include './ini.php';
+include '../conf/ini.php';
 include $temp . 'header.php';
+
 ?>
-<div class="container">
-    <nav class="overflow-auto">
+<div class="container ">
+    <nav class="overflow-auto ">
         <ul class="d-flex justify-content-center mt-5">
             <li class="nav-item line-before">
-                <a class="nav-link text-black" href="#">Art</a>
+                <a class="nav-link text-black " href="#">Art</a>
             </li>
             <li class="nav-item line-before">
                 <a class="nav-link text-black" href="#">Comics</a>
@@ -33,7 +34,7 @@ include $temp . 'header.php';
         </ul>
     </nav>
 </div>
-<hr class="text-black-50 m-0">
+<hr class="d-sm-none d-md-block text-black-50 m-0">
 
 <!-- Carousel -->
 <div>
@@ -145,7 +146,35 @@ include $temp . 'header.php';
 <!-- starting Card -->
 <div class="container mt-5 overflow-auto">
     <div class="d-inline-flex">
-        <div class="card mx-2 my-4 shadow" style="width: 25rem;">
+        <div class="card mx-2 my-4 shadow" style="width: 20rem;">
+            <a href="#"><img src="<?php echo $img; ?>card1.svg" class="card-img-top" alt=""></a>
+            <div class="card-body">
+                <h5 class="card-title text-primary">Donate To Educate</h5>
+                <p class="card-text">The FIFTH 200 PAGE HARDBACK BOOK
+                    of Lorenzo Etherington HOW TO THINK
+                    WHEN YOU DRAW series + reprinting
+                    ALL original SOLD OUT BOOKS! By
+                    Lorenzo Etherington of Lorenzo Etherington HOW TO THINK
+                    WHEN YOU DRAW series + reprinting
+                    ALL original SOLD OUT BOOKS! By. </p>
+                <div class="card-text">
+                    <div class="text-muted mb-2">
+                        <i class="fas fa-tags fa-flip-horizontal"></i>
+                        Art & Design
+                    </div>
+                    <div class="text-muted mb-2">
+                        <i class="fas fa-clock"></i>
+                        Started at: 2021-05-20
+                    </div>
+                    <div class="text-muted">
+                        <i class="fas fa-location-arrow"></i>
+                        Taizz,Yemen
+                    </div>
+                </div> <br />
+                <span class="">By<a href="#" class="mx-1 text-primary">Adham Mustafa</a></span>
+            </div>
+        </div>
+        <div class="card mx-2 my-4 shadow" style="width: 20rem;">
             <a href="#"><img src="<?php echo $img; ?>card1.svg" class="card-img-top" alt=""></a>
             <div class="card-body">
                 <h5 class="card-title text-primary">Donate To Educate</h5>
@@ -173,7 +202,7 @@ include $temp . 'header.php';
                 <span class="">By<a href="#" class="mx-1 text-primary">Adham Mustafa</a></span>
             </div>
         </div>
-        <div class="card mx-2 my-4 shadow" style="width: 25rem;">
+        <div class="card mx-2 my-4 shadow" style="width: 20rem;">
             <a href="#"><img src="<?php echo $img; ?>card1.svg" class="card-img-top" alt=""></a>
             <div class="card-body">
                 <h5 class="card-title text-primary">Donate To Educate</h5>
@@ -201,7 +230,7 @@ include $temp . 'header.php';
                 <span class="">By<a href="#" class="mx-1 text-primary">Adham Mustafa</a></span>
             </div>
         </div>
-        <div class="card mx-2 my-4 shadow" style="width: 25rem;">
+        <div class="card mx-2 my-4 shadow" style="width: 20rem;">
             <a href="#"><img src="<?php echo $img; ?>card1.svg" class="card-img-top" alt=""></a>
             <div class="card-body">
                 <h5 class="card-title text-primary">Donate To Educate</h5>
@@ -214,7 +243,7 @@ include $temp . 'header.php';
                     ALL original SOLD OUT BOOKS! By. </p>
                 <div class="card-text">
                     <div class="text-muted mb-2">
-                        <img class="me-2" src="<?php echo $img; ?>Card/start.svg">
+                        <img class="me-2" src="<?= $img; ?>Card/start.svg">
                         <i>Art & Design</i>
                     </div>
                     <div class="text-muted mb-2">
@@ -229,35 +258,7 @@ include $temp . 'header.php';
                 <span class="">By<a href="#" class="mx-1 text-primary">Adham Mustafa</a></span>
             </div>
         </div>
-        <div class="card mx-2 my-4 shadow" style="width: 25rem;">
-            <a href="#"><img src="<?php echo $img; ?>card1.svg" class="card-img-top" alt=""></a>
-            <div class="card-body">
-                <h5 class="card-title text-primary">Donate To Educate</h5>
-                <p class="card-text">The FIFTH 200 PAGE HARDBACK BOOK
-                    of Lorenzo Etherington HOW TO THINK
-                    WHEN YOU DRAW series + reprinting
-                    ALL original SOLD OUT BOOKS! By
-                    Lorenzo Etherington of Lorenzo Etherington HOW TO THINK
-                    WHEN YOU DRAW series + reprinting
-                    ALL original SOLD OUT BOOKS! By. </p>
-                <div class="card-text">
-                    <div class="text-muted mb-2">
-                        <img class="me-2" src="<?php echo $img; ?>Card/start.svg">
-                        <i>Art & Design</i>
-                    </div>
-                    <div class="text-muted mb-2">
-                        <img class="me-2" src="<?php echo $img; ?>Card/start.svg">
-                        <i>Started at: 2021-05-20</i>
-                    </div>
-                    <div class="text-muted">
-                        <img class="me-2" src="<?php echo $img; ?>Card/location.svg">
-                        <i>Taizz,Yemen</i>
-                    </div>
-                </div> <br />
-                <span class="">By<a href="#" class="mx-1 text-primary">Adham Mustafa</a></span>
-            </div>
-        </div>
-        <div class="card mx-2 my-4 shadow" style="width: 25rem;">
+        <div class="card mx-2 my-4 shadow" style="width: 20rem;">
             <a href="#"><img src="<?php echo $img; ?>card1.svg" class="card-img-top" alt=""></a>
             <div class="card-body">
                 <h5 class="card-title text-primary">Donate To Educate</h5>
