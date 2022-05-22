@@ -10,7 +10,7 @@
 </head>
 
 <body id="HDbody">
-  <nav id="navbar" class="navbar navbar-light navbar-expand-md border-3 bg-white">
+  <nav id="navbar" class="navbar navbar-light navbar-expand-md border-3 ">
     <div class="container">
       <a class="navbar-brand d-flex align-items-center" href="#">
         <span> <img class="mb-2 me-2 img-fluid" src="<?php echo $img; ?>logo.svg">HASH</span>

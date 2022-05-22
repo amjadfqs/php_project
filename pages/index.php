@@ -7,7 +7,7 @@ include $temp . 'header.php';
     <nav class="overflow-auto ">
         <ul class="d-flex justify-content-center mt-5">
             <li class="nav-item line-before">
-                <a class="nav-link text-black ms-sm-5 ms-md-auto" href="#">Art</a>
+                <a class="nav-link text-black " href="#">Art</a>
             </li>
             <li class="nav-item line-before">
                 <a class="nav-link text-black" href="#">Comics</a>
@@ -145,7 +145,7 @@ include $temp . 'header.php';
 <!-- starting Card -->
 <div class="container mt-5 overflow-auto">
     <div class="d-inline-flex">
-        <div class="card mx-2 my-4 shadow" style="width: 25rem;">
+        <div class="card mx-2 my-4 shadow" style="width: 20rem;">
             <a href="#"><img src="<?php echo $img; ?>card1.svg" class="card-img-top" alt=""></a>
             <div class="card-body">
                 <h5 class="card-title text-primary">Donate To Educate</h5>
@@ -173,7 +173,7 @@ include $temp . 'header.php';
                 <span class="">By<a href="#" class="mx-1 text-primary">Adham Mustafa</a></span>
             </div>
         </div>
-        <div class="card mx-2 my-4 shadow" style="width: 25rem;">
+        <div class="card mx-2 my-4 shadow" style="width: 20rem;">
             <a href="#"><img src="<?php echo $img; ?>card1.svg" class="card-img-top" alt=""></a>
             <div class="card-body">
                 <h5 class="card-title text-primary">Donate To Educate</h5>
@@ -201,7 +201,7 @@ include $temp . 'header.php';
                 <span class="">By<a href="#" class="mx-1 text-primary">Adham Mustafa</a></span>
             </div>
         </div>
-        <div class="card mx-2 my-4 shadow" style="width: 25rem;">
+        <div class="card mx-2 my-4 shadow" style="width: 20rem;">
             <a href="#"><img src="<?php echo $img; ?>card1.svg" class="card-img-top" alt=""></a>
             <div class="card-body">
                 <h5 class="card-title text-primary">Donate To Educate</h5>
@@ -229,7 +229,7 @@ include $temp . 'header.php';
                 <span class="">By<a href="#" class="mx-1 text-primary">Adham Mustafa</a></span>
             </div>
         </div>
-        <div class="card mx-2 my-4 shadow" style="width: 25rem;">
+        <div class="card mx-2 my-4 shadow" style="width: 20rem;">
             <a href="#"><img src="<?php echo $img; ?>card1.svg" class="card-img-top" alt=""></a>
             <div class="card-body">
                 <h5 class="card-title text-primary">Donate To Educate</h5>
@@ -242,7 +242,7 @@ include $temp . 'header.php';
                     ALL original SOLD OUT BOOKS! By. </p>
                 <div class="card-text">
                     <div class="text-muted mb-2">
-                        <img class="me-2" src="<?php echo $img; ?>Card/start.svg">
+                        <img class="me-2" src="<?= $img; ?>Card/start.svg">
                         <i>Art & Design</i>
                     </div>
                     <div class="text-muted mb-2">
@@ -257,7 +257,7 @@ include $temp . 'header.php';
                 <span class="">By<a href="#" class="mx-1 text-primary">Adham Mustafa</a></span>
             </div>
         </div>
-        <div class="card mx-2 my-4 shadow" style="width: 25rem;">
+        <div class="card mx-2 my-4 shadow" style="width: 20rem;">
             <a href="#"><img src="<?php echo $img; ?>card1.svg" class="card-img-top" alt=""></a>
             <div class="card-body">
                 <h5 class="card-title text-primary">Donate To Educate</h5>
