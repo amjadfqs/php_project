@@ -30,7 +30,11 @@
           <li class="nav-item"><a class="nav-link" href="#">Search</a></li>
         </ul>
         <div class="d-md-none my-2">
+<<<<<<< Updated upstream
           <button class="btn btn-primary me-2 my-2" type="button">Login</button> <br />
+=======
+          <button class="btn btn-primary me-2" type="button">Login</button> <br />
+>>>>>>> Stashed changes
           <button class="btn btn-primary" type="button">Start a project</button>
         </div>
       </div>
