@@ -4,9 +4,6 @@ include './ini.php';
 include $temp . 'header.php';
 
 ?>
-<hr class="text-black-50 m-0">
-
-
 <div class="d-none d-md-block container text-center my-5 p-3 k">
     <h2 class="text-primary">A Thriving Home for A Fountain for Survivors</h2>
     <hr class="m-0 text-black-50">
@@ -28,7 +25,6 @@ include $temp . 'header.php';
                 <a class="mx-2 text-decoration-none text-black-50">
                     <img style="width: 20px" src="<?php echo $img; ?>instagram-brands.svg" alt="" />
                     <span class="d-none d-md-inline-block">Instagram</span>
-
                 </a>
                 <a class="mx-2 text-decoration-none text-black-50">
                     <img style="width: 20px" src="<?php echo $img; ?>whatsapp-brands.svg" alt="" />
@@ -73,14 +69,6 @@ include $temp . 'header.php';
         </div>
     </div>
 </div>
-
-
-</div>
-</div>
-
-
-
-
 <br />
 <div class="container-fluid bg-secondary mt-5 p-3">
     <div class="container">
