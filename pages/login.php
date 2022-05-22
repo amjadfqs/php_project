@@ -3,7 +3,9 @@
   include '../conf/ini.php';
   include_once '../conf/conn.php';
   include $temp . 'header.php';
-
+  if (isset($_COOKIE['user'])) {
+    header('location: index.php');
+  }
 
   $Uname = $pass = '';
   $errors = array('Uname' => '', 'pass' => '');
