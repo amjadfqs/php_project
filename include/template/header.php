@@ -47,7 +47,11 @@
                 </ul>
                 <!-- bottom for small screen -->
                 <div class="d-md-none my-2 text-center">
-                    <a id="SpecialBtn" class="btn btn-primary me-2" type="button" href="<?= $pages; ?>login.php">Login</a>
+                    <?php if (isset($_COOKIE['user'])) : ?>
+                        <a id="SpecialBtn" class="d-none btn btn-primary me-2" type="button" href="<?= $pages; ?>login.php">Login</a>
+                    <?php else : ?>
+                        <a id="SpecialBtn" class="btn btn-primary me-2" type="button" href="<?= $pages; ?>login.php">Login</a>
+                    <?php endif ?>
                     <a id="SpecialBtn" class="btn btn-primary" type="button">Start a project</a>
                 </div>
             </div>
@@ -55,7 +59,11 @@
             <!--bottom for lg and md screen   -->
 
             <div class="d-none d-md-block">
-                <a id="SpecialBtn" class="btn btn-primary rounded-pill" type="button" href="<?= $pages; ?>login.php">Login</a>
+                <?php if (isset($_COOKIE['user'])) : ?>
+                    <a id="SpecialBtn" class="d-none btn btn-primary rounded-pill" type="button" href="<?= $pages; ?>login.php">Login</a>
+                <?php else : ?>
+                    <a id="SpecialBtn" class="btn btn-primary rounded-pill" type="button" href="<?= $pages; ?>login.php">Login</a>
+                <?php endif ?>
                 <a id="SpecialBtn" class="btn btn-primary rounded-pill" type="button" href="#">Start a project</a>
                 <!-- profile -->
                 <?php if (isset($_COOKIE['user'])) : ?>
