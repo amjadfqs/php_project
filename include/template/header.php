@@ -24,7 +24,7 @@
                     </ul>
                 </div>
             <?php endif ?>
-            <a class="navbar-brand d-flex align-items-center" href="#">
+            <a class="navbar-brand d-flex align-items-center" href="<?= $pages; ?>index.php">
                 <span class="bs-icon-sm bs-icon-rounded bs-icon-primary d-flex justify-content-center align-items-center me-2 bs-icon"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="50" viewBox="0 0 57 58">
                         <path id="logo" d="M19.294,7.156a15,15,0,0,1,18.412,0l11.15,8.667A15,15,0,0,1,54,32.025L49.346,47.359A15,15,0,0,1,34.993,58H22.007A15,15,0,0,1,7.654,47.359L3,32.025a15,15,0,0,1,5.147-16.2Z" fill="#4dd5ac" />
                     </svg>
@@ -47,7 +47,7 @@
                 </ul>
                 <!-- bottom for small screen -->
                 <div class="d-md-none my-2 text-center">
-                    <a id="SpecialBtn" class="btn btn-primary me-2" type="button" href="<?= $pages; ?> login.php">Login</a>
+                    <a id="SpecialBtn" class="btn btn-primary me-2" type="button" href="<?= $pages; ?>login.php">Login</a>
                     <a id="SpecialBtn" class="btn btn-primary" type="button">Start a project</a>
                 </div>
             </div>
@@ -55,7 +55,7 @@
             <!--bottom for lg and md screen   -->
 
             <div class="d-none d-md-block">
-                <a id="SpecialBtn" class="btn btn-primary rounded-pill" type="button" href="<?= $pages ?>login.php">Login</a>
+                <a id="SpecialBtn" class="btn btn-primary rounded-pill" type="button" href="<?= $pages; ?>login.php">Login</a>
                 <a id="SpecialBtn" class="btn btn-primary rounded-pill" type="button" href="#">Start a project</a>
                 <!-- profile -->
                 <?php if (isset($_COOKIE['user'])) : ?>
