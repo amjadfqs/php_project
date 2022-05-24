@@ -38,13 +38,13 @@ if (isset($_POST['submit'])) {
     } else {
         $pass1 = $_POST['pass1'];
         if (strlen($_POST["pass1"]) <= 8) {
-            $passwordErr = "Your Password Must Contain At Least 8 Characters!";
+            $errors['pass1'] = "Your Password Must Contain At Least 8 Characters!";
         } elseif (!preg_match("#[0-9]+#", $pass1)) {
-            $passwordErr = "Your Password Must Contain At Least 1 Number!";
+            $errors['pass1'] = "Your Password Must Contain At Least 1 Number!";
         } elseif (!preg_match("#[A-Z]+#", $pass1)) {
-            $passwordErr = "Your Password Must Contain At Least 1 Capital Letter!";
+            $errors['pass1'] = "Your Password Must Contain At Least 1 Capital Letter!";
         } elseif (!preg_match("#[a-z]+#", $pass1)) {
-            $passwordErr = "Your Password Must Contain At Least 1 Lowercase Letter!";
+            $errors['pass1'] = "Your Password Must Contain At Least 1 Lowercase Letter!";
         }
     }
     // check the confirm password

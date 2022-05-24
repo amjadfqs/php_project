@@ -92,7 +92,7 @@ if (isset($_POST['submit'])) {
                         class="btn btn-primary text-secondary w-100">Login</button>
                 </div>
                 <div class="text-center">
-                    <p>Don't have an account? <a href="#!">Register</a></p>
+                    <p>Don't have an account? <a href="<?php echo $pages; ?>register.php">Register</a></p>
                 </div>
             </form>
         </div>
