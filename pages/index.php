@@ -4,11 +4,11 @@ include '../conf/ini.php';
 include $temp . 'header.php';
 
 ?>
-<div class="container ">
-    <nav class="overflow-auto ">
-        <ul class="d-flex justify-content-center mt-5">
+<div class="container text-center">
+    <nav class="overflow-auto">
+        <ul class="d-inline-flex mt-5">
             <li class="nav-item line-before">
-                <a class="nav-link text-black " href="#">Art</a>
+                <a class="nav-link text-black" href="#">Art</a>
             </li>
             <li class="nav-item line-before">
                 <a class="nav-link text-black" href="#">Comics</a>
@@ -37,7 +37,7 @@ include $temp . 'header.php';
 <hr class="d-sm-none d-md-block text-black-50 m-0">
 
 <!-- Carousel -->
-<div>
+<div class="d-none d-md-block">
     <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-indicators">
             <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active bg-primary" aria-current="true" aria-label="Slide 1"></button>
@@ -51,9 +51,9 @@ include $temp . 'header.php';
                         <div class="col mt-5 text-center text-sm-start">
                             <h1 class="mt-5"> Get funded now </h1>
                             <p>
-                                Lorem ipsum dolor sit amet consectetur adipisicing <br />e
-                                Lorem ipsum dolor sit amet consectetur adipisicing
-                                <br /> Lorem ipsum consectetur adipisicing ?
+                                Lorem ipsum dolor sit Lorem ipsum dolor sit <br />e
+                                Lorem ipsum dolor sit Lorem ipsum dolor sit
+                                <br /> Lorem ipsum Lorem ipsum dolor sit ?
                             </p>
                             <a class="btn btn-primary mt-3" role="button" href="#">Start a project</a>
                         </div>
@@ -73,9 +73,9 @@ include $temp . 'header.php';
                         <div class="col mt-5 text-center text-sm-start">
                             <h1 class="mt-5"> Funding projects </h1>
                             <p class="g-sm-5">
-                                Lorem ipsum dolor sit amet consectetur adipisicing <br />e
-                                Lorem ipsum dolor sit amet consectetur adipisicing
-                                <br /> Lorem ipsum consectetur adipisicing ?
+                                Lorem ipsum dolor sit Lorem ipsum dolor sit <br />e
+                                Lorem ipsum dolor sit Lorem ipsum dolor sit
+                                <br /> Lorem ipsum Lorem ipsum dolor sit ?
                             </p>
                             <a class="btn btn-primary mt-3" role="button" href="#">Founding project now</a>
                         </div>
@@ -94,9 +94,9 @@ include $temp . 'header.php';
                         <div class="col mt-5 text-center text-sm-start">
                             <h1 class="mt-5 "> User view </h1>
                             <p class="">
-                                Lorem ipsum dolor sit amet consectetur adipisicing <br />e
-                                Lorem ipsum dolor sit amet consectetur adipisicing
-                                <br /> Lorem ipsum consectetur adipisicing ?
+                                Lorem ipsum dolor sit Lorem ipsum dolor sit <br />e
+                                Lorem ipsum dolor sit Lorem ipsum dolor sit
+                                <br /> Lorem ipsum Lorem ipsum dolor sit ?
                             </p>
                             <a class="btn btn-primary mt-3" role="button" href="#">Learn more</a>
                         </div>
@@ -112,11 +112,92 @@ include $temp . 'header.php';
     </div>
 </div>
 <!-- end of Carousel -->
+<!--  Carousel for small screen -->
+
+<div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+    <div class="container d-md-none">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <div class="container mt-5">
+                    <div class="row">
+                        <div class="col active">
+                            <img class="w-100 img-fluid" src="<?php echo $img; ?>slide3.svg">
+                        </div>
+                        <!-- to break between them -->
+                        <div class="col-md-auto">
+                        </div>
+                        <!-- to break between them -->
+                        <div class="col mt-5 text-center text-sm-start">
+                            <h1> Get funded now </h1>
+                            <p>
+                                Lorem ipsum dolor sit Lorem ipsum dolor sit <br />e
+                                Lorem ipsum dolor sit Lorem ipsum dolor sit
+                                <br /> Lorem ipsum Lorem ipsum dolor sit ?
+                            </p>
+                            <a class="btn btn-primary" role="button" href="#">Start a project</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="container mt-5">
+                    <div class="row">
+                        <div class="col">
+                            <img class="w-100 img-fluid" src="<?php echo $img; ?>slide2.svg">
+                        </div>
+                        <div class="col-md-auto">
+                        </div>
+                        <div class="col mt-5 text-center text-sm-start">
+                            <h1> Funding projects </h1>
+                            <p>
+                                Lorem ipsum dolor sit Lorem ipsum dolor sit <br />e
+                                Lorem ipsum dolor sit Lorem ipsum dolor sit
+                                <br /> Lorem ipsum Lorem ipsum dolor sit ?
+                            </p>
+                            <a class="btn btn-primary" role="button" href="#">Founding project now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="container mt-5">
+                    <div class="row">
+                        <div class="col">
+                            <img class="w-100 img-fluid" src="<?php echo $img; ?>slide1.svg">
+                        </div>
+                    </div>
+                    <div class="col-md-auto">
+                    </div>
+                    <div class="col mt-5 text-center text-sm-start">
+                        <h1> User view </h1>
+                        <p>
+                            Lorem ipsum dolor sit Lorem ipsum dolor sit <br />e
+                            Lorem ipsum dolor sit Lorem ipsum dolor sit
+                            <br /> Lorem ipsum Lorem ipsum dolor sit ?
+                        </p>
+                        <a class="btn btn-primary" role="button" href="#">Learn more</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+</div>
+
+<!--  end Carousel for small screen -->
+
 <!-- funding info -->
 <div class="container-fluid bg-secondary mt-5">
     <div class="container">
         <div class="p-2">
-            <h1 class="mt-5 color-a text-center">Information About Fundation</h1>
+            <h1 class="mt-5 color-a text-center">Information About Foundation</h1>
             <p class="text-muted my-3 text-center">Creative work shows us what’s possible.
                 Help fund it here.</p>
         </div>
@@ -147,14 +228,14 @@ include $temp . 'header.php';
 <div class="container mt-5 overflow-auto">
     <div class="d-inline-flex">
         <div class="card mx-2 my-4 shadow" style="width: 20rem;">
-            <a href="#"><img src="<?php echo $img; ?>card1.svg" class="card-img-top" alt=""></a>
+            <a href="#"><img src="<?php echo $img; ?>card2.jpg" class="card-img-top" alt=""></a>
             <div class="card-body">
                 <h5 class="card-title text-primary">Donate To Educate</h5>
                 <p class="card-text">The FIFTH 200 PAGE HARDBACK BOOK
-                    of Lorenzo Etherington HOW TO THINK
+                    of Lorenzo Sherrington HOW TO THINK
                     WHEN YOU DRAW series + reprinting
                     ALL original SOLD OUT BOOKS! By
-                    Lorenzo Etherington of Lorenzo Etherington HOW TO THINK
+                    Lorenzo Sherrington of Lorenzo Sherrington HOW TO THINK
                     WHEN YOU DRAW series + reprinting
                     ALL original SOLD OUT BOOKS! By. </p>
                 <div class="card-text">
@@ -175,112 +256,112 @@ include $temp . 'header.php';
             </div>
         </div>
         <div class="card mx-2 my-4 shadow" style="width: 20rem;">
-            <a href="#"><img src="<?php echo $img; ?>card1.svg" class="card-img-top" alt=""></a>
+            <a href="#"><img src="<?php echo $img; ?>card2.jpg" class="card-img-top" alt=""></a>
             <div class="card-body">
                 <h5 class="card-title text-primary">Donate To Educate</h5>
                 <p class="card-text">The FIFTH 200 PAGE HARDBACK BOOK
-                    of Lorenzo Etherington HOW TO THINK
+                    of Lorenzo Sherrington HOW TO THINK
                     WHEN YOU DRAW series + reprinting
                     ALL original SOLD OUT BOOKS! By
-                    Lorenzo Etherington of Lorenzo Etherington HOW TO THINK
+                    Lorenzo Sherrington of Lorenzo Sherrington HOW TO THINK
                     WHEN YOU DRAW series + reprinting
                     ALL original SOLD OUT BOOKS! By. </p>
                 <div class="card-text">
                     <div class="text-muted mb-2">
-                        <img class="me-2" src="<?php echo $img; ?>Card/start.svg">
-                        <i>Art & Design</i>
+                        <i class="fas fa-tags fa-flip-horizontal"></i>
+                        Art & Design
                     </div>
                     <div class="text-muted mb-2">
-                        <img class="me-2" src="<?php echo $img; ?>Card/start.svg">
-                        <i>Started at: 2021-05-20</i>
+                        <i class="fas fa-clock"></i>
+                        Started at: 2021-05-20
                     </div>
                     <div class="text-muted">
-                        <img class="me-2" src="<?php echo $img; ?>Card/location.svg">
-                        <i>Taizz,Yemen</i>
+                        <i class="fas fa-location-arrow"></i>
+                        Taizz,Yemen
                     </div>
                 </div> <br />
                 <span class="">By<a href="#" class="mx-1 text-primary">Adham Mustafa</a></span>
             </div>
         </div>
         <div class="card mx-2 my-4 shadow" style="width: 20rem;">
-            <a href="#"><img src="<?php echo $img; ?>card1.svg" class="card-img-top" alt=""></a>
+            <a href="#"><img src="<?php echo $img; ?>card2.jpg" class="card-img-top" alt=""></a>
             <div class="card-body">
                 <h5 class="card-title text-primary">Donate To Educate</h5>
                 <p class="card-text">The FIFTH 200 PAGE HARDBACK BOOK
-                    of Lorenzo Etherington HOW TO THINK
+                    of Lorenzo Sherrington HOW TO THINK
                     WHEN YOU DRAW series + reprinting
                     ALL original SOLD OUT BOOKS! By
-                    Lorenzo Etherington of Lorenzo Etherington HOW TO THINK
+                    Lorenzo Sherrington of Lorenzo Sherrington HOW TO THINK
                     WHEN YOU DRAW series + reprinting
                     ALL original SOLD OUT BOOKS! By. </p>
                 <div class="card-text">
                     <div class="text-muted mb-2">
-                        <img class="me-2" src="<?php echo $img; ?>Card/start.svg">
-                        <i>Art & Design</i>
+                        <i class="fas fa-tags fa-flip-horizontal"></i>
+                        Art & Design
                     </div>
                     <div class="text-muted mb-2">
-                        <img class="me-2" src="<?php echo $img; ?>Card/start.svg">
-                        <i>Started at: 2021-05-20</i>
+                        <i class="fas fa-clock"></i>
+                        Started at: 2021-05-20
                     </div>
                     <div class="text-muted">
-                        <img class="me-2" src="<?php echo $img; ?>Card/location.svg">
-                        <i>Taizz,Yemen</i>
+                        <i class="fas fa-location-arrow"></i>
+                        Taizz,Yemen
                     </div>
                 </div> <br />
                 <span class="">By<a href="#" class="mx-1 text-primary">Adham Mustafa</a></span>
             </div>
         </div>
         <div class="card mx-2 my-4 shadow" style="width: 20rem;">
-            <a href="#"><img src="<?php echo $img; ?>card1.svg" class="card-img-top" alt=""></a>
+            <a href="#"><img src="<?php echo $img; ?>card2.jpg" class="card-img-top" alt=""></a>
             <div class="card-body">
                 <h5 class="card-title text-primary">Donate To Educate</h5>
                 <p class="card-text">The FIFTH 200 PAGE HARDBACK BOOK
-                    of Lorenzo Etherington HOW TO THINK
+                    of Lorenzo Sherrington HOW TO THINK
                     WHEN YOU DRAW series + reprinting
                     ALL original SOLD OUT BOOKS! By
-                    Lorenzo Etherington of Lorenzo Etherington HOW TO THINK
+                    Lorenzo Sherrington of Lorenzo Sherrington HOW TO THINK
                     WHEN YOU DRAW series + reprinting
                     ALL original SOLD OUT BOOKS! By. </p>
                 <div class="card-text">
                     <div class="text-muted mb-2">
-                        <img class="me-2" src="<?= $img; ?>Card/start.svg">
-                        <i>Art & Design</i>
+                        <i class="fas fa-tags fa-flip-horizontal"></i>
+                        Art & Design
                     </div>
                     <div class="text-muted mb-2">
-                        <img class="me-2" src="<?php echo $img; ?>Card/start.svg">
-                        <i>Started at: 2021-05-20</i>
+                        <i class="fas fa-clock"></i>
+                        Started at: 2021-05-20
                     </div>
                     <div class="text-muted">
-                        <img class="me-2" src="<?php echo $img; ?>Card/location.svg">
-                        <i>Taizz,Yemen</i>
+                        <i class="fas fa-location-arrow"></i>
+                        Taizz,Yemen
                     </div>
                 </div> <br />
                 <span class="">By<a href="#" class="mx-1 text-primary">Adham Mustafa</a></span>
             </div>
         </div>
         <div class="card mx-2 my-4 shadow" style="width: 20rem;">
-            <a href="#"><img src="<?php echo $img; ?>card1.svg" class="card-img-top" alt=""></a>
+            <a href="#"><img src="<?php echo $img; ?>card2.jpg" class="card-img-top" alt=""></a>
             <div class="card-body">
                 <h5 class="card-title text-primary">Donate To Educate</h5>
                 <p class="card-text">The FIFTH 200 PAGE HARDBACK BOOK
-                    of Lorenzo Etherington HOW TO THINK
+                    of Lorenzo Sherrington HOW TO THINK
                     WHEN YOU DRAW series + reprinting
                     ALL original SOLD OUT BOOKS! By
-                    Lorenzo Etherington of Lorenzo Etherington HOW TO THINK
+                    Lorenzo Sherrington of Lorenzo Sherrington HOW TO THINK
                     WHEN YOU DRAW series + reprinting
                     ALL original SOLD OUT BOOKS! By. </p>
                 <div class="card-text">
                     <div class="text-muted mb-2">
-                        <img class="me-2" src="<?php echo $img; ?>Card/start.svg">
-                        <i>Art & Design</i>
+                        <i class="fas fa-tags fa-flip-horizontal"></i>
+                        Art & Design
                     </div>
                     <div class="text-muted mb-2">
-                        <img class="me-2" src="<?php echo $img; ?>Card/start.svg">
-                        <i>Started at: 2021-05-20</i>
+                        <i class="fas fa-clock"></i>
+                        Started at: 2021-05-20
                     </div>
                     <div class="text-muted">
-                        <img class="me-2" src="<?php echo $img; ?>Card/location.svg">
-                        <i>Taizz,Yemen</i>
+                        <i class="fas fa-location-arrow"></i>
+                        Taizz,Yemen
                     </div>
                 </div> <br />
                 <span class="">By<a href="#" class="mx-1 text-primary">Adham Mustafa</a></span>
