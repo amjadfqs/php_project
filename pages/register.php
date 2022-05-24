@@ -1,14 +1,14 @@
 <?php
 if (isset($_COOKIE['user'])) {
-    header('location: index.php');
+    header('location: login.php');
 }
 $pageTitle = "Register Page";
 include '../conf/ini.php';
 include '../conf/conn.php';
 include $temp . 'header.php';
 
-$firstName = $lastName = $email = $userName = $pass1 = $num = $city =  $gender = '';
-$errors = array('firstName' => '', 'lastName' => '', 'email' => '', 'userName' => '', 'pass1' => '', 'pass2' => '', 'num' => '', 'city' => '', 'gender' => '');
+$firstName = $lastName = $email = $userName = $pass1 = $city =  $gender = '';
+$errors = array('firstName' => '', 'lastName' => '', 'email' => '', 'userName' => '', 'pass1' => '', 'pass2' => '', 'city' => '', 'gender' => '');
 
 if (isset($_POST['submit'])) {
     // Check if username is empty
@@ -24,7 +24,7 @@ if (isset($_POST['submit'])) {
         $lastName = mysqli_real_escape_string($con, trim($_POST['lastName']));
     }
     // check the gender
-    if (empty(trim($_POST['gender']))) {
+    if (!isset($_POST['gender'])) {
         $errors['gender'] = 'Sorry The gender is required';
     } else {
         $gender = mysqli_real_escape_string($con, trim($_POST['gender']));
@@ -67,11 +67,12 @@ if (isset($_POST['submit'])) {
         }
         $errors['pass2'] = 'Sorry The confirm password is required';
     }
-    if (empty(trim($_POST['num']))) {
-        $errors['num'] = 'Sorry The number is required';
-    } else {
-        $num = mysqli_real_escape_string($con, trim($_POST['num']));
-    }
+    // if (empty(trim($_POST['num']))) {
+    //     $errors['num'] = 'Sorry The number is required';
+    // } else {
+    //     $num = mysqli_real_escape_string($con, trim($_POST['num']));
+    // }
+
     if (!isset($_POST['city'])) {
         $errors['city'] = 'Sorry The city is required';
     }
@@ -82,10 +83,10 @@ if (isset($_POST['submit'])) {
         $city = mysqli_real_escape_string($con, trim($_POST['city']));
 
         // dealing with the database
-        $query = "INSERT INTO users (FirstName, LastName, Gender, Email, UserName, Password, PhoneNumber, city) VALUES ('$firstName','$lastName', '$gender', '$email','$userName', SHA1('$pass1'),'$num','$city')";
+        $query = "INSERT INTO users (FirstName, LastName, Gender, Email, UserName, Password , city) VALUES ('$firstName','$lastName', '$gender', '$email','$userName', SHA1('$pass1'),'$city')";
         $result = mysqli_query($con, $query);
         if ($result) {
-            header('location:index.php');
+            header('location:login.php');
         } else {
             echo '<h1>System Error</h1>';
             echo '<p>' . mysqli_error($con) . '<br />Query: ' . $query . '</p>';
@@ -107,8 +108,7 @@ if (isset($_POST['submit'])) {
                             <span class="input-group-text">
                                 <i class="fas fa-user text-muted"></i>
                             </span>
-                            <input name="firstName" type="text" id="firstName" class="form-control"
-                                value="<?= $firstName ?>" />
+                            <input name="firstName" type="text" id="firstName" class="form-control" value="<?= $firstName ?>" />
                             <!-- tooltip -->
                             <span class="input-group-text">
                                 <span class="tt" data-bs-placement="bottom" title="Enter your first name">
@@ -125,8 +125,7 @@ if (isset($_POST['submit'])) {
                             <span class="input-group-text">
                                 <i class="fas fa-user text-muted"></i>
                             </span>
-                            <input name="lastName" type="text" id="lastName" class="form-control"
-                                value="<?= $lastName ?>" />
+                            <input name="lastName" type="text" id="lastName" class="form-control" value="<?= $lastName ?>" />
                             <!-- tooltip -->
                             <span class="input-group-text">
                                 <span class="tt" data-bs-placement="bottom" title="Enter your real last name">
@@ -141,22 +140,6 @@ if (isset($_POST['submit'])) {
                 <!-- End of first Row -->
                 <!-- start the second row -->
                 <div class="row ">
-                    <div class="col-12 col-md-6">
-                        <label for="gender" class="form-label">Gender:</label>
-                        <div class="input-group">
-                            <span class="input-group-text">
-                                <i class="fas fa-venus-mars text-muted"></i>
-                            </span>
-                            <select name="gender" class="form-select">
-                                <option value="NULL" selected disabled>Gender</option>
-                                <option value="Women">Women</option>
-                                <option value="Men">Men</option>
-                                <option value="other" selected disabled>Other</option>
-                            </select>
-                        </div>
-                        <div class="h6 text-danger mb-3"><?php echo $errors['firstName']; ?></div>
-                        <!-- end of first name -->
-                    </div>
                     <div class="col-12 col-md-6">
                         <label for="email" class="form-label">Email</label>
                         <div class="input-group">
@@ -174,18 +157,13 @@ if (isset($_POST['submit'])) {
                         <div class="h6 text-danger mb-3"><?php echo $errors['email']; ?></div>
                         <!-- end of email -->
                     </div>
-                </div>
-                <!-- End of second Row -->
-                <!-- third Row -->
-                <div class="row">
                     <div class="col-12 col-md-6">
                         <label for="userName" class="form-label">User Name:</label>
                         <div class="input-group">
                             <span class="input-group-text">
                                 <i class="fas fa-user text-muted"></i>
                             </span>
-                            <input name="userName" type="text" id="userName" class="form-control"
-                                value="<?= $userName ?>" />
+                            <input name="userName" type="text" id="userName" class="form-control" value="<?= $userName ?>" />
                             <!-- tooltip -->
                             <span class="input-group-text">
                                 <span class="tt" data-bs-placement="bottom" title="Enter a valid user-name">
@@ -196,27 +174,25 @@ if (isset($_POST['submit'])) {
                         <div class="h6 text-danger mb-3"><?php echo $errors['userName']; ?></div>
                         <!-- end of user name -->
                     </div>
+                </div>
+                <!-- End of second Row -->
+                <!-- third Row -->
+                <div class="row">
                     <div class="col-12 col-md-6">
-                        <label for="num" class="form-label">Phone number:</label>
+                        <label for="gender" class="form-label">Gender:</label>
                         <div class="input-group">
                             <span class="input-group-text">
-                                <i class="fas fa-phone-alt text-muted"></i>
+                                <i class="fas fa-venus-mars text-muted"></i>
                             </span>
-                            <input name="num" type="number" id="num" class="form-control" value="<?= $num ?>" />
-                            <!-- tooltip -->
-                            <span class="input-group-text">
-                                <span class="tt" data-bs-placement="bottom" title="Enter your real name">
-                                    <i class="far fa-question-circle text-muted"></i>
-                                </span>
-                            </span>
+                            <select name="gender" class="form-select">
+                                <option value="NULL" selected disabled>Gender</option>
+                                <option value="Female">Female</option>
+                                <option value="Male">Male</option>
+                            </select>
                         </div>
-                        <div class="h6 text-danger mb-3"><?php echo $errors['num']; ?></div>
-                        <!-- end of number-->
+                        <div class="h6 text-danger mb-3"><?php echo $errors['gender']; ?></div>
+                        <!-- end of gender -->
                     </div>
-                </div>
-                <!-- End of third Row -->
-                <!-- fourth Row -->
-                <div class="row ">
                     <div class="col-12 col-md-6">
                         <label for="city" class="form-label">City:</label>
                         <div class="input-group">
@@ -235,6 +211,10 @@ if (isset($_POST['submit'])) {
                         </div>
                         <div class="h6 text-danger mb-3"><?php echo $errors['city']; ?></div>
                     </div>
+                </div>
+                <!-- End of third Row -->
+                <!-- fourth Row -->
+                <div class="row">
                     <div class="col-12 col-md-6">
                         <label for="pass" class="form-label">Password:</label>
                         <div class="input-group">
@@ -252,12 +232,8 @@ if (isset($_POST['submit'])) {
                         <div class="h6 text-danger mb-3"><?php echo $errors['pass1']; ?></div>
                         <!-- end of password -->
                     </div>
-                </div>
-                <!-- End of fourth Row -->
-                <!-- fifth Row -->
-                <div class="row">
                     <div class="col-12 col-md-6">
-                        <label for="pass2" class="mt-2 form-label">Confirm Password:</label>
+                        <label for="pass2" class="form-label">Confirm Password:</label>
                         <div class="input-group">
                             <span class="input-group-text">
                                 <i class="fas fa-lock text-muted"></i>
@@ -274,13 +250,11 @@ if (isset($_POST['submit'])) {
                         <!-- end of password -->
                     </div>
                 </div>
-                <!-- End of fifth Row -->
-
+                <!-- End of fourth Row -->
                 <!-- Buttons -->
                 <div class="row mt-4 mb-2 justify-content-center gap-2 gap-md-0">
                     <div class="col-6">
-                        <button type="submit" name="submit" value="submit"
-                            class="btn btn-primary text-light w-100">Register</button>
+                        <button type="submit" name="submit" value="submit" class="btn btn-primary text-dark w-100">Register</button>
                     </div>
                 </div>
             </form>
@@ -288,10 +262,10 @@ if (isset($_POST['submit'])) {
     </div>
 </div>
 <script>
-const tooltips = document.querySelectorAll('.tt')
-tooltips.forEach(t => {
-    new bootstrap.Tooltip(t)
-})
+    const tooltips = document.querySelectorAll('.tt')
+    tooltips.forEach(t => {
+        new bootstrap.Tooltip(t)
+    })
 </script>
 <!-- Pills content -->
 <?php include $temp . 'footer.php'; ?>
