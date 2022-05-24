@@ -7,8 +7,8 @@ include '../conf/ini.php';
 include '../conf/conn.php';
 include $temp . 'header.php';
 
-$firstName = $lastName = $email = $userName = $pass1 = $num = $city = '';
-$errors = array('firstName' => '', 'lastName' => '', 'email' => '', 'userName' => '', 'pass1' => '', 'pass2' => '', 'num' => '', 'city' => '');
+$firstName = $lastName = $email = $userName = $pass1 = $num = $city =  $gender = '';
+$errors = array('firstName' => '', 'lastName' => '', 'email' => '', 'userName' => '', 'pass1' => '', 'pass2' => '', 'num' => '', 'city' => '', 'gender' => '');
 
 if (isset($_POST['submit'])) {
     // Check if username is empty
@@ -22,6 +22,12 @@ if (isset($_POST['submit'])) {
         $errors['lastName'] = 'Sorry The last name is required';
     } else {
         $lastName = mysqli_real_escape_string($con, trim($_POST['lastName']));
+    }
+    // check the gender
+    if (empty(trim($_POST['gender']))) {
+        $errors['gender'] = 'Sorry The gender is required';
+    } else {
+        $gender = mysqli_real_escape_string($con, trim($_POST['gender']));
     }
     // check the email
     if (empty($_POST['email'])) {
@@ -76,7 +82,7 @@ if (isset($_POST['submit'])) {
         $city = mysqli_real_escape_string($con, trim($_POST['city']));
 
         // dealing with the database
-        $query = "INSERT INTO users (FirstName, LastName, Email, UserName, Password, PhoneNumber, city) VALUES ('$firstName','$lastName','$email','$userName', SHA1('$pass1'),'$num','$city')";
+        $query = "INSERT INTO users (FirstName, LastName, Gender, Email, UserName, Password, PhoneNumber, city) VALUES ('$firstName','$lastName', '$gender', '$email','$userName', SHA1('$pass1'),'$num','$city')";
         $result = mysqli_query($con, $query);
         if ($result) {
             header('location:index.php');
@@ -91,7 +97,7 @@ if (isset($_POST['submit'])) {
 <div class="container my-5">
     <div class="d-flex justify-content-center">
         <div class="border shadow-lg p-3 mb-5 rounded my-2 bg-light" style="width: 40rem;">
-            <h2 class="text-dark pb-2 mb-4 text-center b">Register</h2>
+            <h2 class="text-muted pb-2 mb-4 text-center b">Register</h2>
             <form action=<?php echo $_SERVER['PHP_SELF'] ?> method="post">
                 <!-- First Row -->
                 <div class="row ">
@@ -101,7 +107,8 @@ if (isset($_POST['submit'])) {
                             <span class="input-group-text">
                                 <i class="fas fa-user text-muted"></i>
                             </span>
-                            <input name="firstName" type="text" id="firstName" class="form-control" value="<?= $firstName ?>" />
+                            <input name="firstName" type="text" id="firstName" class="form-control"
+                                value="<?= $firstName ?>" />
                             <!-- tooltip -->
                             <span class="input-group-text">
                                 <span class="tt" data-bs-placement="bottom" title="Enter your first name">
@@ -118,7 +125,8 @@ if (isset($_POST['submit'])) {
                             <span class="input-group-text">
                                 <i class="fas fa-user text-muted"></i>
                             </span>
-                            <input name="lastName" type="text" id="lastName" class="form-control" value="<?= $lastName ?>" />
+                            <input name="lastName" type="text" id="lastName" class="form-control"
+                                value="<?= $lastName ?>" />
                             <!-- tooltip -->
                             <span class="input-group-text">
                                 <span class="tt" data-bs-placement="bottom" title="Enter your real last name">
@@ -130,9 +138,25 @@ if (isset($_POST['submit'])) {
                         <!-- end of Last name -->
                     </div>
                 </div>
-                <!-- End of First Row -->
-                <!-- Second Row -->
-                <div class="row">
+                <!-- End of first Row -->
+                <!-- start the second row -->
+                <div class="row ">
+                    <div class="col-12 col-md-6">
+                        <label for="gender" class="form-label">Gender:</label>
+                        <div class="input-group">
+                            <span class="input-group-text">
+                                <i class="fas fa-venus-mars text-muted"></i>
+                            </span>
+                            <select name="gender" class="form-select">
+                                <option value="NULL" selected disabled>Gender</option>
+                                <option value="Women">Women</option>
+                                <option value="Men">Men</option>
+                                <option value="other" selected disabled>Other</option>
+                            </select>
+                        </div>
+                        <div class="h6 text-danger mb-3"><?php echo $errors['firstName']; ?></div>
+                        <!-- end of first name -->
+                    </div>
                     <div class="col-12 col-md-6">
                         <label for="email" class="form-label">Email</label>
                         <div class="input-group">
@@ -150,13 +174,18 @@ if (isset($_POST['submit'])) {
                         <div class="h6 text-danger mb-3"><?php echo $errors['email']; ?></div>
                         <!-- end of email -->
                     </div>
+                </div>
+                <!-- End of second Row -->
+                <!-- third Row -->
+                <div class="row">
                     <div class="col-12 col-md-6">
                         <label for="userName" class="form-label">User Name:</label>
                         <div class="input-group">
                             <span class="input-group-text">
                                 <i class="fas fa-user text-muted"></i>
                             </span>
-                            <input name="userName" type="text" id="userName" class="form-control" value="<?= $userName ?>" />
+                            <input name="userName" type="text" id="userName" class="form-control"
+                                value="<?= $userName ?>" />
                             <!-- tooltip -->
                             <span class="input-group-text">
                                 <span class="tt" data-bs-placement="bottom" title="Enter a valid user-name">
@@ -166,12 +195,7 @@ if (isset($_POST['submit'])) {
                         </div>
                         <div class="h6 text-danger mb-3"><?php echo $errors['userName']; ?></div>
                         <!-- end of user name -->
-
                     </div>
-                </div>
-                <!-- End of Second Row -->
-                <!-- Third Row -->
-                <div class="row ">
                     <div class="col-12 col-md-6">
                         <label for="num" class="form-label">Phone number:</label>
                         <div class="input-group">
@@ -189,6 +213,10 @@ if (isset($_POST['submit'])) {
                         <div class="h6 text-danger mb-3"><?php echo $errors['num']; ?></div>
                         <!-- end of number-->
                     </div>
+                </div>
+                <!-- End of third Row -->
+                <!-- fourth Row -->
+                <div class="row ">
                     <div class="col-12 col-md-6">
                         <label for="city" class="form-label">City:</label>
                         <div class="input-group">
@@ -197,26 +225,18 @@ if (isset($_POST['submit'])) {
                             </span>
                             <select name="city" class="form-select">
                                 <option value="NULL" selected disabled>City</option>
-                                <option value="1">Sana'a</option>
-                                <option value="2">Taiz</option>
-                                <option value="3">Aden</option>
-                                <option value="4">Al Hudaydah</option>
-                                <option value="5">Ibb</option>
-                                <option value="6">Other</option>
+                                <option value="Sana'a">Sana'a</option>
+                                <option value="Taizz">Taizz</option>
+                                <option value="Aden">Aden</option>
+                                <option value="Al Hudaydah">Al Hudaydah</option>
+                                <option value="Ibb">Ibb</option>
+                                <option value="Other">Other</option>
                             </select>
                         </div>
-
                         <div class="h6 text-danger mb-3"><?php echo $errors['city']; ?></div>
                     </div>
-                    <!-- end of city-->
-                </div>
-                <!-- End of Third Row -->
-
-
-                <!-- Forth Row -->
-                <div class="row">
                     <div class="col-12 col-md-6">
-                        <label for="pass" class="mt-2 form-label">Password:</label>
+                        <label for="pass" class="form-label">Password:</label>
                         <div class="input-group">
                             <span class="input-group-text">
                                 <i class="fas fa-lock text-muted"></i>
@@ -232,6 +252,10 @@ if (isset($_POST['submit'])) {
                         <div class="h6 text-danger mb-3"><?php echo $errors['pass1']; ?></div>
                         <!-- end of password -->
                     </div>
+                </div>
+                <!-- End of fourth Row -->
+                <!-- fifth Row -->
+                <div class="row">
                     <div class="col-12 col-md-6">
                         <label for="pass2" class="mt-2 form-label">Confirm Password:</label>
                         <div class="input-group">
@@ -250,15 +274,13 @@ if (isset($_POST['submit'])) {
                         <!-- end of password -->
                     </div>
                 </div>
-                <!-- End of Forth Row -->
+                <!-- End of fifth Row -->
 
                 <!-- Buttons -->
-                <div class="row mt-4 mb-2 justify-content-center justify-content-md-end gap-2 gap-md-0">
-                    <div class="col-4 col-md-3">
-                        <button type=" submit" name="cancel" value="cancel" class="btn btn-outline-danger text-dark w-100">Cancel</button>
-                    </div>
+                <div class="row mt-4 mb-2 justify-content-center gap-2 gap-md-0">
                     <div class="col-6">
-                        <button type="submit" name="submit" value="submit" class="btn btn-primary text-light w-100">Register</button>
+                        <button type="submit" name="submit" value="submit"
+                            class="btn btn-primary text-light w-100">Register</button>
                     </div>
                 </div>
             </form>
@@ -266,10 +288,10 @@ if (isset($_POST['submit'])) {
     </div>
 </div>
 <script>
-    const tooltips = document.querySelectorAll('.tt')
-    tooltips.forEach(t => {
-        new bootstrap.Tooltip(t)
-    })
+const tooltips = document.querySelectorAll('.tt')
+tooltips.forEach(t => {
+    new bootstrap.Tooltip(t)
+})
 </script>
 <!-- Pills content -->
 <?php include $temp . 'footer.php'; ?>

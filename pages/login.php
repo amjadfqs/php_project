@@ -58,10 +58,12 @@ if (isset($_POST['submit'])) {
                     <span class="input-group-text">
                         <i class="fas fa-user text-muted"></i>
                     </span>
-                    <input name="Uname" type="text" id="Uname" class="form-control" value="<?php echo htmlspecialchars($Uname); ?>" />
+                    <input name="Uname" type="text" id="Uname" class="form-control"
+                        value="<?php echo htmlspecialchars($Uname); ?>" />
                     <!-- tooltip -->
                     <span class="input-group-text">
-                        <span class="tt" data-bs-placement="bottom" title="Enter an your user name that you registered with">
+                        <span class="tt" data-bs-placement="bottom"
+                            title="Enter an your user name that you registered with">
                             <i class="far fa-question-circle text-muted"></i>
                         </span>
                     </span>
@@ -83,7 +85,8 @@ if (isset($_POST['submit'])) {
                 </div>
                 <!-- <div class="h6 text-danger mb-3"><?php echo $errors['pass']; ?></div> -->
                 <div class="mt-4 mb-2 shadow text-center">
-                    <button type="submit" name="submit" vlaue="submit" class="btn btn-primary text-secondary w-100">Login</button>
+                    <button type="submit" name="submit" value="submit"
+                        class="btn btn-primary text-secondary w-100">Login</button>
                 </div>
                 <div class="text-center">
                     <p>Don't have an account? <a href="<?php echo $pages; ?>register.php">Register</a></p>
@@ -95,10 +98,10 @@ if (isset($_POST['submit'])) {
 
 
 <script>
-    const tooltips = document.querySelectorAll('.tt')
-    tooltips.forEach(t => {
-        new bootstrap.Tooltip(t)
-    })
+const tooltips = document.querySelectorAll('.tt')
+tooltips.forEach(t => {
+    new bootstrap.Tooltip(t)
+})
 </script>
 <!-- Pills content -->
 <?php include $temp . 'footer.php'; ?>
