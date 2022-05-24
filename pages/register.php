@@ -1,7 +1,7 @@
 <?php
-ob_start();
-?>
-<?php
+if (isset($_COOKIE['user'])) {
+    header('location: index.php');
+}
 $pageTitle = "Register Page";
 include '../conf/ini.php';
 include '../conf/conn.php';
@@ -14,30 +14,37 @@ if (isset($_POST['submit'])) {
     // Check if username is empty
     if (empty(trim($_POST['firstName']))) {
         $errors['firstName'] = 'Sorry The name is required';
+    } else {
+        $firstName = mysqli_real_escape_string($con, trim($_POST['firstName']));
     }
     // Check if username is empty
     if (empty(trim($_POST['lastName']))) {
         $errors['lastName'] = 'Sorry The last name is required';
+    } else {
+        $lastName = mysqli_real_escape_string($con, trim($_POST['lastName']));
     }
     // check the email
     if (empty($_POST['email'])) {
         $errors['email'] = 'An email is required';
     } else {
-        $email = $_POST['email'];
-        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
             $errors['email'] = '&#9940 Email must be a valid email address';
+        } else {
+            $email = mysqli_real_escape_string($con, trim($_POST['email']));
         }
     }
     // check the User Name
     if (empty(trim($_POST['userName']))) {
         $errors['userName'] = 'Sorry The user name is required';
+    } else {
+        $userName = mysqli_real_escape_string($con, trim($_POST['userName']));
     }
     // check the pass 1
     if (empty($_POST["pass1"])) {
         $errors['pass1'] = "Password is required";
     } else {
         $pass1 = $_POST['pass1'];
-        if (strlen($_POST["pass1"]) <= 8) {
+        if (strlen($pass1) < 8) {
             $errors['pass1'] = "Your Password Must Contain At Least 8 Characters!";
         } elseif (!preg_match("#[0-9]+#", $pass1)) {
             $errors['pass1'] = "Your Password Must Contain At Least 1 Number!";
@@ -56,25 +63,23 @@ if (isset($_POST['submit'])) {
     }
     if (empty(trim($_POST['num']))) {
         $errors['num'] = 'Sorry The number is required';
+    } else {
+        $num = mysqli_real_escape_string($con, trim($_POST['num']));
     }
-    if (empty(trim($_POST['city']))) {
+    if (!isset($_POST['city'])) {
         $errors['city'] = 'Sorry The city is required';
     }
+
     if (array_filter($errors)) {
     } else {
-        $firstName = mysqli_real_escape_string($con, $_POST['firstName']);
-        $lastName  = mysqli_real_escape_string($con, $_POST['lastName']);
-        $email  = mysqli_real_escape_string($con, $_POST['email']);
-        $userName  = mysqli_real_escape_string($con, $_POST['userName']);
         $pass1  = mysqli_real_escape_string($con, $_POST['pass1']);
-        $num  = mysqli_real_escape_string($con, $_POST['num']);
-        $city  = mysqli_real_escape_string($con, $_POST['city']);
+        $city = mysqli_real_escape_string($con, trim($_POST['city']));
+
         // dealing with the database
-        $query = "INSERT INTO users (FirstName, LastName, Email, UserName, Password, number, city)VALUES('$firstName','$lastName','$email','$userName', SHA1('$pass1'),'$num','$city')";
+        $query = "INSERT INTO users (FirstName, LastName, Email, UserName, Password, PhoneNumber, city) VALUES ('$firstName','$lastName','$email','$userName', SHA1('$pass1'),'$num','$city')";
         $result = mysqli_query($con, $query);
         if ($result) {
             header('location:index.php');
-            ob_end_flush();
         } else {
             echo '<h1>System Error</h1>';
             echo '<p>' . mysqli_error($con) . '<br />Query: ' . $query . '</p>';
@@ -85,151 +90,186 @@ if (isset($_POST['submit'])) {
 ?>
 <div class="container my-5">
     <div class="d-flex justify-content-center">
-        <div class="border shadow-lg p-3 mb-5 rounded my-2 bg-light" style="width: 35rem;">
-            <h2 class="text-dark pb-2 mb-4 text-center">Register</h2>
+        <div class="border shadow-lg p-3 mb-5 rounded my-2 bg-light" style="width: 40rem;">
+            <h2 class="text-dark pb-2 mb-4 text-center b">Register</h2>
             <form action=<?php echo $_SERVER['PHP_SELF'] ?> method="post">
-                <label for="firstName" class="form-label">First Name:</label>
-                <div class="input-group">
-                    <span class="input-group-text">
-                        <i class="fas fa-user text-muted"></i>
-                    </span>
-                    <input name="firstName" type="text" id="firstName" class="form-control" value="<?= $firstName ?>" />
-                    <!-- tooltip -->
-                    <span class="input-group-text">
-                        <span class="tt" data-bs-placement="bottom" title="Enter your real name">
-                            <i class="far fa-question-circle text-muted"></i>
-                        </span>
-                    </span>
+                <!-- First Row -->
+                <div class="row ">
+                    <div class="col-12 col-md-6">
+                        <label for="firstName" class="form-label">First Name:</label>
+                        <div class="input-group">
+                            <span class="input-group-text">
+                                <i class="fas fa-user text-muted"></i>
+                            </span>
+                            <input name="firstName" type="text" id="firstName" class="form-control" value="<?= $firstName ?>" />
+                            <!-- tooltip -->
+                            <span class="input-group-text">
+                                <span class="tt" data-bs-placement="bottom" title="Enter your first name">
+                                    <i class="far fa-question-circle text-muted"></i>
+                                </span>
+                            </span>
+                        </div>
+                        <div class="h6 text-danger mb-3"><?php echo $errors['firstName']; ?></div>
+                        <!-- end of first name -->
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <label for="lastName" class="form-label">Last Name:</label>
+                        <div class="input-group">
+                            <span class="input-group-text">
+                                <i class="fas fa-user text-muted"></i>
+                            </span>
+                            <input name="lastName" type="text" id="lastName" class="form-control" value="<?= $lastName ?>" />
+                            <!-- tooltip -->
+                            <span class="input-group-text">
+                                <span class="tt" data-bs-placement="bottom" title="Enter your real last name">
+                                    <i class="far fa-question-circle text-muted"></i>
+                                </span>
+                            </span>
+                        </div>
+                        <div class="h6 text-danger mb-3"><?php echo $errors['lastName']; ?></div>
+                        <!-- end of Last name -->
+                    </div>
                 </div>
-                <div class="h6 text-danger mb-3"><?php echo $errors['firstName']; ?></div>
-                <!-- end of first name -->
-                <label for="lastName" class="form-label">Last Name:</label>
-                <div class="input-group">
-                    <span class="input-group-text">
-                        <i class="fas fa-user text-muted"></i>
-                    </span>
-                    <input name="lastName" type="text" id="lastName" class="form-control" value="<?= $lastName ?>" />
-                    <!-- tooltip -->
-                    <span class="input-group-text">
-                        <span class="tt" data-bs-placement="bottom" title="Enter your real last name">
-                            <i class="far fa-question-circle text-muted"></i>
-                        </span>
-                    </span>
+                <!-- End of First Row -->
+                <!-- Second Row -->
+                <div class="row">
+                    <div class="col-12 col-md-6">
+                        <label for="email" class="form-label">Email</label>
+                        <div class="input-group">
+                            <span class="input-group-text">
+                                <i class="fas fa-envelope text-muted"></i>
+                            </span>
+                            <input name="email" type="email" id="email" class="form-control" value="<?= $email ?>" />
+                            <!-- tooltip -->
+                            <span class="input-group-text">
+                                <span class="tt" data-bs-placement="bottom" title="Enter your real email">
+                                    <i class="far fa-question-circle text-muted"></i>
+                                </span>
+                            </span>
+                        </div>
+                        <div class="h6 text-danger mb-3"><?php echo $errors['email']; ?></div>
+                        <!-- end of email -->
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <label for="userName" class="form-label">User Name:</label>
+                        <div class="input-group">
+                            <span class="input-group-text">
+                                <i class="fas fa-user text-muted"></i>
+                            </span>
+                            <input name="userName" type="text" id="userName" class="form-control" value="<?= $userName ?>" />
+                            <!-- tooltip -->
+                            <span class="input-group-text">
+                                <span class="tt" data-bs-placement="bottom" title="Enter a valid user-name">
+                                    <i class="far fa-question-circle text-muted"></i>
+                                </span>
+                            </span>
+                        </div>
+                        <div class="h6 text-danger mb-3"><?php echo $errors['userName']; ?></div>
+                        <!-- end of user name -->
+
+                    </div>
                 </div>
-                <div class="h6 text-danger mb-3"><?php echo $errors['lastName']; ?></div>
-                <!-- end of Last name -->
-                <!--  -->
-                <label for="email" class="form-label">Email</label>
-                <div class="input-group">
-                    <span class="input-group-text">
-                        <i class="fas fa-envelope text-muted"></i>
-                    </span>
-                    <input name="email" type="email" id="email" class="form-control" value="<?= $email ?>" />
-                    <!-- tooltip -->
-                    <span class="input-group-text">
-                        <span class="tt" data-bs-placement="bottom" title="Enter your real email">
-                            <i class="far fa-question-circle text-muted"></i>
-                        </span>
-                    </span>
+                <!-- End of Second Row -->
+                <!-- Third Row -->
+                <div class="row ">
+                    <div class="col-12 col-md-6">
+                        <label for="num" class="form-label">Phone number:</label>
+                        <div class="input-group">
+                            <span class="input-group-text">
+                                <i class="fas fa-phone-alt text-muted"></i>
+                            </span>
+                            <input name="num" type="number" id="num" class="form-control" value="<?= $num ?>" />
+                            <!-- tooltip -->
+                            <span class="input-group-text">
+                                <span class="tt" data-bs-placement="bottom" title="Enter your real name">
+                                    <i class="far fa-question-circle text-muted"></i>
+                                </span>
+                            </span>
+                        </div>
+                        <div class="h6 text-danger mb-3"><?php echo $errors['num']; ?></div>
+                        <!-- end of number-->
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <label for="city" class="form-label">City:</label>
+                        <div class="input-group">
+                            <span class="input-group-text">
+                                <i class="fas fa-map-marker-alt text-muted"></i>
+                            </span>
+                            <select name="city" class="form-select">
+                                <option value="NULL" selected disabled>City</option>
+                                <option value="1">Sana'a</option>
+                                <option value="2">Taiz</option>
+                                <option value="3">Aden</option>
+                                <option value="4">Al Hudaydah</option>
+                                <option value="5">Ibb</option>
+                                <option value="6">Other</option>
+                            </select>
+                        </div>
+
+                        <div class="h6 text-danger mb-3"><?php echo $errors['city']; ?></div>
+                    </div>
+                    <!-- end of city-->
                 </div>
-                <div class="h6 text-danger mb-3"><?php echo $errors['email']; ?></div>
-                <!-- end of email -->
-                <!--  -->
-                <label for="num" class="form-label">Phone number:</label>
-                <div class="input-group">
-                    <span class="input-group-text">
-                        <i class="fas fa-user text-muted"></i>
-                    </span>
-                    <input name="num" type="number" id="num" class="form-control" value="<?= $num ?>" />
-                    <!-- tooltip -->
-                    <span class="input-group-text">
-                        <span class="tt" data-bs-placement="bottom" title="Enter your real name">
-                            <i class="far fa-question-circle text-muted"></i>
-                        </span>
-                    </span>
+                <!-- End of Third Row -->
+
+
+                <!-- Forth Row -->
+                <div class="row">
+                    <div class="col-12 col-md-6">
+                        <label for="pass" class="mt-2 form-label">Password:</label>
+                        <div class="input-group">
+                            <span class="input-group-text">
+                                <i class="fas fa-lock text-muted"></i>
+                            </span>
+                            <input name="pass1" type="password" id="pass" class="form-control" value="" />
+                            <!-- tooltip -->
+                            <span class="input-group-text">
+                                <span class="tt" data-bs-placement="bottom" title="Pretty self explanatory really...">
+                                    <i class="far fa-question-circle text-muted"></i>
+                                </span>
+                            </span>
+                        </div>
+                        <div class="h6 text-danger mb-3"><?php echo $errors['pass1']; ?></div>
+                        <!-- end of password -->
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <label for="pass2" class="mt-2 form-label">Confirm Password:</label>
+                        <div class="input-group">
+                            <span class="input-group-text">
+                                <i class="fas fa-lock text-muted"></i>
+                            </span>
+                            <input name="pass2" type="password" id="pass2" class="form-control" value="" />
+                            <!-- tooltip -->
+                            <span class="input-group-text">
+                                <span class="tt" data-bs-placement="bottom" title="Pretty self explanatory really...">
+                                    <i class="far fa-question-circle text-muted"></i>
+                                </span>
+                            </span>
+                        </div>
+                        <div class="h6 text-danger mb-3"><?php echo $errors['pass2']; ?></div>
+                        <!-- end of password -->
+                    </div>
                 </div>
-                <div class="h6 text-danger mb-3"><?php echo $errors['num']; ?></div>
-                <!-- end of number-->
-                <!--  -->
-                <label for="city" class="form-label">City:</label>
-                <div class="input-group">
-                    <span class="input-group-text">
-                        <i class="fas fa-user text-muted"></i>
-                    </span>
-                    <input name="city" type="text" id="city" class="form-control" value="<?= $city ?>" />
-                    <!-- tooltip -->
-                    <span class="input-group-text">
-                        <span class="tt" data-bs-placement="bottom" title="Enter your real name">
-                            <i class="far fa-question-circle text-muted"></i>
-                        </span>
-                    </span>
-                </div>
-                <div class="h6 text-danger mb-3"><?php echo $errors['city']; ?></div>
-                <!-- end of number-->
-                <!--  -->
-                <label for="userName" class="form-label">User Name:</label>
-                <div class="input-group">
-                    <span class="input-group-text">
-                        <i class="fas fa-at text-muted"></i>
-                    </span>
-                    <input name="userName" type="text" id="userName" class="form-control" value="<?= $userName ?>" />
-                    <!-- tooltip -->
-                    <span class="input-group-text">
-                        <span class="tt" data-bs-placement="bottom" title="Enter a valid user-name">
-                            <i class="far fa-question-circle text-muted"></i>
-                        </span>
-                    </span>
-                </div>
-                <div class="h6 text-danger mb-3"><?php echo $errors['userName']; ?></div>
-                <!-- end of user name -->
-                <!--  -->
-                <label for="pass" class="mt-2 form-label">Password:</label>
-                <div class="input-group">
-                    <span class="input-group-text">
-                        <i class="fas fa-lock text-muted"></i>
-                    </span>
-                    <input name="pass1" type="password" id="pass" class="form-control" value="" />
-                    <!-- tooltip -->
-                    <span class="input-group-text">
-                        <span class="tt" data-bs-placement="bottom" title="Pretty self explanatory really...">
-                            <i class="far fa-question-circle text-muted"></i>
-                        </span>
-                    </span>
-                </div>
-                <div class="h6 text-danger mb-3"><?php echo $errors['pass1']; ?></div>
-                <!-- end of password -->
-                <!--  -->
-                <label for="pass2" class="mt-2 form-label">Confirm Password:</label>
-                <div class="input-group">
-                    <span class="input-group-text">
-                        <i class="fas fa-lock text-muted"></i>
-                    </span>
-                    <input name="pass2" type="password" id="pass2" class="form-control" value="" />
-                    <!-- tooltip -->
-                    <span class="input-group-text">
-                        <span class="tt" data-bs-placement="bottom" title="Pretty self explanatory really...">
-                            <i class="far fa-question-circle text-muted"></i>
-                        </span>
-                    </span>
-                </div>
-                <div class="h6 text-danger mb-3"><?php echo $errors['pass2']; ?></div>
-                <!-- end of password -->
-                <!--  -->
-                <div class="mt-4 mb-2">
-                    <button type="submit" name="submit" value="submit"
-                        class="btn btn-primary text-secondary">Register</button>
-                    <button type="submit" name="submit" value="submit"
-                        class="btn btn-primary text-secondary">Cancel</button>
+                <!-- End of Forth Row -->
+
+                <!-- Buttons -->
+                <div class="row mt-4 mb-2 justify-content-center justify-content-md-end gap-2 gap-md-0">
+                    <div class="col-4 col-md-3">
+                        <button type=" submit" name="cancel" value="cancel" class="btn btn-outline-danger text-dark w-100">Cancel</button>
+                    </div>
+                    <div class="col-6">
+                        <button type="submit" name="submit" value="submit" class="btn btn-primary text-light w-100">Register</button>
+                    </div>
                 </div>
             </form>
         </div>
     </div>
 </div>
 <script>
-const tooltips = document.querySelectorAll('.tt')
-tooltips.forEach(t => {
-    new bootstrap.Tooltip(t)
-})
+    const tooltips = document.querySelectorAll('.tt')
+    tooltips.forEach(t => {
+        new bootstrap.Tooltip(t)
+    })
 </script>
 <!-- Pills content -->
 <?php include $temp . 'footer.php'; ?>
