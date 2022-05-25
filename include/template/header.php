@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="<?php echo $css; ?>style.css" />
 </head>
 
-<body id="HDbody">
+<body id="HDbody" data-bs-spy="scroll" data-bs-target="#list-example">
     <nav id="navbar" class="navbar navbar-light navbar-expand-md border-3">
         <div class="container d-flex justify-content-between">
             <?php if (isset($_COOKIE['user'])) : ?>

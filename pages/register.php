@@ -108,7 +108,7 @@ if (isset($_POST['submit'])) {
                             <span class="input-group-text">
                                 <i class="fas fa-user text-muted"></i>
                             </span>
-                            <input name="firstName" type="text" id="firstName" class="form-control" value="<?= $firstName ?>" />
+                            <input name="firstName" type="text" id="firstName" class="form-control" value="<?= htmlspecialchars($firstName) ?>" />
                             <!-- tooltip -->
                             <span class="input-group-text">
                                 <span class="tt" data-bs-placement="bottom" title="Enter your first name">
