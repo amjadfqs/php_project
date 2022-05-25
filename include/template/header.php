@@ -19,7 +19,7 @@
                         <i class="far fa-user-circle fa-2x"></i>
                     </a>
                     <ul class="dropdown-menu mt-1 text-center" aria-labelledby="dropdownMenuButton1">
-                        <li><a class="dropdown-item" href="#">Profile<i class="fas fa-user ms-3"></i></a></li>
+                        <li><a type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#exampleModal1">Profile<i class="fas fa-user ms-3"></i></a></li>
                         <li><a class="dropdown-item" href="<?= $pages ?>logout.php">Logout <i class="fas fa-sign-out-alt ms-2"></i></a></li>
                     </ul>
                 </div>
@@ -81,6 +81,7 @@
             <!--end of bottom for lg and md screen   -->
         </div>
     </nav>
+    <hr class="m-0 text-black-50">
     <!-- Modal -->
     <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -99,4 +100,3 @@
             </div>
         </div>
     </div>
-    <hr class="m-0 text-black-50">
