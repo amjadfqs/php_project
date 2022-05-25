@@ -4,6 +4,7 @@ include '../conf/ini.php';
 include $temp . 'header.php';
 
 ?>
+
 <div class="container text-center">
     <nav class="overflow-auto">
         <ul class="d-inline-flex mt-5">
