@@ -26,13 +26,14 @@ if (isset($_POST['submit'])) {
     }
     if (array_filter($errors)) {
     } else {
-        $query = "SELECT * FROM `users` WHERE `UserName`= '$Uname' AND Password = '$pass' ";
+        $query = "SELECT UserID , UserName , Password  FROM `users` WHERE `UserName`= '$Uname' AND Password = '$pass' ";
         $result = mysqli_query($con, $query) or die('There is an error');
-        // $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+        $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
         // $active = $row['active'];
         $count = mysqli_num_rows($result);
         if ($count == 1) {
             setcookie('user', $Uname, time() + 86400, '/');
+            $_SESSION['ID'] = $row['UserID'];
             header('location: index.php');
         } else {
             $errors['both'] = "Your Username or Password is invalid";

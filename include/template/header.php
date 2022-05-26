@@ -1,3 +1,15 @@
+<?php
+session_start();
+
+
+include '../conf/ini.php';
+include_once '../conf/conn.php';
+$query = "SELECT * FROM `users` WHERE UserID =" . $_SESSION['ID'];
+$result = mysqli_query($con, $query);
+$row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+?>
+
+
 <!DOCTYPE html>
 <html>
 
@@ -84,18 +96,18 @@
     <hr class="m-0 text-black-50">
     <!-- Modal -->
     <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Welcome <span class="text-primary"><?php echo $row['FirstName'] ?></span></h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    ...
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                    <a href="<?php $pages ?>profile.php" type="button" class="btn btn-primary">Update</a>
                 </div>
             </div>
         </div>
