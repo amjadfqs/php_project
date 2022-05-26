@@ -1,12 +1,15 @@
 <?php
-session_start();
 
 
 include '../conf/ini.php';
 include_once '../conf/conn.php';
-$query = "SELECT * FROM `users` WHERE UserID =" . $_SESSION['ID'];
-$result = mysqli_query($con, $query);
-$row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+if (isset($_SESSION['ID'])) {
+    session_start();
+    $query = "SELECT * FROM `users` WHERE UserID =" . $_SESSION['ID'];
+    $result = mysqli_query($con, $query);
+    $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+    mysqli_close($con);
+}
 ?>
 
 
@@ -25,20 +28,27 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
     <nav id="navbar" class="navbar navbar-light navbar-expand-md border-3">
         <div class="container d-flex justify-content-between">
             <?php if (isset($_COOKIE['user'])) : ?>
-                <div class="dropdown d-md-none d-sm-flex justify-content-sm-end align-content-sm-end">
-                    <a class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" data-bs-display="static" data-bs-toggle="dropdown" aria-expanded="false">
-                        <!-- <img src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/fox.jpg" width="40" height="40" class="rounded-circle"> -->
-                        <i class="far fa-user-circle fa-2x"></i>
-                    </a>
-                    <ul class="dropdown-menu mt-1 text-center" aria-labelledby="dropdownMenuButton1">
-                        <li><a type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#exampleModal1">Profile<i class="fas fa-user ms-3"></i></a></li>
-                        <li><a class="dropdown-item" href="<?= $pages ?>logout.php">Logout <i class="fas fa-sign-out-alt ms-2"></i></a></li>
-                    </ul>
-                </div>
+            <div class="dropdown d-md-none d-sm-flex justify-content-sm-end align-content-sm-end">
+                <a class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" data-bs-display="static"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    <!-- <img src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/fox.jpg" width="40" height="40" class="rounded-circle"> -->
+                    <i class="far fa-user-circle fa-2x"></i>
+                </a>
+                <ul class="dropdown-menu mt-1 text-center" aria-labelledby="dropdownMenuButton1">
+                    <li><a type="button" class="dropdown-item" data-bs-toggle="modal"
+                            data-bs-target="#exampleModal1">Profile<i class="fas fa-user ms-3"></i></a></li>
+                    <li><a class="dropdown-item" href="<?= $pages ?>logout.php">Logout <i
+                                class="fas fa-sign-out-alt ms-2"></i></a></li>
+                </ul>
+            </div>
             <?php endif ?>
             <a class="navbar-brand d-flex align-items-center" href="<?= $pages; ?>index.php">
-                <span class="bs-icon-sm bs-icon-rounded bs-icon-primary d-flex justify-content-center align-items-center me-2 bs-icon"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="50" viewBox="0 0 57 58">
-                        <path id="logo" d="M19.294,7.156a15,15,0,0,1,18.412,0l11.15,8.667A15,15,0,0,1,54,32.025L49.346,47.359A15,15,0,0,1,34.993,58H22.007A15,15,0,0,1,7.654,47.359L3,32.025a15,15,0,0,1,5.147-16.2Z" fill="#4dd5ac" />
+                <span
+                    class="bs-icon-sm bs-icon-rounded bs-icon-primary d-flex justify-content-center align-items-center me-2 bs-icon"><svg
+                        xmlns="http://www.w3.org/2000/svg" width="25" height="50" viewBox="0 0 57 58">
+                        <path id="logo"
+                            d="M19.294,7.156a15,15,0,0,1,18.412,0l11.15,8.667A15,15,0,0,1,54,32.025L49.346,47.359A15,15,0,0,1,34.993,58H22.007A15,15,0,0,1,7.654,47.359L3,32.025a15,15,0,0,1,5.147-16.2Z"
+                            fill="#4dd5ac" />
                     </svg>
                 </span>
                 HASH
@@ -60,9 +70,11 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                 <!-- bottom for small screen -->
                 <div class="d-md-none my-2 text-center">
                     <?php if (isset($_COOKIE['user'])) : ?>
-                        <a id="SpecialBtn" class="d-none btn btn-primary me-2" type="button" href="<?= $pages; ?>login.php">Login</a>
+                    <a id="SpecialBtn" class="d-none btn btn-primary me-2" type="button"
+                        href="<?= $pages; ?>login.php">Login</a>
                     <?php else : ?>
-                        <a id="SpecialBtn" class="btn btn-primary me-2" type="button" href="<?= $pages; ?>login.php">Login</a>
+                    <a id="SpecialBtn" class="btn btn-primary me-2" type="button"
+                        href="<?= $pages; ?>login.php">Login</a>
                     <?php endif ?>
                     <a id="SpecialBtn" class="btn btn-primary" type="button">Start a project</a>
                 </div>
@@ -72,22 +84,27 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
 
             <div class="d-none d-md-block">
                 <?php if (isset($_COOKIE['user'])) : ?>
-                    <a id="SpecialBtn" class="d-none btn btn-primary rounded-pill" type="button" href="<?= $pages; ?>login.php">Login</a>
+                <a id="SpecialBtn" class="d-none btn btn-primary rounded-pill" type="button"
+                    href="<?= $pages; ?>login.php">Login</a>
                 <?php else : ?>
-                    <a id="SpecialBtn" class="btn btn-primary rounded-pill" type="button" href="<?= $pages; ?>login.php">Login</a>
+                <a id="SpecialBtn" class="btn btn-primary rounded-pill" type="button"
+                    href="<?= $pages; ?>login.php">Login</a>
                 <?php endif ?>
                 <a id="SpecialBtn" class="btn btn-primary rounded-pill" type="button" href="#">Start a project</a>
                 <!-- profile -->
                 <?php if (isset($_COOKIE['user'])) : ?>
-                    <span class="dropdown">
-                        <a class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
-                            <i class="far fa-user-circle fa-2x"></i>
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-end mt-3 text-center">
-                            <li><a type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#exampleModal1">Profile<i class="fas fa-user ms-3"></i></a></li>
-                            <li><a class="dropdown-item" href="<?= $pages ?>logout.php">Logout <i class="fas fa-sign-out-alt ms-2"></i></a></li>
-                        </ul>
-                    </span>
+                <span class="dropdown">
+                    <a class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" data-bs-display="static"
+                        aria-expanded="false">
+                        <i class="far fa-user-circle fa-2x"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end mt-3 text-center">
+                        <li><a type="button" class="dropdown-item" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal1">Profile<i class="fas fa-user ms-3"></i></a></li>
+                        <li><a class="dropdown-item" href="<?= $pages ?>logout.php">Logout <i
+                                    class="fas fa-sign-out-alt ms-2"></i></a></li>
+                    </ul>
+                </span>
                 <?php endif ?>
             </div>
             <!--end of bottom for lg and md screen   -->
@@ -99,15 +116,48 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Welcome <span class="text-primary"><?php echo $row['FirstName'] ?></span></h5>
+                    <h4 class="modal-title text-primary" id="exampleModalLabel">Welcome
+                        <span class="text-dark"><?php echo $row['FirstName'] ?></span>
+                    </h4>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
-
+                <div class="d-flex justify-content-center mt-2 mb-2">
+                    <a href="#">
+                        <img src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/fox.jpg"
+                            width="80" height="79" class="rounded-circle">
+                    </a>
                 </div>
+                <div class="container">
+                    <div class="modal-body">
+                        <!-- first row -->
+                        <div class="row">
+                            <div class="col-6 text-center border-bottom border-end hover">
+                                <p class="text-primary">First Name:</p>
+                                <p class="text-dark"><?php echo $row['FirstName'] ?></p>
+                            </div>
+                            <div class="col-6 text-center border-bottom border-start hover">
+                                <p class="text-primary">Second Name:</p>
+                                <p class="text-dark"><?php echo $row['LastName'] ?></p>
+                            </div>
+                        </div>
+                        <!-- end first row -->
+                        <!-- second row -->
+                        <div class="row">
+                            <div class="col-6 text-center border-top border-end hover">
+                                <p class="text-primary">Email:</p>
+                                <p class="text-dark"><?php echo $row['Email'] ?></p>
+                            </div>
+                            <div class="col-6 text-center border-top border-start hover">
+                                <p class="text-primary">Second Name</p>
+                                <p class="text-dark"><?php echo $row['LastName'] ?></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end second row -->
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <a href="<?php $pages ?>profile.php" type="button" class="btn btn-primary">Update</a>
+                    <button type="button" class="btn btn-primary">Update</button>
                 </div>
             </div>
         </div>
