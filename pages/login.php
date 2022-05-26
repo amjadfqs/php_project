@@ -1,12 +1,15 @@
 <?php
-if (isset($_COOKIE['user'])) {
+
+if (isset($_COOKIE['user']) || isset($_SESSION['ID'])) {
     header('location: index.php');
 }
+
 $pageTitle = "Login Page";
 include '../conf/ini.php';
-include_once '../conf/conn.php';
 include $temp . 'header.php';
+include_once '../conf/conn.php';
 
+$_SESSION['logged'] = false;
 
 $Uname = $pass = '';
 $errors = array('Uname' => '', 'pass' => '', 'both' => '');
@@ -32,15 +35,16 @@ if (isset($_POST['submit'])) {
         // $active = $row['active'];
         $count = mysqli_num_rows($result);
         if ($count == 1) {
-            setcookie('user', $Uname, time() + 86400, '/');
+            $_SESSION['logged'] = True;
             $_SESSION['ID'] = $row['UserID'];
+            setcookie('user', $Uname, time() + 86400, '/');
             header('location: index.php');
         } else {
+            $_SESSION['logged'] = False;
             $errors['both'] = "Your Username or Password is invalid";
         }
     }
 }
-
 
 
 ?>
