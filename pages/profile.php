@@ -1,15 +1,71 @@
 <?php
-$pageTitle = "Home Page";
+$pageTitle = "Profile Page";
 include '../conf/ini.php';
+include '../conf/conn.php';
 include $temp . 'header.php';
 
+if (isset($_POST['submit'])) {
+    // Check if username is empty
+    if (empty(trim($_POST['firstName']))) {
+        $errors['firstName'] = 'Sorry The name is required';
+    } else {
+        $firstName = mysqli_real_escape_string($con, trim($_POST['firstName']));
+    }
+    // Check if username is empty
+    if (empty(trim($_POST['lastName']))) {
+        $errors['lastName'] = 'Sorry The last name is required';
+    } else {
+        $lastName = mysqli_real_escape_string($con, trim($_POST['lastName']));
+    }
+
+    // check the pass 1
+    if (empty($_POST["pass1"])) {
+        $errors['pass1'] = "Password is required";
+    } else {
+        $pass1 = $_POST['pass1'];
+        if (strlen($pass1) < 8) {
+            $errors['pass1'] = "Your Password Must Contain At Least 8 Characters!";
+        } elseif (!preg_match("#[0-9]+#", $pass1)) {
+            $errors['pass1'] = "Your Password Must Contain At Least 1 Number!";
+        } elseif (!preg_match("#[A-Z]+#", $pass1)) {
+            $errors['pass1'] = "Your Password Must Contain At Least 1 Capital Letter!";
+        } elseif (!preg_match("#[a-z]+#", $pass1)) {
+            $errors['pass1'] = "Your Password Must Contain At Least 1 Lowercase Letter!";
+        }
+    }
+    // check the confirm password
+    if (empty(trim($_POST['pass2']))) {
+        if ($_POST['pass1'] != $_POST['pass2']) {
+            $errors['pass2'] = 'Your password did not match the confirmed password.';
+        }
+        $errors['pass2'] = 'Sorry The confirm password is required';
+    }
+
+    if (array_filter($errors)) {
+    } else {
+        $pass1  = mysqli_real_escape_string($con, $_POST['pass1']);
+
+
+        // dealing with the database
+        $query = "UPDATE INTO users (FirstName, LastName, Password ) VALUES ('$firstName','$lastName', SHA1('$pass1') WHERE UserID=" . $ession['ID'];
+        $result = mysqli_query($con, $query);
+        if ($result) {
+            header('location:index.php');
+        } else {
+            echo '<h1>System Error</h1>';
+            echo '<p>' . mysqli_error($con) . '<br />Query: ' . $query . '</p>';
+        }
+        mysqli_close($con);
+    }
+}
 ?>
 <div class="container mt-5">
     <div class="row">
         <div class="col-md-3">
             <div class="d-flex justify-content-center">
                 <a href="#">
-                    <img src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/fox.jpg" width="200" height="190" class="rounded-circle"> </a>
+                    <img src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/fox.jpg"
+                        width="200" height="190" class="rounded-circle"> </a>
             </div>
             <h5 class="text-center text-primary">Welcome Adham</h5>
         </div>
@@ -93,7 +149,8 @@ include $temp . 'header.php';
                 <!-- Buttons -->
                 <div class="row mt-4 mb-2 justify-content-center gap-2 gap-md-0">
                     <div class="col-6">
-                        <button type="submit" name="submit" value="submit" class="btn btn-primary text-dark w-100">UPDATE</button>
+                        <button type="submit" name="submit" value="submit"
+                            class="btn btn-primary text-dark w-100">UPDATE</button>
                     </div>
                 </div>
             </form>
