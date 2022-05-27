@@ -1,11 +1,13 @@
 <?php
-if (isset($_COOKIE['user'])) {
+
+if (isset($_COOKIE['user']) || isset($_SESSION['ID'])) {
     header('location: index.php');
 }
+
 $pageTitle = "Login Page";
 include '../conf/ini.php';
-include_once '../conf/conn.php';
 include $temp . 'header.php';
+include_once '../conf/conn.php';
 
 
 $Uname = $pass = '';
@@ -26,12 +28,13 @@ if (isset($_POST['submit'])) {
     }
     if (array_filter($errors)) {
     } else {
-        $query = "SELECT * FROM `users` WHERE `UserName`= '$Uname' AND Password = '$pass' ";
+        $query = "SELECT UserID , UserName , Password  FROM `users` WHERE `UserName`= '$Uname' AND Password = '$pass' ";
         $result = mysqli_query($con, $query) or die('There is an error');
-        // $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+        $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
         // $active = $row['active'];
         $count = mysqli_num_rows($result);
         if ($count == 1) {
+            $_SESSION['ID'] = $row['UserID'];
             setcookie('user', $Uname, time() + 86400, '/');
             header('location: index.php');
         } else {
@@ -39,7 +42,6 @@ if (isset($_POST['submit'])) {
         }
     }
 }
-
 
 
 ?>

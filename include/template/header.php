@@ -1,3 +1,9 @@
+<?php
+session_start();
+if (isset($_SESSION['ID'])) {
+    include $pages . 'popupProfile.php';
+}
+?>
 <!DOCTYPE html>
 <html>
 
@@ -19,7 +25,7 @@
                         <i class="far fa-user-circle fa-2x"></i>
                     </a>
                     <ul class="dropdown-menu mt-1 text-center" aria-labelledby="dropdownMenuButton1">
-                        <li><a class="dropdown-item" href="#">Profile<i class="fas fa-user ms-3"></i></a></li>
+                        <li><a type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#exampleModal1">Profile<i class="fas fa-user ms-3"></i></a></li>
                         <li><a class="dropdown-item" href="<?= $pages ?>logout.php">Logout <i class="fas fa-sign-out-alt ms-2"></i></a></li>
                     </ul>
                 </div>
@@ -72,7 +78,8 @@
                             <i class="far fa-user-circle fa-2x"></i>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end mt-3 text-center">
-                            <li><a class="dropdown-item" href="#">Profile<i class="fas fa-user ms-3"></i></a></li>
+                            <li><a type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#exampleModal1">Profile<i class="fas fa-user ms-3"></i></a></li>
+
                             <li><a class="dropdown-item" href="<?= $pages ?>logout.php">Logout <i class="fas fa-sign-out-alt ms-2"></i></a></li>
                         </ul>
                     </span>
@@ -80,6 +87,5 @@
             </div>
             <!--end of bottom for lg and md screen   -->
         </div>
-    </nav>
     </nav>
     <hr class="m-0 text-black-50">
