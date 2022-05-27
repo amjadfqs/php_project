@@ -21,8 +21,7 @@ if (isset($_SESSION['ID'])) {
             </div>
             <div class="d-flex justify-content-center">
                 <a href="#">
-                    <img src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/fox.jpg"
-                        width="90" height="89" class="rounded-circle">
+                    <img src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/fox.jpg" width="90" height="89" class="rounded-circle">
                 </a>
             </div>
             <div class="container">
