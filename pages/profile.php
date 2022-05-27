@@ -4,7 +4,10 @@ include '../conf/ini.php';
 include '../conf/conn.php';
 include $temp . 'header.php';
 
-if (isset($_POST['submit'])) {
+
+$errors = array('firstName' => '', 'lastName' => '', 'pass1' => '', 'pass2' => '');
+
+if (isset($_POST['update'])) {
     // Check if username is empty
     if (empty(trim($_POST['firstName']))) {
         $errors['firstName'] = 'Sorry The name is required';
@@ -45,15 +48,18 @@ if (isset($_POST['submit'])) {
     } else {
         $pass1  = mysqli_real_escape_string($con, $_POST['pass1']);
 
-
         // dealing with the database
-        $query = "UPDATE INTO users (FirstName, LastName, Password ) VALUES ('$firstName','$lastName', SHA1('$pass1') WHERE UserID=" . $ession['ID'];
-        $result = mysqli_query($con, $query);
+        $query = "UPDATE users SET FirstName = '$firstName', LastName = '$lastName', Password = SHA1('$pass1') WHERE UserID=" . $_SESSION['ID'];
+        $result = @mysqli_query($con, $query);
         if ($result) {
-            header('location:index.php');
+            echo '<div class="alert alert-primary text-center" role="alert">
+                    Updated Successfully
+                    </div>';
+            header("refresh:5 ;url=index.php");
         } else {
-            echo '<h1>System Error</h1>';
-            echo '<p>' . mysqli_error($con) . '<br />Query: ' . $query . '</p>';
+            echo '<div class="alert alert-danger" role="alert">
+                    Sorry there was an error
+                    </div>';
         }
         mysqli_close($con);
     }
@@ -64,10 +70,9 @@ if (isset($_POST['submit'])) {
         <div class="col-md-3">
             <div class="d-flex justify-content-center">
                 <a href="#">
-                    <img src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/fox.jpg"
-                        width="200" height="190" class="rounded-circle"> </a>
+                    <img src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/fox.jpg" width="200" height="190" class="rounded-circle"> </a>
             </div>
-            <h5 class="text-center text-primary">Welcome Adham</h5>
+            <h5 class="text-center text-primary">Welcome</h5>
         </div>
         <!-- First Row -->
         <div class="col-md-9 d-flex justify-content-center">
@@ -87,7 +92,7 @@ if (isset($_POST['submit'])) {
                                 </span>
                             </span>
                         </div>
-                        <!-- <div class="h6 text-danger mb-3"><?php echo $errors['firstName']; ?></div> -->
+                        <div class="h6 text-danger mb-3"><?php echo $errors['firstName']; ?></div>
                         <!-- end of first name -->
                     </div>
                     <div class="col-12 col-md-6">
@@ -104,7 +109,7 @@ if (isset($_POST['submit'])) {
                                 </span>
                             </span>
                         </div>
-                        <!-- <div class="h6 text-danger mb-3"><?php echo $errors['lastName']; ?></div> -->
+                        <div class="h6 text-danger mb-3"><?php echo $errors['lastName']; ?></div>
                         <!-- end of Last name -->
                     </div>
                 </div>
@@ -124,7 +129,7 @@ if (isset($_POST['submit'])) {
                                 </span>
                             </span>
                         </div>
-                        <!-- <div class="h6 text-danger mb-3"><?php echo $errors['pass1']; ?></div> -->
+                        <div class="h6 text-danger mb-3"><?php echo $errors['pass1']; ?></div>
                         <!-- end of password -->
                     </div>
                     <div class="col-12 col-md-6">
@@ -141,7 +146,7 @@ if (isset($_POST['submit'])) {
                                 </span>
                             </span>
                         </div>
-                        <!-- <div class="h6 text-danger mb-3"><?php echo $errors['pass2']; ?></div> -->
+                        <div class="h6 text-danger mb-3"><?php echo $errors['pass2']; ?></div>
                         <!-- end of password -->
                     </div>
                 </div>
@@ -149,8 +154,7 @@ if (isset($_POST['submit'])) {
                 <!-- Buttons -->
                 <div class="row mt-4 mb-2 justify-content-center gap-2 gap-md-0">
                     <div class="col-6">
-                        <button type="submit" name="submit" value="submit"
-                            class="btn btn-primary text-dark w-100">UPDATE</button>
+                        <button type="submit" name="update" value="update" class="btn btn-primary text-dark w-100">UPDATE</button>
                     </div>
                 </div>
             </form>

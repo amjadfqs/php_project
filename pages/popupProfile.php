@@ -8,6 +8,7 @@ if (isset($_SESSION['ID'])) {
     $row = mysqli_fetch_assoc($result);
 }
 
+
 ?>
 <!-- Modal -->
 <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
