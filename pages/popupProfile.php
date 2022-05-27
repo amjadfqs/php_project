@@ -19,9 +19,10 @@ if (isset($_SESSION['ID'])) {
                 </h4>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="d-flex justify-content-center mt-2 mb-2">
+            <div class="d-flex justify-content-center">
                 <a href="#">
-                    <img src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/fox.jpg" width="80" height="79" class="rounded-circle">
+                    <img src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/fox.jpg"
+                        width="90" height="89" class="rounded-circle">
                 </a>
             </div>
             <div class="container">
@@ -29,24 +30,24 @@ if (isset($_SESSION['ID'])) {
                     <!-- first row -->
                     <div class="row">
                         <div class="col-6 text-center border-bottom border-end hover">
-                            <p class="text-primary">First Name:</p>
-                            <!-- <p class="text-dark"><?php echo $row['FirstName'] ?></p> -->
+                            <span class="text-primary">First Name:</>
+                                <p class="text-dark"><?php echo $row['FirstName'] ?></p>
                         </div>
                         <div class="col-6 text-center border-bottom border-start hover">
-                            <p class="text-primary">Second Name:</p>
-                            <!-- <p class="text-dark"><?php echo $row['LastName'] ?></p> -->
+                            <span class="text-primary">Second Name:</span>
+                            <p class="text-dark"><?php echo $row['LastName'] ?></p>
                         </div>
                     </div>
                     <!-- end first row -->
                     <!-- second row -->
                     <div class="row">
                         <div class="col-6 text-center border-top border-end hover">
-                            <p class="text-primary">Email:</p>
-                            <!-- <p class="text-dark"><?php echo $row['Email'] ?></p> -->
+                            <span class="text-primary mt-3">Email:</span>
+                            <p class="text-dark"><?php echo $row['Email'] ?></p>
                         </div>
                         <div class="col-6 text-center border-top border-start hover">
-                            <p class="text-primary">Second Name</p>
-                            <!-- <p class="text-dark"><?php echo $row['LastName'] ?></p> -->
+                            <span class="text-primary">city</span>
+                            <p class="text-dark"><?php echo $row['City'] ?></p>
                         </div>
                     </div>
                 </div>
@@ -54,7 +55,7 @@ if (isset($_SESSION['ID'])) {
             <!-- end second row -->
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Update</button>
+                <a href="<?php echo $pages ?>profile.php" type="button" class="btn btn-primary">Update</a>
             </div>
         </div>
     </div>
