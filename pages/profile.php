@@ -1,7 +1,8 @@
 <?php
+ob_start();
 $pageTitle = "Profile Page";
-include '../conf/ini.php';
 include '../conf/conn.php';
+include '../conf/ini.php';
 include $temp . 'header.php';
 
 
@@ -47,15 +48,15 @@ if (isset($_POST['update'])) {
     if (array_filter($errors)) {
     } else {
         $pass1  = mysqli_real_escape_string($con, $_POST['pass1']);
-
         // dealing with the database
         $query = "UPDATE users SET FirstName = '$firstName', LastName = '$lastName', Password = SHA1('$pass1') WHERE UserID=" . $_SESSION['ID'];
         $result = @mysqli_query($con, $query);
         if ($result) {
             echo '<div class="alert alert-primary text-center" role="alert">
-                    Updated Successfully
-                    </div>';
-            header("refresh:5 ;url=index.php");
+            Updated Successfully
+            </div>';
+            header("refresh:3 ;url=index.php");
+            ob_end_flush();
         } else {
             echo '<div class="alert alert-danger" role="alert">
                     Sorry there was an error
@@ -152,9 +153,12 @@ if (isset($_POST['update'])) {
                 </div>
                 <!-- End of fourth Row -->
                 <!-- Buttons -->
-                <div class="row mt-4 mb-2 justify-content-center gap-2 gap-md-0">
+                <div class="row mt-4 mb-2 justify-content-center justify-content-md-end gap-2 gap-md-0">
+                    <div class="col-3">
+                        <a type="button" class="btn btn-outline-danger text-dark w-100" href="<?php $pages; ?>index.php">Cancel</a>
+                    </div>
                     <div class="col-6">
-                        <button type="submit" name="update" value="update" class="btn btn-primary text-dark w-100">UPDATE</button>
+                        <button type="submit" name="update" value="update" class="btn btn-primary text-dark w-100">Update</button>
                     </div>
                 </div>
             </form>
