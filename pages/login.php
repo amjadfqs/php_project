@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (isset($_COOKIE['user']) || isset($_SESSION['ID'])) {
+if (isset($_COOKIE['user']) && isset($_SESSION['ID'])) {
     header('location: index.php');
 }
 $pageTitle = "Login Page";

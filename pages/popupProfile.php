@@ -4,8 +4,6 @@ include '../conf/conn.php';
 $query = "SELECT * FROM `users` WHERE UserID = " . $_SESSION['ID'];
 $result = mysqli_query($con, $query);
 $row = mysqli_fetch_assoc($result);
-
-
 ?>
 <!-- Modal -->
 <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

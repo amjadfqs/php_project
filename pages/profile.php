@@ -1,9 +1,8 @@
 <?php
-ob_start();
+session_start();
 $pageTitle = "Profile Page";
 include '../conf/conn.php';
 include '../conf/ini.php';
-include $temp . 'header.php';
 
 
 $errors = array('firstName' => '', 'lastName' => '', 'pass1' => '', 'pass2' => '');
@@ -56,7 +55,6 @@ if (isset($_POST['update'])) {
             Updated Successfully
             </div>';
             header("refresh:3 ;url=index.php");
-            ob_end_flush();
         } else {
             echo '<div class="alert alert-danger" role="alert">
                     Sorry there was an error
@@ -65,6 +63,8 @@ if (isset($_POST['update'])) {
         mysqli_close($con);
     }
 }
+include $temp . 'header.php';
+
 ?>
 <div class="container mt-5">
     <div class="row">

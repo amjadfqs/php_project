@@ -1,7 +1,9 @@
 <?php
-session_start();
-if (isset($_SESSION['ID'])) {
-    include $pages . 'popupProfile.php';
+if (!isset($_SESSION)) {
+    session_start();
+    if (isset($_SESSION['ID'])) {
+        include $pages . 'popupProfile.php';
+    }
 }
 ?>
 <!DOCTYPE html>
@@ -18,7 +20,7 @@ if (isset($_SESSION['ID'])) {
 <body id="HDbody" data-bs-spy="scroll" data-bs-target="#list-example">
     <nav id="navbar" class="navbar navbar-light navbar-expand-md border-3">
         <div class="container d-flex justify-content-between">
-            <?php if (isset($_COOKIE['user'])) : ?>
+            <?php if (isset($_COOKIE['user']) && isset($_SESSION['ID'])) : ?>
                 <div class="dropdown d-md-none d-sm-flex justify-content-sm-end align-content-sm-end">
                     <a class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" data-bs-display="static" data-bs-toggle="dropdown" aria-expanded="false">
                         <!-- <img src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/fox.jpg" width="40" height="40" class="rounded-circle"> -->
@@ -53,7 +55,7 @@ if (isset($_SESSION['ID'])) {
                 </ul>
                 <!-- bottom for small screen -->
                 <div class="d-md-none my-2 text-center">
-                    <?php if (isset($_COOKIE['user'])) : ?>
+                    <?php if (isset($_COOKIE['user']) && isset($_SESSION['ID'])) : ?>
                         <a id="SpecialBtn" class="d-none btn btn-primary me-2" type="button" href="<?= $pages; ?>login.php">Login</a>
                     <?php else : ?>
                         <a id="SpecialBtn" class="btn btn-primary me-2" type="button" href="<?= $pages; ?>login.php">Login</a>
@@ -65,14 +67,14 @@ if (isset($_SESSION['ID'])) {
             <!--bottom for lg and md screen   -->
 
             <div class="d-none d-md-block">
-                <?php if (isset($_COOKIE['user'])) : ?>
+                <?php if (isset($_COOKIE['user']) && isset($_SESSION['ID'])) : ?>
                     <a id="SpecialBtn" class="d-none btn btn-primary rounded-pill" type="button" href="<?= $pages; ?>login.php">Login</a>
                 <?php else : ?>
                     <a id="SpecialBtn" class="btn btn-primary rounded-pill" type="button" href="<?= $pages; ?>login.php">Login</a>
                 <?php endif ?>
                 <a id="SpecialBtn" class="btn btn-primary rounded-pill" type="button" href="#">Start a project</a>
                 <!-- profile -->
-                <?php if (isset($_COOKIE['user'])) : ?>
+                <?php if (isset($_COOKIE['user']) && isset($_SESSION['ID'])) : ?>
                     <span class="dropdown">
                         <a class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
                             <i class="far fa-user-circle fa-2x"></i>
