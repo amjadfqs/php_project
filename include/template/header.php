@@ -4,6 +4,10 @@ if (!isset($_SESSION)) {
     if (isset($_SESSION['ID'])) {
         include $pages . 'popupProfile.php';
     }
+} else {
+    if (isset($_SESSION['ID'])) {
+        include $pages . 'popupProfile.php';
+    }
 }
 ?>
 <!DOCTYPE html>
