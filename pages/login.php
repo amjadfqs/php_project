@@ -1,14 +1,11 @@
 <?php
-
+session_start();
 if (isset($_COOKIE['user']) || isset($_SESSION['ID'])) {
     header('location: index.php');
 }
-
 $pageTitle = "Login Page";
 include '../conf/ini.php';
-include $temp . 'header.php';
 include_once '../conf/conn.php';
-
 
 $Uname = $pass = '';
 $errors = array('Uname' => '', 'pass' => '', 'both' => '');
@@ -42,8 +39,7 @@ if (isset($_POST['submit'])) {
         }
     }
 }
-
-
+include $temp . 'header.php';
 ?>
 
 <div class="container my-5">

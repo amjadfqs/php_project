@@ -1,12 +1,9 @@
 <?php
-
-if (isset($_SESSION['ID'])) {
-    include '../conf/ini.php';
-    include '../conf/conn.php';
-    $query = "SELECT * FROM `users` WHERE UserID = " . $_SESSION['ID'];
-    $result = mysqli_query($con, $query);
-    $row = mysqli_fetch_assoc($result);
-}
+include '../conf/ini.php';
+include '../conf/conn.php';
+$query = "SELECT * FROM `users` WHERE UserID = " . $_SESSION['ID'];
+$result = mysqli_query($con, $query);
+$row = mysqli_fetch_assoc($result);
 
 
 ?>
