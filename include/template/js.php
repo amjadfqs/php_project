@@ -4,3 +4,10 @@
 <script src="<?php echo $js; ?>fontawesome/solid.min.js"></script>
 <script src="<?php echo $js; ?>fontawesome/regular.min.js"></script>
 <script src="<?php echo $js; ?>fontawesome/fontawesome.min.js"></script>
+<script>
+    function delete_user(userID) {
+        if (confirm("Are you sure you want to delete this user?")) {
+            window.location.href = "delete.php?userID=" + userID;
+        }
+    }
+</script>
