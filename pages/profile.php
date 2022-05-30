@@ -1,8 +1,8 @@
 <?php
+session_start();
 $pageTitle = "Profile Page";
 include '../conf/conn.php';
 include '../conf/ini.php';
-include_once $temp . 'header.php';
 
 
 $errors = array('firstName' => '', 'lastName' => '', 'pass1' => '', 'pass2' => '');
@@ -63,6 +63,8 @@ if (isset($_POST['update'])) {
         mysqli_close($con);
     }
 }
+include $temp . 'header.php';
+
 ?>
 <div class="container mt-5">
     <div class="row">
