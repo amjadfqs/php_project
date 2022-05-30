@@ -232,7 +232,7 @@ include $temp . 'header.php';
 <div class="container mt-5 overflow-auto">
     <div class="d-inline-flex">
         <div class="card mx-2 my-4 shadow" style="width: 20rem;">
-            <a href="#"><img src="<?php echo $img; ?>card2.jpg" class="card-img-top" alt=""></a>
+            <a href="#"><img src="<?php echo $img; ?>card2.png" class="card-img-top" alt=""></a>
             <div class="card-body">
                 <h5 class="card-title text-primary">Donate To Educate</h5>
                 <p class="card-text">The FIFTH 200 PAGE HARDBACK BOOK
@@ -260,7 +260,7 @@ include $temp . 'header.php';
             </div>
         </div>
         <div class="card mx-2 my-4 shadow" style="width: 20rem;">
-            <a href="#"><img src="<?php echo $img; ?>card2.jpg" class="card-img-top" alt=""></a>
+            <a href="#"><img src="<?php echo $img; ?>card2.png" class="card-img-top" alt=""></a>
             <div class="card-body">
                 <h5 class="card-title text-primary">Donate To Educate</h5>
                 <p class="card-text">The FIFTH 200 PAGE HARDBACK BOOK
@@ -288,7 +288,7 @@ include $temp . 'header.php';
             </div>
         </div>
         <div class="card mx-2 my-4 shadow" style="width: 20rem;">
-            <a href="#"><img src="<?php echo $img; ?>card2.jpg" class="card-img-top" alt=""></a>
+            <a href="#"><img src="<?php echo $img; ?>card2.png" class="card-img-top" alt=""></a>
             <div class="card-body">
                 <h5 class="card-title text-primary">Donate To Educate</h5>
                 <p class="card-text">The FIFTH 200 PAGE HARDBACK BOOK
@@ -316,7 +316,7 @@ include $temp . 'header.php';
             </div>
         </div>
         <div class="card mx-2 my-4 shadow" style="width: 20rem;">
-            <a href="#"><img src="<?php echo $img; ?>card2.jpg" class="card-img-top" alt=""></a>
+            <a href="#"><img src="<?php echo $img; ?>card2.png" class="card-img-top" alt=""></a>
             <div class="card-body">
                 <h5 class="card-title text-primary">Donate To Educate</h5>
                 <p class="card-text">The FIFTH 200 PAGE HARDBACK BOOK
@@ -344,7 +344,7 @@ include $temp . 'header.php';
             </div>
         </div>
         <div class="card mx-2 my-4 shadow" style="width: 20rem;">
-            <a href="#"><img src="<?php echo $img; ?>card2.jpg" class="card-img-top" alt=""></a>
+            <a href="#"><img src="<?php echo $img; ?>card2.png" class="card-img-top" alt=""></a>
             <div class="card-body">
                 <h5 class="card-title text-primary">Donate To Educate</h5>
                 <p class="card-text">The FIFTH 200 PAGE HARDBACK BOOK

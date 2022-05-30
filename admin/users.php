@@ -1,12 +1,10 @@
 <?php
-$pageTitle = "Members Page";
+$pageTitle = "Users Page";
 include '../conf/conn.php';
 include '../conf/ini.php';
-include $temp . 'header.php';
 ?>
 <div class="container">
-
-    <h1 class="mt-5 text-center text-primary">Users Information</h1>
+    <h1 class="mt-3 text-primary">Users Information</h1>
     <?php
     $query = 'SELECT `UserID`, `FirstName`, `LastName`, `Gender`, `Email`, `UserName`, `CreatedAt`, `City` FROM `users`';
     $result = mysqli_query($con, $query) or die('There is no error in the query');
@@ -15,7 +13,7 @@ include $temp . 'header.php';
     ?>
     <div class="table-responsive">
         <table class="table mt-5 table-white table-hover border">
-            <thead class="table-primary text-center">
+            <thead class="bg-primary text-center">
                 <tr>
                     <th scope="col">UserID</th>
                     <th scope="col">FirstName</th>
@@ -41,8 +39,11 @@ include $temp . 'header.php';
                                 <td>$row[City]</td>
                                 <td>$row[CreatedAt]</td>
                                 <td>
-                                <a class='text-danger' href='delete.php?id={$row['UserID']}'
-                                title='Delete'>X</a>
+                                    <div class='form-check form-switch'>
+                                        <a class='text-danger' href='delete.php?id={$row['UserID']}'
+                                            title='Delete'><i class='fas fa-trash-alt'></i></a>
+                                        <input class='form-check-input' type='checkbox' role='switch' id='flexSwitchCheckDefault'>
+                                    </div>
                                 </td>
                             </tr>
                         </tbody>";
