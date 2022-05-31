@@ -6,6 +6,55 @@ include $temp . 'header.php';
 
 $title = $cost = $url = $picture = $story = $brief =  $risk = $city = $tag = $phone = '';
 $errors = array('title' => '', 'cost' => '', 'url' => '', 'picture' => '', 'story' => '', 'brief' => '', 'risk' => '', 'city' => '', 'tag' => '', 'phone' => '');
+
+if (isset($_POST['submit'])) {
+    if (empty(trim($_POST['title']))) {
+        $errors['title'] = 'Sorry The name is required';
+    } else {
+        $title = mysqli_real_escape_string($con, trim($_POST['title']));
+    }
+    if (empty($trim($_POST['cost']))) {
+        $errors['cost'] = 'Sorry The cost is required';
+    } else {
+        $cost = mysqli_real_escape_string($con, trim($_POST['cost']));
+    }
+    if (isset($_POST['picture'])) {
+        //////
+    } else {
+        /////
+    }
+    if (empty($trim($_POST['story']))) {
+        $errors['story'] = 'Sorry The story is required';
+    } else {
+        $story = mysqli_real_escape_string($con, $_POST['story']);
+    }
+    if (empty($trim($_POST['brief']))) {
+        $errors['brief'] = 'Sorry The brief is required';
+    } else {
+        $brief = mysqli_real_escape_string($con, $_POST['brief']);
+    }
+    if (empty($trim($_POST['risk']))) {
+        $errors['risk'] = 'Sorry The risk is required';
+    } else {
+        $risk = mysqli_real_escape_string($con, $_POST['risk']);
+    }
+    if (!isset($_POST['city'])) {
+        $errors['city'] = 'Sorry The city is required';
+    }
+    if (!isset($_POST['tag'])) {
+        $errors['tag'] = 'Sorry The tag is required';
+    }
+    if (empty(trim($_POST['num']))) {
+        $errors['num'] = 'Sorry The number is required';
+    } else {
+        $num = mysqli_real_escape_string($con, trim($_POST['num']));
+    }
+
+    if (array_filter($errors)) {
+    } else {
+        $url = mysqli_real_escape_string($con, trim($_POST['url']));
+    }
+}
 ?>
 
 <div class="container my-5">
@@ -14,12 +63,12 @@ $errors = array('title' => '', 'cost' => '', 'url' => '', 'picture' => '', 'stor
             <h2 class=" text-muted pb-2 mb-4 text-center b">Add Your Project</h2>
             <form action=<?php echo $_SERVER['PHP_SELF'] ?> method="post">
                 <!-- First Row -->
-                <div class="row ">
+                <div class="row d-flex align-items-center">
                     <div class="col-12 col-md-4">
                         <label for="title" class="form-label">Project Title:</label>
                         <div class="input-group">
                             <span class="input-group-text">
-                                <i class="fas fa-user text-muted"></i>
+                                <i class="fas fa-heading text-muted"></i>
                             </span>
                             <input name="title" type="text" id="title" class="form-control" value="<?= htmlspecialchars($title) ?>" />
                             <!-- tooltip -->
@@ -36,7 +85,7 @@ $errors = array('title' => '', 'cost' => '', 'url' => '', 'picture' => '', 'stor
                         <label for="cost" class="form-label">Project Cost:</label>
                         <div class="input-group">
                             <span class="input-group-text">
-                                <i class="fas fa-user text-muted"></i>
+                                <i class="fas fa-dollar-sign text-muted"></i>
                             </span>
                             <input name="cost" type="text" id="cost" class="form-control" value="<?= $cost ?>" />
                             <!-- tooltip -->
@@ -53,7 +102,7 @@ $errors = array('title' => '', 'cost' => '', 'url' => '', 'picture' => '', 'stor
                         <label for="url" class="form-label">Project Video: <small class="text-muted">Not required</small> </label>
                         <div class="input-group">
                             <span class="input-group-text">
-                                <i class="fas fa-user text-muted"></i>
+                                <i class="fas fa-play text-muted"></i>
                             </span>
                             <input name="url" type="text" id="url" class="form-control" value="<?= $cost ?>" />
                             <!-- tooltip -->
@@ -63,14 +112,12 @@ $errors = array('title' => '', 'cost' => '', 'url' => '', 'picture' => '', 'stor
                                 </span>
                             </span>
                         </div>
-                        <div class="h6 text-danger mb-3"><?php echo $errors['url']; ?></div>
                         <!-- end of Last name -->
                     </div>
                     <div class="col-12 col-md-2">
                         <label for="picture" class="form-label">Project Photo:</label>
                         <input name="picture" class="form-control form-control-sm" id="picture" type="file">
                         <div class="h6 text-danger mb-3"><?php echo $errors['picture']; ?></div>
-
                     </div>
                 </div>
                 <!-- End of first Row -->
@@ -122,7 +169,7 @@ $errors = array('title' => '', 'cost' => '', 'url' => '', 'picture' => '', 'stor
                             <label for="tag" class="form-label">Tag:</label>
                             <div class="input-group">
                                 <span class="input-group-text">
-                                    <i class="fas fa-map-marker-alt text-muted"></i>
+                                    <i class="fas fa-tag text-muted"></i>
                                 </span>
                                 <select name="tag" class="form-select">
                                     <option value="NULL" selected disabled>Tag</option>
@@ -142,9 +189,9 @@ $errors = array('title' => '', 'cost' => '', 'url' => '', 'picture' => '', 'stor
                             <label for="phone" class="form-label">Phone Number:</label>
                             <div class="input-group">
                                 <span class="input-group-text">
-                                    <i class="fas fa-lock text-muted"></i>
+                                    <i class="fas fa-phone-alt text-muted"></i>
                                 </span>
-                                <input name="phone" type="password" id="phone" class="form-control" value="" />
+                                <input name="phone" type="number" id="phone" class="form-control" value="" />
                                 <!-- tooltip -->
                                 <span class="input-group-text">
                                     <span class="tt" data-bs-placement="bottom" title="Pretty self explanatory really...">
@@ -163,6 +210,7 @@ $errors = array('title' => '', 'cost' => '', 'url' => '', 'picture' => '', 'stor
                             <button type="submit" name="submit" value="submit" class="btn btn-primary text-dark w-100">Post</button>
                         </div>
                     </div>
+                </div>
             </form>
         </div>
     </div>
