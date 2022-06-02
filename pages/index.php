@@ -1,7 +1,9 @@
 <?php
+session_start();
 $pageTitle = "Home Page";
 include '../conf/ini.php';
 include $temp . 'header.php';
+echo $_SESSION['GroupID'];
 
 ?>
 

@@ -25,15 +25,22 @@ if (isset($_POST['submit'])) {
   }
   if (array_filter($errors)) {
   } else {
-    $query = "SELECT UserID , UserName , Password  FROM `users` WHERE `UserName`= '$Uname' AND Password = '$pass' ";
+    $query = "SELECT UserID , UserName , Password, GroupID  FROM `users` WHERE `UserName`= '$Uname' AND Password = '$pass'";
     $result = mysqli_query($con, $query) or die('There is an error');
     $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
     // $active = $row['active'];
     $count = mysqli_num_rows($result);
     if ($count == 1) {
       $_SESSION['ID'] = $row['UserID'];
+      $_SESSION['GroupID'] = $row['GroupID'];
       setcookie('user', $Uname, time() + 86400, '/');
-      header('location: index.php');
+      if ($_SESSION['GroupID'] == '1') {
+        header("Location: ../admin/members.php");
+        exit();
+      } else {
+        header('location: index.php');
+        exit();
+      }
     } else {
       $errors['both'] = "Your Username or Password is invalid";
     }
@@ -64,7 +71,6 @@ include $temp . 'header.php';
                     </span>
                 </div>
                 <div class="h6 text-danger mb-3"><?php echo $errors['Uname']; ?></div>
-
                 <label for="pass" class="mt-2 form-label">Password:</label>
                 <div class="input-group">
                     <span class="input-group-text">
