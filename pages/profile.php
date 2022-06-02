@@ -71,7 +71,8 @@ include $temp . 'header.php';
         <div class="col-md-3">
             <div class="d-flex justify-content-center">
                 <a href="#">
-                    <img src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/fox.jpg" width="200" height="190" class="rounded-circle"> </a>
+                    <img src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/fox.jpg"
+                        width="200" height="190" class="rounded-circle"> </a>
             </div>
             <h5 class="text-center text-primary">Welcome</h5>
         </div>
@@ -155,10 +156,12 @@ include $temp . 'header.php';
                 <!-- Buttons -->
                 <div class="row mt-4 mb-2 justify-content-center justify-content-md-end gap-2 gap-md-0">
                     <div class="col-3">
-                        <a type="button" class="btn btn-outline-danger text-dark w-100" href="<?php $pages; ?>index.php">Cancel</a>
+                        <a type="button" class="btn btn-outline-danger text-dark w-100"
+                            href="<?php $pages; ?>index.php">Cancel</a>
                     </div>
                     <div class="col-6">
-                        <button type="submit" name="update" value="update" class="btn btn-primary text-dark w-100">Update</button>
+                        <button type="submit" name="update" value="update"
+                            class="btn btn-primary text-dark w-100">Update</button>
                     </div>
                 </div>
             </form>
