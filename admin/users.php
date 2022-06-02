@@ -9,6 +9,16 @@ include '../conf/ini.php';
     $query = 'SELECT `UserID`, `FirstName`, `LastName`, `Gender`, `Email`, `UserName`, `CreatedAt`, `City` FROM `users`';
     $result = mysqli_query($con, $query) or die('There is no error in the query');
     $count = mysqli_num_rows($result);
+
+    if (isset($_SESSION['GroupID'])) {
+        if ($_SESSION['GroupID'] == 0) {
+            $role = 'User';
+        } elseif ($_SESSION['GroupID'] == 1) {
+            $role = 'Admin';
+        } else {
+            $role = 'Publiser';
+        }
+    }
     if ($count > 0) {
     ?>
         <div class="table-responsive">
@@ -23,8 +33,7 @@ include '../conf/ini.php';
                         <th scope="col">UserName</th>
                         <th scope="col">City</th>
                         <th scope="col">CreatedAt</th>
-                        <th scope="col">Publisher</th>
-                        <th scope="col">Admin</th>
+                        <th scope="col">Role</th>
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
@@ -40,19 +49,12 @@ include '../conf/ini.php';
                                 <td>$row[UserName]</td>
                                 <td>$row[City]</td>
                                 <td>$row[CreatedAt]</td>
-                                <td class=''>
-                                    <div class='form-check form-switch d-flex justify-content-center'>
-                                        <input class='form-check-input' type='checkbox' role='switch' id='flexSwitchCheckDefault'>
-                                    </div>
-                                </td>
-                                <td class=''>
-                                    <div class='form-check form-switch d-flex justify-content-center'>
-                                        <input class='form-check-input' type='checkbox' role='switch' id='flexSwitchCheckDefault'>
-                                    </div>
-                                </td>
+                                <td> $role </td>
                                 <td>
+                                        <a href='updateUser.php?id={$row["UserID"]}'
+                                        title='Update'><i class='fas fa-pen-alt'></i></a> | 
                                         <a class='text-danger' href='javascript: delete_user({$row['UserID']})'
-                                            title='Delete'><i class='fas fa-trash-alt'></i></a>
+                                        title='Delete'><i class='fas fa-trash-alt'></i></a>
                                 </td>
                             </tr>
                         </tbody>";

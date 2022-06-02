@@ -4,6 +4,7 @@ include '../conf/conn.php';
 $query = "SELECT * FROM `users` WHERE UserID = " . $_SESSION['ID'];
 $result = mysqli_query($con, $query);
 $row = mysqli_fetch_assoc($result);
+mysqli_free_result($result);
 ?>
 <!-- Modal -->
 <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -17,8 +18,7 @@ $row = mysqli_fetch_assoc($result);
             </div>
             <div class="d-flex justify-content-center">
                 <a href="#">
-                    <img src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/fox.jpg"
-                        width="90" height="89" class="rounded-circle">
+                    <img src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/fox.jpg" width="90" height="89" class="rounded-circle">
                 </a>
             </div>
             <div class="container">
