@@ -64,7 +64,7 @@ if (!isset($_SESSION)) {
                     <?php else : ?>
                         <a id="SpecialBtn" class="btn btn-primary me-2" type="button" href="<?= $pages; ?>login.php">Login</a>
                     <?php endif ?>
-                    <a id="SpecialBtn" class="btn btn-primary" type="button">Start a project</a>
+                    <a id="SpecialBtn" class="btn btn-primary" type="button" href="<?= $pages; ?>addProject.php">Start a project</a>
                 </div>
             </div>
             <!-- end of bottom for small screen-->
@@ -76,7 +76,7 @@ if (!isset($_SESSION)) {
                 <?php else : ?>
                     <a id="SpecialBtn" class="btn btn-primary rounded-pill" type="button" href="<?= $pages; ?>login.php">Login</a>
                 <?php endif ?>
-                <a id="SpecialBtn" class="btn btn-primary rounded-pill" type="button" href="#">Start a project</a>
+                <a id="SpecialBtn" class="btn btn-primary rounded-pill" type="button" href="<?= $pages; ?>addProject.php">Start a project</a>
                 <!-- profile -->
                 <?php if (isset($_COOKIE['user']) && isset($_SESSION['ID'])) : ?>
                     <span class="dropdown">
