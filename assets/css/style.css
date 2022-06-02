@@ -44,3 +44,9 @@ ul li {
 .ck-editor__editable_inline {
   min-height: 300px;
 }
+
+.card-img-top {
+  width: 100%;
+  height: 10vw;
+  object-fit: cover;
+}

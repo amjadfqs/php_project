@@ -43,8 +43,8 @@ if (isset($_POST['submit'])) {
                 if (in_array($img_ext, $allow_ext)) {
                     echo $_FILES['picture']['error'];
                     // $picture = mysqli_real_escape_string($con, trim($_FILES['picture']['name']));
-                    $new_img_name = uniqid("IMG-", true) . '.' . $img_ext;
-                    $img_upload_path = '../data/uploads/images' . $new_img_name;
+                    $new_img_name = uniqid("IMG", true) . '.' . $img_ext;
+                    $img_upload_path = '../data/uploads/images/' . $new_img_name;
                     move_uploaded_file($tmp_name, $img_upload_path);
 
                     // insert into database
