@@ -21,23 +21,23 @@ include '../conf/ini.php';
     }
     if ($count > 0) {
     ?>
-        <div class="table-responsive">
-            <table class="table mt-5 table-white table-hover border">
-                <thead class="bg-primary text-center">
-                    <tr>
-                        <th scope="col">UserID</th>
-                        <th scope="col">FirstName</th>
-                        <th scope="col">LastName</th>
-                        <th scope="col">Gender</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">UserName</th>
-                        <th scope="col">City</th>
-                        <th scope="col">CreatedAt</th>
-                        <th scope="col">Role</th>
-                        <th scope="col">Action</th>
-                    </tr>
-                </thead>
-                <?php
+    <div class="table-responsive">
+        <table class="table mt-5 table-white table-hover border">
+            <thead class="bg-primary text-center">
+                <tr>
+                    <th scope="col">UserID</th>
+                    <th scope="col">FirstName</th>
+                    <th scope="col">LastName</th>
+                    <th scope="col">Gender</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">UserName</th>
+                    <th scope="col">City</th>
+                    <th scope="col">CreatedAt</th>
+                    <th scope="col">Role</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <?php
                 while ($row = mysqli_fetch_array($result)) :
                     echo "  <tbody class='text-center'>
                             <tr>
@@ -51,16 +51,16 @@ include '../conf/ini.php';
                                 <td>$row[CreatedAt]</td>
                                 <td> $role </td>
                                 <td>
-                                        <a href='updateUser.php?id={$row["UserID"]}'
+                                        <a href='updateUser.php?id={$row['UserID']}'
                                         title='Update'><i class='fas fa-pen-alt'></i></a> | 
-                                        <a class='text-danger' href='javascript: delete_user({$row['UserID']})'
+                                        <a class='text-danger' href='delete.php?id={$row['UserID']}'
                                         title='Delete'><i class='fas fa-trash-alt'></i></a>
                                 </td>
                             </tr>
                         </tbody>";
                 endwhile; ?>
-            </table>
-        </div>
+        </table>
+    </div>
     <?php
     } else {
         echo '<p class="text-danger alert-danger">There is no information to display</p>';

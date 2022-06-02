@@ -5,7 +5,7 @@ include '../conf/conn.php';
 include_once $temp . 'header.php';
 
 if (isset($_GET['id'])) {
-    $id = (int) mysqli_real_escape_string($con, $_GET['userID']);
+    $id = (int) mysqli_real_escape_string($con, $_GET['id']);
     $SelectQ = 'Select FirstName, LastName, GroupID from users where UserID = ' . $id;
     $result = @mysqli_query($con, $SelectQ) or die('There is no error in the query');
     $row = mysqli_fetch_array($result);
@@ -48,7 +48,8 @@ if (isset($_GET['id'])) {
                 </select>
             </div>
             <div class="col-3 col-md-2">
-                <button type="submit" name="submit" value="submit" class="btn btn-primary text-dark w-100">Update</button>
+                <button type="submit" name="submit" value="submit"
+                    class="btn btn-primary text-dark w-100">Update</button>
             </div>
         </div>
     </form>
