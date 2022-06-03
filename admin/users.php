@@ -6,9 +6,19 @@ include '../conf/ini.php';
 <div class="container">
     <h1 class="mt-3 text-primary">Users Information</h1>
     <?php
-    $query = 'SELECT `UserID`, `FirstName`, `LastName`, `Gender`, `Email`, `UserName`, `CreatedAt`, `City` FROM `users`';
+    $query = 'SELECT `UserID`, `FirstName`, `LastName`, `Gender`, `Email`, `UserName`, `CreatedAt`, `City`, `GroupID` FROM `users`';
     $result = mysqli_query($con, $query) or die('There is no error in the query');
     $count = mysqli_num_rows($result);
+
+    if (isset($_SESSION['GroupID'])) {
+        if ($_SESSION['GroupID'] == 0) {
+            $role = 'User';
+        } elseif ($_SESSION['GroupID'] == 1) {
+            $role = 'Admin';
+        } else {
+            $role = 'Publiser';
+        }
+    }
     if ($count > 0) {
     ?>
         <div class="table-responsive">
@@ -23,14 +33,20 @@ include '../conf/ini.php';
                         <th scope="col">UserName</th>
                         <th scope="col">City</th>
                         <th scope="col">CreatedAt</th>
-                        <th scope="col">Publisher</th>
-                        <th scope="col">Admin</th>
+                        <th scope="col">Role</th>
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
-                <?php
-                while ($row = mysqli_fetch_array($result)) :
-                    echo "  <tbody class='text-center'>
+            <?php
+            while ($row = mysqli_fetch_assoc($result)) {
+                if ($row['GroupID'] == 1) {
+                    $role = 'Admin';
+                } elseif ($row['GroupID'] == 2) {
+                    $role = 'Publiser';
+                } else {
+                    $role = 'User';
+                }
+                echo "  <tbody class='text-center'>
                             <tr>
                                 <td>$row[UserID]</td>
                                 <td>$row[FirstName]</td>
@@ -40,30 +56,22 @@ include '../conf/ini.php';
                                 <td>$row[UserName]</td>
                                 <td>$row[City]</td>
                                 <td>$row[CreatedAt]</td>
-                                <td class=''>
-                                    <div class='form-check form-switch d-flex justify-content-center'>
-                                        <input class='form-check-input' type='checkbox' role='switch' id='flexSwitchCheckDefault'>
-                                    </div>
-                                </td>
-                                <td class=''>
-                                    <div class='form-check form-switch d-flex justify-content-center'>
-                                        <input class='form-check-input' type='checkbox' role='switch' id='flexSwitchCheckDefault'>
-                                    </div>
-                                </td>
+                                <td>$role</td>
                                 <td>
-                                        <a class='text-danger' href='javascript: delete_user({$row['UserID']})'
-                                            title='Delete'><i class='fas fa-trash-alt'></i></a>
+                                        <a href='updateUser.php?id={$row['UserID']}'
+                                        title='Update'><i class='fas fa-pen-alt'></i></a> | 
+                                        <a class='text-danger' href='delete.php?id={$row['UserID']}'
+                                        title='Delete'><i class='fas fa-trash-alt'></i></a>
                                 </td>
                             </tr>
                         </tbody>";
-                endwhile; ?>
-            </table>
+            }
+            echo "</table>
+           </div>";
+        } else {
+            echo '<p class="text-danger alert-danger">There is no information to display</p>';
+        }
+        mysqli_free_result($result);
+        mysqli_close($con);
+            ?>
         </div>
-    <?php
-    } else {
-        echo '<p class="text-danger alert-danger">There is no information to display</p>';
-    }
-    mysqli_free_result($result);
-    mysqli_close($con);
-    ?>
-</div>

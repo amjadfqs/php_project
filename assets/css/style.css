@@ -50,3 +50,11 @@ ul li {
   height: 10vw;
   object-fit: cover;
 }
+
+.ellipsis {
+  height: 9rem;
+  white-space: normal;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+}
