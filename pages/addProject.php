@@ -119,8 +119,7 @@ if (isset($_POST['submit'])) {
                             <span class="input-group-text">
                                 <i class="fas fa-heading text-muted"></i>
                             </span>
-                            <input name="title" type="text" id="title" class="form-control"
-                                value="<?= htmlspecialchars($title) ?>" />
+                            <input name="title" type="text" id="title" class="form-control" value="<?= htmlspecialchars($title) ?>" />
                             <!-- tooltip -->
                             <span class="input-group-text">
                                 <span class="tt" data-bs-placement="bottom" title="Enter your project Tile">
@@ -155,9 +154,9 @@ if (isset($_POST['submit'])) {
                             <span class="input-group-text">
                                 <i class="fas fa-play text-muted"></i>
                             </span>
-                            <input name="url" type="text" id="url" class="form-control" value="<?= $cost ?>" />
+                            <input name="url" type="text" id="url" class="form-control" value="" />
                             <!-- tooltip -->
-                            <span class="input-group-text">
+                            <span class=" input-group-text">
                                 <span class="tt" data-bs-placement="bottom" title="Insert Youtube Video if available">
                                     <i class="far fa-question-circle text-muted"></i>
                                 </span>
@@ -176,8 +175,7 @@ if (isset($_POST['submit'])) {
                 <div class="row ">
                     <div class="col-12 text-center">
                         <label for="story" class="form-label text-center">Project Story:</label>
-                        <textarea name="story" id="editor">
-
+                        <textarea style="max-width: 100%; " name="story" id="editor">
                         </textarea>
                         <div class="h6 text-danger mb-3"><?php echo $errors['story']; ?></div>
                     </div>
@@ -245,8 +243,7 @@ if (isset($_POST['submit'])) {
                                 <input name="phone" type="number" id="phone" class="form-control" value="" />
                                 <!-- tooltip -->
                                 <span class="input-group-text">
-                                    <span class="tt" data-bs-placement="bottom"
-                                        title="Pretty self explanatory really...">
+                                    <span class="tt" data-bs-placement="bottom" title="Pretty self explanatory really...">
                                         <i class="far fa-question-circle text-muted"></i>
                                     </span>
                                 </span>
@@ -259,8 +256,7 @@ if (isset($_POST['submit'])) {
                     <!-- Buttons -->
                     <div class="row mt-4 mb-2 justify-content-center gap-2 gap-md-0">
                         <div class="col-4">
-                            <button type="submit" name="submit" value="submit"
-                                class="btn btn-primary text-dark w-100">Post</button>
+                            <button type="submit" name="submit" value="submit" class="btn btn-primary text-dark w-100">Post</button>
                         </div>
                     </div>
                 </div>
@@ -271,9 +267,9 @@ if (isset($_POST['submit'])) {
 
 <?php include $temp . 'footer.php'; ?>
 <script>
-ClassicEditor
-    .create(document.querySelector('#editor'))
-    .catch(error => {
-        console.error(error);
-    });
+    ClassicEditor
+        .create(document.querySelector('#editor'))
+        .catch(error => {
+            console.error(error);
+        });
 </script>
