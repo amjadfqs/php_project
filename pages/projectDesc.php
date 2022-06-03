@@ -1,11 +1,16 @@
 <?php
 $pageTitle = "Home Page";
 include '../conf/ini.php';
+include '../conf/conn.php';
 include $temp . 'header.php';
+$id = (int) mysqli_real_escape_string($con, $_GET['id']);
+$query = "SELECT * FROM projects WHERE ProjectID = " . $id;
+$result = mysqli_query($con, $query);
+$row = mysqli_fetch_assoc($result);
 ?>
 
 <div class="d-none d-md-block container text-center my-5 p-3">
-    <h2 class="text-primary">A Thriving Home for A Fountain for Survivors</h2>
+    <h2 class="text-primary"><?php echo $row['Title'] ?></h2>
     <hr class="m-0 text-black-50">
 </div>
 <div class="container mt-4">
@@ -70,15 +75,22 @@ include $temp . 'header.php';
 <br />
 <div class="container-fluid bg-secondary mt-5 p-3">
     <div class="container bg-white">
-        <ul class="nav nav-pills mb-3 d-flex justify-content-center justify-content-md-start" id="pills-tab" role="tablist">
+        <ul class="nav nav-pills mb-3 d-flex justify-content-center justify-content-md-start" id="pills-tab"
+            role="tablist">
             <li class="nav-item" role="presentation">
-                <button class="nav-link active rounded-0" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Campaing</button>
+                <button class="nav-link active rounded-0" id="pills-home-tab" data-bs-toggle="pill"
+                    data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home"
+                    aria-selected="true">Campaing</button>
             </li>
             <li class="nav-item" role="presentation">
-                <button class="nav-link rounded-0" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Updates</button>
+                <button class="nav-link rounded-0" id="pills-profile-tab" data-bs-toggle="pill"
+                    data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile"
+                    aria-selected="false">Updates</button>
             </li>
             <li class="nav-item" role="presentation">
-                <button class="nav-link rounded-0" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Comments</button>
+                <button class="nav-link rounded-0" id="pills-contact-tab" data-bs-toggle="pill"
+                    data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact"
+                    aria-selected="false">Comments</button>
             </li>
         </ul>
         <!-- campaign -->
@@ -87,7 +99,8 @@ include $temp . 'header.php';
                 <div class="row">
                     <div class="d-none d-md-block col-md-4">
                         <!-- Scrollspy -->
-                        <div id="list-example" class="sticky-top d-flex justify-content-center" style="padding-top:5rem;">
+                        <div id="list-example" class="sticky-top d-flex justify-content-center"
+                            style="padding-top:5rem;">
                             <ul class="nav flex-column nav-pills menu-sidebar">
                                 <a class="nav-link" href="#list-1">Story</a>
                                 <a class="nav-link" href="#list-2">Risks</a>
@@ -104,18 +117,22 @@ include $temp . 'header.php';
                                     spinning
                                     wheels are expensive
                                     and
-                                    drop spindles can be slow or difficult to learn. This project offers an af These Cuffs
+                                    drop spindles can be slow or difficult to learn. This project offers an af These
+                                    Cuffs
                                     are
                                     part
                                     bracelet, part handcuffs for light intimate play. You can wear them out in public or
                                     play
                                     with them
-                                    in private. These statement pieces are reminders of self-love and personal power as well
+                                    in private. These statement pieces are reminders of self-love and personal power as
+                                    well
                                     as
                                     a subtle
-                                    signal to those in the know of how you like to play. You can choose from two different
+                                    signal to those in the know of how you like to play. You can choose from two
+                                    different
                                     models: the
-                                    ID and ICON Cuffs. The ICON Cuffs are designed for light restraint, while the ID Cuffs
+                                    ID and ICON Cuffs. The ICON Cuffs are designed for light restraint, while the ID
+                                    Cuffs
                                     are a
                                     silicone band option that's more about self-expression</p>
                                 <img class="w-50 w-md-30" src=" <?= $img; ?>card2.png" />
@@ -127,18 +144,22 @@ include $temp . 'header.php';
                                     spinning
                                     wheels are expensive
                                     and
-                                    drop spindles can be slow or difficult to learn. This project offers an af These Cuffs
+                                    drop spindles can be slow or difficult to learn. This project offers an af These
+                                    Cuffs
                                     are
                                     part
                                     bracelet, part handcuffs for light intimate play. You can wear them out in public or
                                     play
                                     with them
-                                    in private. These statement pieces are reminders of self-love and personal power as well
+                                    in private. These statement pieces are reminders of self-love and personal power as
+                                    well
                                     as
                                     a subtle
-                                    signal to those in the know of how you like to play. You can choose from two different
+                                    signal to those in the know of how you like to play. You can choose from two
+                                    different
                                     models: the
-                                    ID and ICON Cuffs. The ICON Cuffs are designed for light restraint, while the ID Cuffs
+                                    ID and ICON Cuffs. The ICON Cuffs are designed for light restraint, while the ID
+                                    Cuffs
                                     are a
                                     silicone band option that's more about self-expression.</p>
                                 <img class="w-50 w-md-30" src=" <?= $img; ?>card2.png" />
@@ -182,34 +203,36 @@ include $temp . 'header.php';
             <!-- comment -->
             <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
                 <?php if (isset($_COOKIE['user'])) : ?>
-                    <div class="d-none d-flex justify-content-center">
-                        <p>Only logged in users can comment</p>
-                        <a class="mx-2" href="<?= $pages ?>logout.php"> Login </a>
+                <div class="d-none d-flex justify-content-center">
+                    <p>Only logged in users can comment</p>
+                    <a class="mx-2" href="<?= $pages ?>logout.php"> Login </a>
+                </div>
+                <div class="mt-5">
+                    <div class="form-floating">
+                        <textarea class="form-control" placeholder="Leave a comment here"
+                            id="floatingTextarea"></textarea>
+                        <label for="floatingTextarea">Comments</label>
                     </div>
-                    <div class="mt-5">
-                        <div class="form-floating">
-                            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
-                            <label for="floatingTextarea">Comments</label>
-                        </div>
-                        <div class="d-grid gap-2 d-md-block">
-                            <button class="btn btn-primary" type="button">Button</button>
-                        </div>
+                    <div class="d-grid gap-2 d-md-block">
+                        <button class="btn btn-primary" type="button">Button</button>
                     </div>
+                </div>
                 <?php else : ?>
-                    <div class=" d-flex justify-content-center">
-                        <p>Only logged in users can comment</p>
-                        <a class="mx-2" href="<?= $pages ?>logout.php"> Login </a>
+                <div class=" d-flex justify-content-center">
+                    <p>Only logged in users can comment</p>
+                    <a class="mx-2" href="<?= $pages ?>logout.php"> Login </a>
+                </div>
+                <div class="mt-5 d-none">
+                    <div class="form-floating">
+                        <textarea class="form-control" placeholder="Leave a comment here"
+                            id="floatingTextarea"></textarea>
+                        <label for="floatingTextarea">Comments</label>
                     </div>
-                    <div class="mt-5 d-none">
-                        <div class="form-floating">
-                            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
-                            <label for="floatingTextarea">Comments</label>
-                        </div>
-                        <div class="d-grid gap-2 d-md-block">
-                            <button class="btn btn-primary" type="button">Button</button>
-                        </div>
+                    <div class="d-grid gap-2 d-md-block">
+                        <button class="btn btn-primary" type="button">Button</button>
+                    </div>
                     <?php endif ?>
-                    </div>
+                </div>
             </div>
             <!-- end comments -->
         </div>
