@@ -5,6 +5,7 @@ $query = "SELECT * FROM `users` WHERE UserID = " . $_SESSION['ID'];
 $result = mysqli_query($con, $query);
 $row = mysqli_fetch_assoc($result);
 mysqli_free_result($result);
+mysqli_close($con);
 ?>
 <!-- Modal -->
 <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -56,3 +57,4 @@ mysqli_free_result($result);
         </div>
     </div>
 </div>
+<?php include $temp . 'js.php'; ?>

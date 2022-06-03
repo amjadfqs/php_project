@@ -52,8 +52,10 @@ mysqli_close($con);
                     <a href="#"><img src="../data/uploads/images/<?= $project['Picture']; ?>" class="card-img-top" alt=""></a>
                     <div class="card-body">
                         <h5 class="card-title text-primary"><?php echo htmlspecialchars($project['Title']); ?></h5>
-                        <p class="card-text overflow-hidden" style="max-height: 10rem;"><?php echo htmlspecialchars($project['BriefDesc']); ?></p>
-                        <div class="card-text">
+                        <div class="card-text ellipsis"><?php echo htmlspecialchars_decode($project['BriefDesc']); ?>
+                        </div>
+                        <span class=""><a href="">read more</a></span>
+                        <div class="card-text mt-2">
                             <div class="text-muted mb-2">
                                 <i class="fas fa-tags fa-flip-horizontal"></i>
                                 <?php echo htmlspecialchars($project['Tag']); ?>
