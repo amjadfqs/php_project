@@ -1,13 +1,10 @@
 <?php
 include '../conf/ini.php';
-include_once $temp . 'header.php';
+include $temp . 'header.php';
 include '../conf/conn.php';
-if (isset($_GET['id'])) {
-    $id = (int) mysqli_real_escape_string($con, $_GET['id']);
-    $query = 'DELETE FROM users WHERE `UserID` = ' . $id;
-    $result = @mysqli_query($con, $query) or die('There is no error in the query');
-}
-
+$id = (int) mysqli_real_escape_string($con, $_GET['id']);
+$query = 'DELETE FROM `projects` WHERE `ProjectID` = ' . $id;
+$result = @mysqli_query($con, $query) or die('There is no error in the query');
 if ($result) { ?>
 <div class="container-fluid mt-5">
     <div class="alert alert-primary text-center p-3" role="alert">
@@ -21,5 +18,7 @@ if ($result) { ?>
     header("refresh:5; url=members.php");
     mysqli_close($con);
 } else {
-    echo '<div class="alert alert-danger" role="alert">Sorry there was an error</div>';
+    echo '<div class="alert alert-danger" role="alert">
+                    Sorry there was an error
+            </div>';
 } ?>

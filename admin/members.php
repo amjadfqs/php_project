@@ -46,7 +46,7 @@ include $temp . 'header.php';
             </div>
             <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
                 <div id="container" class="container p-3">
-                    <h1 class="text-primary">Projects Information</h1>
+                    <?php include 'projects.php'; ?>
                 </div>
             </div>
         </div>
