@@ -57,4 +57,3 @@ mysqli_close($con);
         </div>
     </div>
 </div>
-<?php include $temp . 'js.php'; ?>
