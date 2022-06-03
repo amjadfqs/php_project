@@ -3,18 +3,29 @@ $pageTitle = "Home Page";
 include '../conf/ini.php';
 include '../conf/conn.php';
 include $temp . 'header.php';
-$id = (int) mysqli_real_escape_string($con, $_GET['id']);
-$query = "SELECT * FROM projects WHERE ProjectID = " . $id;
-$result = mysqli_query($con, $query);
-$row = mysqli_fetch_assoc($result);
+if (isset($_GET['id'])) {
+    $id = (int) mysqli_real_escape_string($con, $_GET['id']);
+    $query = "SELECT * FROM `projects` WHERE ProjectID = " . $id;
+    $result = mysqli_query($con, $query);
+    $rows = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    // $rows = mysqli_fetch_assoc($result);
+    echo $_GET['id'];
+}
 ?>
 
 <div class="d-none d-md-block container text-center my-5 p-3">
-    <h2 class="text-primary"><?php echo $row['Title'] ?></h2>
+    <?php foreach ($rows as $row) : ?>
+    <h2 class="text-primary">
+        <?= $row['Title']; ?>
+    </h2>
+    <?php endforeach; ?>
+
     <hr class="m-0 text-black-50">
 </div>
+
 <div class="container mt-4">
     <div class="row d-flex align-content-md-center align-items-md-center">
+
         <div class="col-sm-12 col-md-9">
             <img class="w-100 w-md-75" src=" <?= $img; ?>card2.png" />
             <div class="mt-2 text-black-50 d-flex justify-content-center d-md-inline-block">
@@ -36,6 +47,7 @@ $row = mysqli_fetch_assoc($result);
                 </a>
             </div>
         </div>
+
         <div class="d-sm-block d-md-none container text-center my-3 p-3">
             <h5 class="text-dark">A Thriving Home for A Fountain for Survivors</h5>
         </div>
@@ -70,6 +82,7 @@ $row = mysqli_fetch_assoc($result);
                 </div>
             </div>
         </div>
+
     </div>
 </div>
 <br />
