@@ -11,9 +11,18 @@ if (isset($_GET['id']) && !isset($_POST['update'])) {
     $id = is_numeric($id) ? $id : NULL;
     $SelectQ = 'Select FirstName, LastName, GroupID from users where UserID =' . $id;
     $result = @mysqli_query($con, $SelectQ) or die('There is no error in the query');
-    $row = mysqli_fetch_array($result, MYSQLI_BOTH);
-    @mysqli_free_result($result);
-    @mysqli_close($con);
+    if (mysqli_num_rows($result) == 1) {
+        $row = mysqli_fetch_array($result, MYSQLI_BOTH);
+        @mysqli_free_result($result);
+        @mysqli_close($con);
+    } else {
+        echo '<div class="alert alert-danger text-center" role="alert">
+                    Sorry, there is no data to display </div>';
+        echo "<div class='d-flex justify-content-center'>
+            <img src=' $img/notfound.svg'>
+        </div>";
+        exit();
+    }
     //
 } elseif (isset($_POST['update'])) {
     $id = (int) mysqli_real_escape_string($con, $_GET['id']);

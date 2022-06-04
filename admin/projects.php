@@ -48,7 +48,7 @@ include $temp . 'header.php';
                                 <td>$row[Contact]</td>
                                 <td>$row[Created]</td>
                                 <td>
-                                        <a class='text-danger' href='delete.php?id={$row['ProjectID']}'
+                                        <a class='text-danger' href='javascript: delete_project({$row['ProjectID']})'
                                         title='Delete'><i class='fas fa-trash-alt'></i></a>
                                 </td>
                             </tr>

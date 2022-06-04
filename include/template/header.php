@@ -41,7 +41,7 @@ if (!isset($_SESSION)) {
                         <path id="logo" d="M19.294,7.156a15,15,0,0,1,18.412,0l11.15,8.667A15,15,0,0,1,54,32.025L49.346,47.359A15,15,0,0,1,34.993,58H22.007A15,15,0,0,1,7.654,47.359L3,32.025a15,15,0,0,1,5.147-16.2Z" fill="#4dd5ac" />
                     </svg>
                 </span>
-                HASH
+                StartUp
             </a>
 
             <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navcol-4">
