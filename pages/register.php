@@ -1,5 +1,5 @@
 <?php
-if (isset($_COOKIE['user'])) {
+if (isset($_COOKIE['user']) && isset($_SESSION['ID'])) {
     header('location: login.php');
 }
 $pageTitle = "Register Page";
@@ -67,11 +67,6 @@ if (isset($_POST['submit'])) {
         }
         $errors['pass2'] = 'Sorry The confirm password is required';
     }
-    // if (empty(trim($_POST['num']))) {
-    //     $errors['num'] = 'Sorry The number is required';
-    // } else {
-    //     $num = mysqli_real_escape_string($con, trim($_POST['num']));
-    // }
 
     if (!isset($_POST['city'])) {
         $errors['city'] = 'Sorry The city is required';
@@ -82,14 +77,25 @@ if (isset($_POST['submit'])) {
         $pass1  = mysqli_real_escape_string($con, $_POST['pass1']);
         $city = mysqli_real_escape_string($con, trim($_POST['city']));
 
-        // dealing with the database
-        $query = "INSERT INTO users (FirstName, LastName, Gender, Email, UserName, Password , city) VALUES ('$firstName','$lastName', '$gender', '$email','$userName', SHA1('$pass1'),'$city')";
-        $result = mysqli_query($con, $query);
-        if ($result) {
-            header('location:login.php');
+        $sql_u = "SELECT * FROM users WHERE UserName='$userName'";
+        $sql_e = "SELECT * FROM users WHERE email='$email'";
+        $res_u = mysqli_query($con, $sql_u);
+        $res_e = mysqli_query($con, $sql_e);
+
+        if (mysqli_num_rows($res_u) > 0) {
+            $errors['userName'] = 'Sorry The user name is already taken';
+        } elseif (mysqli_num_rows($res_e) > 0) {
+            $errors['email'] = 'Sorry The email is already taken';
         } else {
-            echo '<h1>System Error</h1>';
-            echo '<p>' . mysqli_error($con) . '<br />Query: ' . $query . '</p>';
+            // dealing with the database
+            $query = "INSERT INTO users (FirstName, LastName, Gender, Email, UserName, Password , city) VALUES ('$firstName','$lastName', '$gender', '$email','$userName', SHA1('$pass1'),'$city')";
+            $result = mysqli_query($con, $query);
+            if ($result) {
+                header('location:login.php');
+            } else {
+                echo '<h1>System Error</h1>';
+                echo '<p>' . mysqli_error($con) . '<br />Query: ' . $query . '</p>';
+            }
         }
         mysqli_close($con);
     }
