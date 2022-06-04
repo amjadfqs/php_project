@@ -63,14 +63,19 @@ if (isset($_SESSION['ID']) && isset($_COOKIE['user'])) {
                 echo '<div class="alert alert-danger" role="alert">
                         Sorry there was an error
                         </div>';
+                echo "<div class='d-flex justify-content-center'>
+                        <img src=' $img/notfound.svg'>
+                        </div>";
             }
             mysqli_close($con);
         }
     }
 } else {
     echo '<div class="alert alert-danger text-center" role="alert">
-                    Sign in first
-                    </div>';
+                    Sorry, there is no data to display </div>';
+    echo "<div class='d-flex justify-content-center'>
+            <img src=' $img/notfound.svg'>
+        </div>";
     exit();
 }
 
@@ -80,7 +85,8 @@ if (isset($_SESSION['ID']) && isset($_COOKIE['user'])) {
         <div class="col-md-3">
             <div class="d-flex justify-content-center">
                 <a href="#">
-                    <img src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/fox.jpg" width="200" height="190" class="rounded-circle"> </a>
+                    <img src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/fox.jpg"
+                        width="200" height="190" class="rounded-circle"> </a>
             </div>
             <h5 class="text-center text-primary">Welcome</h5>
         </div>
@@ -164,10 +170,12 @@ if (isset($_SESSION['ID']) && isset($_COOKIE['user'])) {
                 <!-- Buttons -->
                 <div class="row mt-4 mb-2 justify-content-center justify-content-md-end gap-2 gap-md-0">
                     <div class="col-3">
-                        <a type="button" class="btn btn-outline-danger text-dark w-100" href="<?php $pages; ?>index.php">Cancel</a>
+                        <a type="button" class="btn btn-outline-danger text-dark w-100"
+                            href="<?php $pages; ?>index.php">Cancel</a>
                     </div>
                     <div class="col-6">
-                        <button type="submit" name="update" value="update" class="btn btn-primary text-dark w-100">Update</button>
+                        <button type="submit" name="update" value="update"
+                            class="btn btn-primary text-dark w-100">Update</button>
                     </div>
                 </div>
             </form>

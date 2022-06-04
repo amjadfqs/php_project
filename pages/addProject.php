@@ -12,6 +12,9 @@ if (!isset($_SESSION['ID']) && !isset($_COOKIE['user'])) {
         echo '<div class="alert alert-danger text-center" role="alert">
                     Sorry, you have to be a publisher first. <br /> Contact the Administrator
                     </div>';
+        echo "<div class='d-flex justify-content-center'>
+            <img src=' $img/notfound.svg'>
+        </div>";
         exit();
     }
 }
