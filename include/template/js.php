@@ -10,4 +10,13 @@
             window.location.href = "delete.php?userID=" + userID;
         }
     }
+
+    function delete_project(projectID) {
+        if (confirm("Are you sure you want to delete this post?")) {
+            window.location.href = "deleteProject.php?projectID=" + projectID;
+        }
+    }
 </script>
+</body>
+
+</html>

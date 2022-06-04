@@ -5,7 +5,7 @@ $img = './..//assets/images/';
 $css = './../assets/css/';
 $js = './../assets/script/';
 $pages = './../pages/';
-$admin = './../admin/';
+// $admin = './../admin/';
 
 
 include $func . 'functions.php';

@@ -2,31 +2,23 @@
 $pageTitle = "Dashboard Page";
 include '../conf/ini.php';
 include $temp . 'header.php';
+include './secureHeader.php';
 ?>
 <div class="container-fluid bg-secondary p-3">
     <div class="container">
         <div class="mt-4 d-flex justify-content-center justify-content-md-start">
-            <ul class="nav nav-pills mb-3 d-flex justify-content-center justify-content-md-start" id="pills-tab"
-                role="tablist">
+            <ul class="nav nav-pills mb-3 d-flex justify-content-center justify-content-md-start" id="pills-tab" role="tablist">
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link active rounded-2 text-muted" id="pills-home-tab" data-bs-toggle="pill"
-                        data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home"
-                        aria-selected="true">Active</button>
+                    <button class="nav-link active rounded-2 text-muted" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Active</button>
                 </li>
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link rounded-2 text-muted" id="pills-profile-tab" data-bs-toggle="pill"
-                        data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile"
-                        aria-selected="false">User Info</button>
+                    <button class="nav-link rounded-2 text-muted" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">User Info</button>
                 </li>
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link rounded-2 text-muted" id="pills-contact-tab" data-bs-toggle="pill"
-                        data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact"
-                        aria-selected="false">Projects Info</button>
+                    <button class="nav-link rounded-2 text-muted" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Projects Info</button>
                 </li>
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link rounded-2 text-muted" id="pills-other-tab" data-bs-toggle="pill"
-                        data-bs-target="#pills-other" type="button" role="tab" aria-controls="pills-other"
-                        aria-selected="false">Other</button>
+                    <button class="nav-link rounded-2 text-muted" id="pills-other-tab" data-bs-toggle="pill" data-bs-target="#pills-other" type="button" role="tab" aria-controls="pills-other" aria-selected="false">Other</button>
                 </li>
             </ul>
         </div>
@@ -46,12 +38,10 @@ include $temp . 'header.php';
             </div>
             <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
                 <div id="container" class="container p-3">
-                    <h1 class="text-primary">Projects Information</h1>
+                    <?php include 'projects.php'; ?>
                 </div>
             </div>
         </div>
         <!-- end nav -->
     </div>
 </div>
-<!-- <?php include $temp . 'footer.php'; ?> -->
-<?php include $temp . 'js.php'; ?>

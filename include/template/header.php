@@ -2,11 +2,11 @@
 if (!isset($_SESSION)) {
     session_start();
     if (isset($_SESSION['ID'])) {
-        include $pages . 'popupProfile.php';
+        include_once $pages . 'popupProfile.php';
     }
 } else {
     if (isset($_SESSION['ID'])) {
-        include $pages . 'popupProfile.php';
+        include_once $pages . 'popupProfile.php';
     }
 }
 ?>
@@ -41,7 +41,7 @@ if (!isset($_SESSION)) {
                         <path id="logo" d="M19.294,7.156a15,15,0,0,1,18.412,0l11.15,8.667A15,15,0,0,1,54,32.025L49.346,47.359A15,15,0,0,1,34.993,58H22.007A15,15,0,0,1,7.654,47.359L3,32.025a15,15,0,0,1,5.147-16.2Z" fill="#4dd5ac" />
                     </svg>
                 </span>
-                HASH
+                StartUp
             </a>
 
             <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navcol-4">
@@ -64,7 +64,7 @@ if (!isset($_SESSION)) {
                     <?php else : ?>
                         <a id="SpecialBtn" class="btn btn-primary me-2" type="button" href="<?= $pages; ?>login.php">Login</a>
                     <?php endif ?>
-                    <a id="SpecialBtn" class="btn btn-primary" type="button">Start a project</a>
+                    <a id="SpecialBtn" class="btn btn-primary" type="button" href="<?= $pages; ?>addProject.php">Start a project</a>
                 </div>
             </div>
             <!-- end of bottom for small screen-->
@@ -76,7 +76,7 @@ if (!isset($_SESSION)) {
                 <?php else : ?>
                     <a id="SpecialBtn" class="btn btn-primary rounded-pill" type="button" href="<?= $pages; ?>login.php">Login</a>
                 <?php endif ?>
-                <a id="SpecialBtn" class="btn btn-primary rounded-pill" type="button" href="#">Start a project</a>
+                <a id="SpecialBtn" class="btn btn-primary rounded-pill" type="button" href="<?= $pages; ?>addProject.php">Start a project</a>
                 <!-- profile -->
                 <?php if (isset($_COOKIE['user']) && isset($_SESSION['ID'])) : ?>
                     <span class="dropdown">

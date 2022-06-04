@@ -4,8 +4,8 @@ if (isset($_COOKIE['user'])) {
 }
 $pageTitle = "Register Page";
 include '../conf/ini.php';
-include '../conf/conn.php';
 include $temp . 'header.php';
+include '../conf/conn.php';
 
 $firstName = $lastName = $email = $userName = $pass1 = $city =  $gender = '';
 $errors = array('firstName' => '', 'lastName' => '', 'email' => '', 'userName' => '', 'pass1' => '', 'pass2' => '', 'city' => '', 'gender' => '');
@@ -108,8 +108,7 @@ if (isset($_POST['submit'])) {
                             <span class="input-group-text">
                                 <i class="fas fa-user text-muted"></i>
                             </span>
-                            <input name="firstName" type="text" id="firstName" class="form-control"
-                                value="<?= htmlspecialchars($firstName) ?>" />
+                            <input name="firstName" type="text" id="firstName" class="form-control" value="<?= htmlspecialchars($firstName) ?>" />
                             <!-- tooltip -->
                             <span class="input-group-text">
                                 <span class="tt" data-bs-placement="bottom" title="Enter your first name">
@@ -126,8 +125,7 @@ if (isset($_POST['submit'])) {
                             <span class="input-group-text">
                                 <i class="fas fa-user text-muted"></i>
                             </span>
-                            <input name="lastName" type="text" id="lastName" class="form-control"
-                                value="<?= $lastName ?>" />
+                            <input name="lastName" type="text" id="lastName" class="form-control" value="<?= $lastName ?>" />
                             <!-- tooltip -->
                             <span class="input-group-text">
                                 <span class="tt" data-bs-placement="bottom" title="Enter your real last name">
@@ -165,8 +163,7 @@ if (isset($_POST['submit'])) {
                             <span class="input-group-text">
                                 <i class="fas fa-user text-muted"></i>
                             </span>
-                            <input name="userName" type="text" id="userName" class="form-control"
-                                value="<?= $userName ?>" />
+                            <input name="userName" type="text" id="userName" class="form-control" value="<?= $userName ?>" />
                             <!-- tooltip -->
                             <span class="input-group-text">
                                 <span class="tt" data-bs-placement="bottom" title="Enter a valid user-name">
@@ -257,8 +254,7 @@ if (isset($_POST['submit'])) {
                 <!-- Buttons -->
                 <div class="row mt-4 mb-2 justify-content-center gap-2 gap-md-0">
                     <div class="col-6">
-                        <button type="submit" name="submit" value="submit"
-                            class="btn btn-primary text-dark w-100">Register</button>
+                        <button type="submit" name="submit" value="submit" class="btn btn-primary text-dark w-100">Register</button>
                     </div>
                 </div>
             </form>
@@ -266,10 +262,10 @@ if (isset($_POST['submit'])) {
     </div>
 </div>
 <script>
-const tooltips = document.querySelectorAll('.tt')
-tooltips.forEach(t => {
-    new bootstrap.Tooltip(t)
-})
+    const tooltips = document.querySelectorAll('.tt')
+    tooltips.forEach(t => {
+        new bootstrap.Tooltip(t)
+    })
 </script>
 <!-- Pills content -->
 <?php include $temp . 'footer.php'; ?>

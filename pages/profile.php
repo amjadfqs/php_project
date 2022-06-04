@@ -1,69 +1,83 @@
 <?php
+ob_start();
 session_start();
 $pageTitle = "Profile Page";
-include '../conf/conn.php';
 include '../conf/ini.php';
+include $temp . 'header.php';
+include '../conf/conn.php';
 
 
 $errors = array('firstName' => '', 'lastName' => '', 'pass1' => '', 'pass2' => '');
 
-if (isset($_POST['update'])) {
-    // Check if username is empty
-    if (empty(trim($_POST['firstName']))) {
-        $errors['firstName'] = 'Sorry The name is required';
-    } else {
-        $firstName = mysqli_real_escape_string($con, trim($_POST['firstName']));
-    }
-    // Check if username is empty
-    if (empty(trim($_POST['lastName']))) {
-        $errors['lastName'] = 'Sorry The last name is required';
-    } else {
-        $lastName = mysqli_real_escape_string($con, trim($_POST['lastName']));
-    }
-
-    // check the pass 1
-    if (empty($_POST["pass1"])) {
-        $errors['pass1'] = "Password is required";
-    } else {
-        $pass1 = $_POST['pass1'];
-        if (strlen($pass1) < 8) {
-            $errors['pass1'] = "Your Password Must Contain At Least 8 Characters!";
-        } elseif (!preg_match("#[0-9]+#", $pass1)) {
-            $errors['pass1'] = "Your Password Must Contain At Least 1 Number!";
-        } elseif (!preg_match("#[A-Z]+#", $pass1)) {
-            $errors['pass1'] = "Your Password Must Contain At Least 1 Capital Letter!";
-        } elseif (!preg_match("#[a-z]+#", $pass1)) {
-            $errors['pass1'] = "Your Password Must Contain At Least 1 Lowercase Letter!";
-        }
-    }
-    // check the confirm password
-    if (empty(trim($_POST['pass2']))) {
-        if ($_POST['pass1'] != $_POST['pass2']) {
-            $errors['pass2'] = 'Your password did not match the confirmed password.';
-        }
-        $errors['pass2'] = 'Sorry The confirm password is required';
-    }
-
-    if (array_filter($errors)) {
-    } else {
-        $pass1  = mysqli_real_escape_string($con, $_POST['pass1']);
-        // dealing with the database
-        $query = "UPDATE users SET FirstName = '$firstName', LastName = '$lastName', Password = SHA1('$pass1') WHERE UserID=" . $_SESSION['ID'];
-        $result = @mysqli_query($con, $query);
-        if ($result) {
-            echo '<div class="alert alert-primary text-center" role="alert">
-            Updated Successfully
-            </div>';
-            header("refresh:3 ;url=index.php");
+if (isset($_SESSION['ID']) && isset($_COOKIE['user'])) {
+    if (isset($_POST['update'])) {
+        // Check if username is empty
+        if (empty(trim($_POST['firstName']))) {
+            $errors['firstName'] = 'Sorry The name is required';
         } else {
-            echo '<div class="alert alert-danger" role="alert">
-                    Sorry there was an error
-                    </div>';
+            $firstName = mysqli_real_escape_string($con, trim($_POST['firstName']));
         }
-        mysqli_close($con);
+        // Check if username is empty
+        if (empty(trim($_POST['lastName']))) {
+            $errors['lastName'] = 'Sorry The last name is required';
+        } else {
+            $lastName = mysqli_real_escape_string($con, trim($_POST['lastName']));
+        }
+
+        // check the pass 1
+        if (empty($_POST["pass1"])) {
+            $errors['pass1'] = "Password is required";
+        } else {
+            $pass1 = $_POST['pass1'];
+            if (strlen($pass1) < 8) {
+                $errors['pass1'] = "Your Password Must Contain At Least 8 Characters!";
+            } elseif (!preg_match("#[0-9]+#", $pass1)) {
+                $errors['pass1'] = "Your Password Must Contain At Least 1 Number!";
+            } elseif (!preg_match("#[A-Z]+#", $pass1)) {
+                $errors['pass1'] = "Your Password Must Contain At Least 1 Capital Letter!";
+            } elseif (!preg_match("#[a-z]+#", $pass1)) {
+                $errors['pass1'] = "Your Password Must Contain At Least 1 Lowercase Letter!";
+            }
+        }
+        // check the confirm password
+        if (empty(trim($_POST['pass2']))) {
+            if ($_POST['pass1'] != $_POST['pass2']) {
+                $errors['pass2'] = 'Your password did not match the confirmed password.';
+            }
+            $errors['pass2'] = 'Sorry The confirm password is required';
+        }
+
+        if (array_filter($errors)) {
+        } else {
+            $pass1  = mysqli_real_escape_string($con, $_POST['pass1']);
+            // dealing with the database
+            $query = "UPDATE users SET FirstName = '$firstName', LastName = '$lastName', Password = SHA1('$pass1') WHERE UserID=" . $_SESSION['ID'];
+            $result = @mysqli_query($con, $query);
+            if ($result) {
+                echo '<div class="alert alert-primary text-center" role="alert">
+                Updated Successfully
+                </div>';
+                header("refresh:3 ;url=index.php");
+                ob_end_flush();
+            } else {
+                echo '<div class="alert alert-danger" role="alert">
+                        Sorry there was an error
+                        </div>';
+                echo "<div class='d-flex justify-content-center'>
+                        <img src=' $img/notfound.svg'>
+                        </div>";
+            }
+            mysqli_close($con);
+        }
     }
+} else {
+    echo '<div class="alert alert-danger text-center" role="alert">
+                    Sorry, there is no data to display </div>';
+    echo "<div class='d-flex justify-content-center'>
+            <img src=' $img/notfound.svg'>
+        </div>";
+    exit();
 }
-include $temp . 'header.php';
 
 ?>
 <div class="container mt-5">

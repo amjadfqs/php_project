@@ -2,41 +2,44 @@
 $pageTitle = "Home Page";
 include '../conf/ini.php';
 include $temp . 'header.php';
-
+include '../conf/conn.php';
+$query = "SELECT * FROM projects ORDER BY Created DESC LIMIT 10";
+$result = mysqli_query($con, $query) or die(mysqli_error($con));
+$projects = mysqli_fetch_all($result, MYSQLI_ASSOC);
+mysqli_free_result($result);
+mysqli_close($con);
 ?>
-
 <div class="container text-center">
     <nav class="overflow-auto">
         <ul class="d-inline-flex mt-5">
             <li class="nav-item line-before">
-                <a class="nav-link text-black" href="#">Art</a>
+                <a class="nav-link text-black" href="projects.php?tag=Art">Art</a>
             </li>
             <li class="nav-item line-before">
-                <a class="nav-link text-black" href="#">Comics</a>
+                <a class="nav-link text-black" href="projects.php?tag=Comics">Comics</a>
             </li>
             <li class="nav-item line-before">
-                <a class="nav-link text-black" href="#">Illustration</a>
+                <a class="nav-link text-black" href="projects.php?tag=Illustration">Illustration</a>
             </li>
             <li class="nav-item line-before">
-                <a class="nav-link text-black" href="#">Film</a>
+                <a class="nav-link text-black" href="projects.php?tag=Film">Film</a>
             </li>
             <li class="nav-item line-before">
-                <a class="nav-link text-black" href="#">Design</a>
+                <a class="nav-link text-black" href="projects.php?tag=Design">Design</a>
             </li>
             <li class="nav-item line-before">
-                <a class="nav-link text-black" href="#">Food</a>
+                <a class="nav-link text-black" href="projects.php?tag=Food">Food</a>
             </li>
             <li class="nav-item line-before">
-                <a class="nav-link text-black" href="#">Music</a>
+                <a class="nav-link text-black" href="projects.php?tag=Music">Music</a>
             </li>
             <li class="nav-item line-before">
-                <a class="nav-link text-black" href="#">Games</a>
+                <a class="nav-link text-black" href="projects.php?tag=Games">Games</a>
             </li>
         </ul>
     </nav>
 </div>
 <hr class="d-sm-none d-md-block text-black-50 m-0">
-
 <!-- Carousel -->
 <div class="d-none d-md-block">
     <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
@@ -117,7 +120,6 @@ include $temp . 'header.php';
 </div>
 <!-- end of Carousel -->
 <!--  Carousel for small screen -->
-
 <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
     <div class="container d-md-none">
         <div class="carousel-inner">
@@ -194,9 +196,7 @@ include $temp . 'header.php';
         </button>
     </div>
 </div>
-
 <!--  end Carousel for small screen -->
-
 <!-- funding info -->
 <div class="container-fluid bg-secondary mt-5">
     <div class="container">
@@ -231,146 +231,32 @@ include $temp . 'header.php';
 <!-- starting Card -->
 <div class="container mt-5 overflow-auto">
     <div class="d-inline-flex">
+        <?php foreach ($projects as $project) : ?>
         <div class="card mx-2 my-4 shadow" style="width: 20rem;">
-            <a href="#"><img src="<?php echo $img; ?>card2.png" class="card-img-top" alt=""></a>
+            <a href="#"><img src="../data/uploads/images/<?= $project['Picture']; ?>" class="card-img-top" alt=""></a>
             <div class="card-body">
-                <h5 class="card-title text-primary">Donate To Educate</h5>
-                <p class="card-text">The FIFTH 200 PAGE HARDBACK BOOK
-                    of Lorenzo Sherrington HOW TO THINK
-                    WHEN YOU DRAW series + reprinting
-                    ALL original SOLD OUT BOOKS! By
-                    Lorenzo Sherrington of Lorenzo Sherrington HOW TO THINK
-                    WHEN YOU DRAW series + reprinting
-                    ALL original SOLD OUT BOOKS! By. </p>
+                <h5 class="card-title text-primary"><?php echo htmlspecialchars($project['Title']); ?></h5>
+                <p class="card-text">
+                    <?php echo htmlspecialchars_decode($project['BriefDesc']); ?>
+                </p>
                 <div class="card-text">
                     <div class="text-muted mb-2">
                         <i class="fas fa-tags fa-flip-horizontal"></i>
-                        Art & Design
+                        <?php echo htmlspecialchars($project['Tag']); ?>
                     </div>
                     <div class="text-muted mb-2">
                         <i class="fas fa-clock"></i>
-                        Started at: 2021-05-20
+                        Started at: <?php echo htmlspecialchars($project['Created']); ?>
                     </div>
                     <div class="text-muted">
                         <i class="fas fa-location-arrow"></i>
-                        Taizz,Yemen
+                        <?php echo htmlspecialchars($project['City']); ?>,Yemen
                     </div>
                 </div> <br />
                 <span class="">By<a href="#" class="mx-1 text-primary">Adham Mustafa</a></span>
             </div>
         </div>
-        <div class="card mx-2 my-4 shadow" style="width: 20rem;">
-            <a href="#"><img src="<?php echo $img; ?>card2.png" class="card-img-top" alt=""></a>
-            <div class="card-body">
-                <h5 class="card-title text-primary">Donate To Educate</h5>
-                <p class="card-text">The FIFTH 200 PAGE HARDBACK BOOK
-                    of Lorenzo Sherrington HOW TO THINK
-                    WHEN YOU DRAW series + reprinting
-                    ALL original SOLD OUT BOOKS! By
-                    Lorenzo Sherrington of Lorenzo Sherrington HOW TO THINK
-                    WHEN YOU DRAW series + reprinting
-                    ALL original SOLD OUT BOOKS! By. </p>
-                <div class="card-text">
-                    <div class="text-muted mb-2">
-                        <i class="fas fa-tags fa-flip-horizontal"></i>
-                        Art & Design
-                    </div>
-                    <div class="text-muted mb-2">
-                        <i class="fas fa-clock"></i>
-                        Started at: 2021-05-20
-                    </div>
-                    <div class="text-muted">
-                        <i class="fas fa-location-arrow"></i>
-                        Taizz,Yemen
-                    </div>
-                </div> <br />
-                <span class="">By<a href="#" class="mx-1 text-primary">Adham Mustafa</a></span>
-            </div>
-        </div>
-        <div class="card mx-2 my-4 shadow" style="width: 20rem;">
-            <a href="#"><img src="<?php echo $img; ?>card2.png" class="card-img-top" alt=""></a>
-            <div class="card-body">
-                <h5 class="card-title text-primary">Donate To Educate</h5>
-                <p class="card-text">The FIFTH 200 PAGE HARDBACK BOOK
-                    of Lorenzo Sherrington HOW TO THINK
-                    WHEN YOU DRAW series + reprinting
-                    ALL original SOLD OUT BOOKS! By
-                    Lorenzo Sherrington of Lorenzo Sherrington HOW TO THINK
-                    WHEN YOU DRAW series + reprinting
-                    ALL original SOLD OUT BOOKS! By. </p>
-                <div class="card-text">
-                    <div class="text-muted mb-2">
-                        <i class="fas fa-tags fa-flip-horizontal"></i>
-                        Art & Design
-                    </div>
-                    <div class="text-muted mb-2">
-                        <i class="fas fa-clock"></i>
-                        Started at: 2021-05-20
-                    </div>
-                    <div class="text-muted">
-                        <i class="fas fa-location-arrow"></i>
-                        Taizz,Yemen
-                    </div>
-                </div> <br />
-                <span class="">By<a href="#" class="mx-1 text-primary">Adham Mustafa</a></span>
-            </div>
-        </div>
-        <div class="card mx-2 my-4 shadow" style="width: 20rem;">
-            <a href="#"><img src="<?php echo $img; ?>card2.png" class="card-img-top" alt=""></a>
-            <div class="card-body">
-                <h5 class="card-title text-primary">Donate To Educate</h5>
-                <p class="card-text">The FIFTH 200 PAGE HARDBACK BOOK
-                    of Lorenzo Sherrington HOW TO THINK
-                    WHEN YOU DRAW series + reprinting
-                    ALL original SOLD OUT BOOKS! By
-                    Lorenzo Sherrington of Lorenzo Sherrington HOW TO THINK
-                    WHEN YOU DRAW series + reprinting
-                    ALL original SOLD OUT BOOKS! By. </p>
-                <div class="card-text">
-                    <div class="text-muted mb-2">
-                        <i class="fas fa-tags fa-flip-horizontal"></i>
-                        Art & Design
-                    </div>
-                    <div class="text-muted mb-2">
-                        <i class="fas fa-clock"></i>
-                        Started at: 2021-05-20
-                    </div>
-                    <div class="text-muted">
-                        <i class="fas fa-location-arrow"></i>
-                        Taizz,Yemen
-                    </div>
-                </div> <br />
-                <span class="">By<a href="#" class="mx-1 text-primary">Adham Mustafa</a></span>
-            </div>
-        </div>
-        <div class="card mx-2 my-4 shadow" style="width: 20rem;">
-            <a href="#"><img src="<?php echo $img; ?>card2.png" class="card-img-top" alt=""></a>
-            <div class="card-body">
-                <h5 class="card-title text-primary">Donate To Educate</h5>
-                <p class="card-text">The FIFTH 200 PAGE HARDBACK BOOK
-                    of Lorenzo Sherrington HOW TO THINK
-                    WHEN YOU DRAW series + reprinting
-                    ALL original SOLD OUT BOOKS! By
-                    Lorenzo Sherrington of Lorenzo Sherrington HOW TO THINK
-                    WHEN YOU DRAW series + reprinting
-                    ALL original SOLD OUT BOOKS! By. </p>
-                <div class="card-text">
-                    <div class="text-muted mb-2">
-                        <i class="fas fa-tags fa-flip-horizontal"></i>
-                        Art & Design
-                    </div>
-                    <div class="text-muted mb-2">
-                        <i class="fas fa-clock"></i>
-                        Started at: 2021-05-20
-                    </div>
-                    <div class="text-muted">
-                        <i class="fas fa-location-arrow"></i>
-                        Taizz,Yemen
-                    </div>
-                </div> <br />
-                <span class="">By<a href="#" class="mx-1 text-primary">Adham Mustafa</a></span>
-            </div>
-        </div>
+        <?php endforeach; ?>
     </div>
 </div>
 <!-- end the card -->

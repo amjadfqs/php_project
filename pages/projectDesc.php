@@ -2,18 +2,55 @@
 $pageTitle = "Home Page";
 include '../conf/ini.php';
 include $temp . 'header.php';
-?>
+include '../conf/conn.php';
 
+if (isset($_GET['id'])) {
+    $id = (int) mysqli_real_escape_string($con, $_GET['id']);
+    $id = is_numeric($id) ? $id : NULL;
+    $query = "SELECT * FROM `projects` WHERE ProjectID = " . $id;
+    $result = mysqli_query($con, $query);
+    if (mysqli_num_rows($result) == 1) {
+        $rows = mysqli_fetch_assoc($result);
+        mysqli_free_result($result);
+        mysqli_close($con);
+    } else {
+        echo '<div class="alert alert-danger text-center" role="alert">
+                    Sorry, there is no data to display </div>';
+        echo "<div class='d-flex justify-content-center'>
+            <img src=' $img/notfound.svg'>
+        </div>";
+        exit();
+    }
+} else {
+    echo '<div class="alert alert-danger text-center" role="alert">
+                    Sorry, there is no data to display </div>';
+    echo "<div class='d-flex justify-content-center'>
+            <img src=' $img/notfound.svg'>
+        </div>";
+    exit();
+}
+?>
 <div class="d-none d-md-block container text-center my-5 p-3">
-    <h2 class="text-primary">A Thriving Home for A Fountain for Survivors</h2>
+    <h2 class="text-primary">
+        <?= $rows['Title']; ?>
+    </h2>
     <hr class="m-0 text-black-50">
 </div>
+
 <div class="container mt-4">
     <div class="row d-flex align-content-md-center align-items-md-center">
         <div class="col-sm-12 col-md-9">
-            <img class="w-100 w-md-75" src=" <?= $img; ?>card2.png" />
-            <div class="mt-2 text-black-50 d-flex justify-content-center d-md-inline-block">
-                <a class="mx-2 text-decoration-none text-black-50">
+            <?php if (empty($rows['VidURL'])) : ?>
+                <img class="col-12 col-md-9" src="../data/uploads/images/<?= $rows['Picture']; ?>" /><br />
+            <?php else :
+                $url = $rows['VidURL'];
+                parse_str(parse_url($url, PHP_URL_QUERY), $my_url);
+            ?>
+                <iframe width="640" height="400" src="https://www.youtube.com/embed/<?= $my_url['v']; ?>" class="col-12 col-md-9" frameborder="0" allowfullscreen>
+                </iframe> <br />
+            <?php endif; ?>
+            <div class="mt-5 text-black-50 d-flex justify-content-center align-items-center d-md-inline-block">
+                <!-- <a class="mx-2 text-decoration-none text-black-50">
                     <img style="width: 20px" src="<?php echo $img; ?>facebook-brands.svg" alt="" />
                     <span class="d-none d-md-inline-block">Facebook</span>
                 </a>
@@ -24,47 +61,47 @@ include $temp . 'header.php';
                 <a class="mx-2 text-decoration-none text-black-50">
                     <img style="width: 20px" src="<?php echo $img; ?>instagram-brands.svg" alt="" />
                     <span class="d-none d-md-inline-block">Instagram</span>
-                </a>
-                <a class="mx-2 text-decoration-none text-black-50">
+                </a> -->
+                <small>Content us:</small>
+                <a href="https://wa.me/<?= $rows['Contact']; ?>" class="mx-2 text-decoration-none text-black-50">
                     <img style="width: 20px" src="<?php echo $img; ?>whatsapp-brands.svg" alt="" />
                     <span class="d-none d-md-inline-block">Whatsapp</span>
                 </a>
             </div>
         </div>
         <div class="d-sm-block d-md-none container text-center my-3 p-3">
-            <h5 class="text-dark">A Thriving Home for A Fountain for Survivors</h5>
+            <h5 class="text-dark"><?php echo htmlspecialchars($rows['Title']); ?></h5>
         </div>
         <div class="col-sm-12 col-md-3 d-flex justify-content-center">
             <div class="card shadow" style="width: 20rem;">
                 <div class="card-body">
                     <h5 class="card-title text-primary">
-                        <span class="text-primary">$</span>The Price <br />
-                        <small class="card-subtitle">pledged of US$ 26,000 goal</small>
+                        The Price <span class="text-primary">$</span><?php echo htmlspecialchars($rows['Cost']); ?>
+                        <br />
+                        <!-- <small class="card-subtitle">pledged of US$ 26,000 goal</small> -->
                     </h5>
-                    <p class="card-text">The FIFTH 200 PAGE HARDBACK BOOK
-                        of Lorenzo Etherington HOW TO THINK
-                        WHEN YOU DRAW series + reprinting
-                        ALL original SOLD OUT BOOKS! By
-                        Lorenzo Etherington of Lorenzo Etherington HOW TO THINK
-                        WHEN YOU DRAW series + reprinting
-                        ALL original SOLD OUT BOOKS! By. </p>
+                    <p class="card-text">
+                        <?php echo htmlspecialchars_decode($rows['BriefDesc']); ?>
+                    </p>
                     <div class="card-text">
                         <div class="text-muted mb-2">
                             <i class="fas fa-tags fa-flip-horizontal"></i>
-                            Art & Design
+                            <?php echo htmlspecialchars_decode($rows['Tag']); ?>
                         </div>
                         <div class="text-muted mb-2">
                             <i class="fas fa-clock"></i>
-                            Started at: 2021-05-20
+                            <span>Started At</span>
+                            <?php echo htmlspecialchars_decode($rows['Created']); ?>
                         </div>
                         <div class="text-muted">
                             <i class="fas fa-location-arrow"></i>
-                            Taizz,Yemen
+                            <span>Yemen, </span><?php echo htmlspecialchars_decode($rows['City']); ?>
                         </div>
                     </div> <br />
                 </div>
             </div>
         </div>
+
     </div>
 </div>
 <br />
@@ -72,7 +109,7 @@ include $temp . 'header.php';
     <div class="container bg-white">
         <ul class="nav nav-pills mb-3 d-flex justify-content-center justify-content-md-start" id="pills-tab" role="tablist">
             <li class="nav-item" role="presentation">
-                <button class="nav-link active rounded-0" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Campaing</button>
+                <button class="nav-link active rounded-0" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Campaign</button>
             </li>
             <li class="nav-item" role="presentation">
                 <button class="nav-link rounded-0" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Updates</button>
@@ -99,49 +136,15 @@ include $temp . 'header.php';
                         <div class="scrollspy-example">
                             <div id="list-1">
                                 <h2>Story</h2>
-                                <p>
-                                    Many fiber artists would love to make their own yarn, but traditional
-                                    spinning
-                                    wheels are expensive
-                                    and
-                                    drop spindles can be slow or difficult to learn. This project offers an af These Cuffs
-                                    are
-                                    part
-                                    bracelet, part handcuffs for light intimate play. You can wear them out in public or
-                                    play
-                                    with them
-                                    in private. These statement pieces are reminders of self-love and personal power as well
-                                    as
-                                    a subtle
-                                    signal to those in the know of how you like to play. You can choose from two different
-                                    models: the
-                                    ID and ICON Cuffs. The ICON Cuffs are designed for light restraint, while the ID Cuffs
-                                    are a
-                                    silicone band option that's more about self-expression</p>
-                                <img class="w-50 w-md-30" src=" <?= $img; ?>card2.png" />
-                                <p>These statement pieces are reminders o</p>
+                                <div class="" style="word-wrap:break-word;">
+                                    <?php echo htmlspecialchars_decode($rows['Story']); ?>
+                                </div>
                             </div>
                             <div id="list-2">
                                 <h2>Risks</h2>
-                                <p>.Many fiber artists would love to make their own yarn, but traditional
-                                    spinning
-                                    wheels are expensive
-                                    and
-                                    drop spindles can be slow or difficult to learn. This project offers an af These Cuffs
-                                    are
-                                    part
-                                    bracelet, part handcuffs for light intimate play. You can wear them out in public or
-                                    play
-                                    with them
-                                    in private. These statement pieces are reminders of self-love and personal power as well
-                                    as
-                                    a subtle
-                                    signal to those in the know of how you like to play. You can choose from two different
-                                    models: the
-                                    ID and ICON Cuffs. The ICON Cuffs are designed for light restraint, while the ID Cuffs
-                                    are a
-                                    silicone band option that's more about self-expression.</p>
-                                <img class="w-50 w-md-30" src=" <?= $img; ?>card2.png" />
+                                <p style="word-wrap:break-word;">
+                                    <?php echo htmlspecialchars($rows['Risk']); ?>
+                                </p>
                             </div>
                         </div>
                     </div>
