@@ -1,7 +1,7 @@
 <?php
 include '../conf/conn.php';
 include '../conf/ini.php';
-// include $temp . 'header.php';
+include $temp . 'header.php';
 
 ?>
 <div class="container-fluid">
@@ -14,24 +14,24 @@ include '../conf/ini.php';
     $count = mysqli_num_rows($result);
     if ($count > 0) {
     ?>
-    <div class="table-responsive">
-        <table class="table mt-5 table-white table-hover border">
-            <thead class="bg-primary text-center">
-                <tr>
-                    <th scope="col">Title</th>
-                    <th scope="col">Cost</th>
-                    <th scope="col">VidURL</th>
-                    <th scope="col">Picture</th>
-                    <th scope="col">BriefDesc</th>
-                    <th scope="col">Story</th>
-                    <th scope="col">Risk</th>
-                    <th scope="col">City</th>
-                    <th scope="col">Tag</th>
-                    <th scope="col">Contact</th>
-                    <th scope="col">Created</th>
-                    <th scope="col">Action</th>
-                </tr>
-            </thead>
+        <div class="table-responsive">
+            <table class="table mt-5 table-white table-hover border">
+                <thead class="bg-primary text-center">
+                    <tr>
+                        <th scope="col">Title</th>
+                        <th scope="col">Cost</th>
+                        <th scope="col">VidURL</th>
+                        <th scope="col">Picture</th>
+                        <th scope="col">BriefDesc</th>
+                        <th scope="col">Story</th>
+                        <th scope="col">Risk</th>
+                        <th scope="col">City</th>
+                        <th scope="col">Tag</th>
+                        <th scope="col">Contact</th>
+                        <th scope="col">Created</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
             <?php
             while ($row = mysqli_fetch_assoc($result)) {
                 echo "  <tbody class='text-center'>
@@ -60,5 +60,5 @@ include '../conf/ini.php';
         }
         mysqli_free_result($result);
         mysqli_close($con); ?>
-    </div>
+        </div>
 </div>

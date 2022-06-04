@@ -75,3 +75,5 @@ include '../conf/ini.php';
         mysqli_close($con);
             ?>
         </div>
+
+        <?php include $temp . 'js.php'; ?>
