@@ -11,16 +11,16 @@ if (isset($_GET['userID'])) {
 }
 
 if ($result) { ?>
-    <div class="container-fluid">
-        <div class="alert alert-primary text-center p-3" role="alert">
-            Deleted Successfully
-        </div>
-        <div class="d-flex justify-content-center align-content-center mt-5">
-            <img class="img-fluid" src="<?= $img ?>slide5Delete.svg" alt="">
-        </div>
+<div class="container-fluid">
+    <div class="alert alert-primary text-center p-3" role="alert">
+        Deleted Successfully
     </div>
+    <div class="d-flex justify-content-center align-content-center mt-5">
+        <img class="img-fluid" src="<?= $img ?>slide5Delete.svg" alt="">
+    </div>
+</div>
 <?php
-    header("refresh:5; url=members.php");
+    header("refresh:5; url=index.php");
     ob_end_flush();
     mysqli_close($con);
 } else {

@@ -21,22 +21,22 @@ include '../conf/ini.php';
     }
     if ($count > 0) {
     ?>
-        <div class="table-responsive">
-            <table class="table mt-5 table-white table-hover border">
-                <thead class="bg-primary text-center">
-                    <tr>
-                        <th scope="col">UserID</th>
-                        <th scope="col">FirstName</th>
-                        <th scope="col">LastName</th>
-                        <th scope="col">Gender</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">UserName</th>
-                        <th scope="col">City</th>
-                        <th scope="col">CreatedAt</th>
-                        <th scope="col">Role</th>
-                        <th scope="col">Action</th>
-                    </tr>
-                </thead>
+    <div class="table-responsive">
+        <table class="table mt-5 table-white table-hover border">
+            <thead class="bg-primary text-center">
+                <tr>
+                    <th scope="col">UserID</th>
+                    <th scope="col">FirstName</th>
+                    <th scope="col">LastName</th>
+                    <th scope="col">Gender</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">UserName</th>
+                    <th scope="col">City</th>
+                    <th scope="col">CreatedAt</th>
+                    <th scope="col">Role</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
             <?php
             while ($row = mysqli_fetch_assoc($result)) {
                 if ($row['GroupID'] == 1) {
@@ -74,4 +74,4 @@ include '../conf/ini.php';
         mysqli_free_result($result);
         mysqli_close($con);
             ?>
-        </div>
+    </div>
