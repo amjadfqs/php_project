@@ -4,28 +4,31 @@ include '../conf/ini.php';
 include $temp . 'header.php';
 include '../conf/conn.php';
 
+$Fquery = "SELECT ProjectID, FirstName, LastName, Title, BriefDesc, Picture, BriefDesc, projects.City, Tag, Created FROM projects 
+                  LEFT JOIN users ON projects.User_ID = users.UserID ";
+
 if (isset($_GET['tag']) && !isset($POST['filter'])) {
     $tag = $_GET['tag'];
-    $query = "SELECT ProjectID, Title, BriefDesc, Picture, BriefDesc, City, Tag, Created FROM projects WHERE Tag LIKE '%$tag%'";
+    $query = $Fquery . "WHERE Tag LIKE '%$tag%'";
 } else {
     if (isset($_POST['filter'])) {
         if (isset($_POST['city']) && isset($_POST['Time'])) {
             $city = addslashes($_POST['city']);
             $time = $_POST['Time'];
-            $query = "SELECT `ProjectID`, `Title`, `BriefDesc`, `Picture`, `BriefDesc`, `City`, `Tag`, `Created` FROM `projects` WHERE `City` = '$city' ORDER BY `Created` $time";
+            $query = $Fquery . " WHERE projects.City = '$city' ORDER BY `Created` $time";
         } elseif (isset($_POST['city']) || isset($_POST['Time'])) {
             if (isset($_POST['city'])) {
                 $city = addslashes($_POST['city']);
-                $query = "SELECT `ProjectID`, `Title`, `BriefDesc`, `Picture`, `BriefDesc`, `City`, `Tag`, `Created` FROM `projects` WHERE `City` = '$city'";
+                $query = $Fquery . " WHERE projects.City = '$city'";
             } elseif (isset($_POST['Time'])) {
                 $time = $_POST['Time'];
-                $query = "SELECT ProjectID, Title, BriefDesc, Picture, BriefDesc, City, Tag, Created FROM projects ORDER BY `Created` $time";
+                $query = $Fquery . "ORDER BY `Created` $time";
             }
         } else {
-            $query = "SELECT ProjectID, Title, BriefDesc, Picture, BriefDesc, City, Tag, Created FROM projects";
+            $query = $Fquery;
         }
     } else {
-        $query = "SELECT ProjectID, Title, BriefDesc, Picture, BriefDesc, City, Tag, Created FROM projects";
+        $query = $Fquery;
     }
 }
 
@@ -67,7 +70,7 @@ if (mysqli_num_rows($result) > 0) {
     mysqli_free_result($result);
     mysqli_close($con);
 } else {
-    echo '<div class="alert alert-danger text-center" role="alert">
+    echo '<div class="alert alert-danger text-center mt-3" role="alert">
                     Sorry, there is no data to display </div>';
     echo "<div class='d-flex justify-content-center'>
             <img src=' $img/notfound.svg'>
@@ -86,12 +89,10 @@ if (mysqli_num_rows($result) > 0) {
                         <a class="text-decoration-none" href="projectDesc.php?id=<?= $project['ProjectID'] ?>">
                             <h5 class="card-title text-primary"><?php echo htmlspecialchars($project['Title']); ?></h5>
                         </a>
-                        <div>
-                            <div class="card-text ellipsis text-decoration-none">
-                                <?php echo htmlspecialchars_decode($project['BriefDesc']); ?>
-                            </div>
-                            <span class=""><a href="projectDesc.php?id=<?= $project['ProjectID'] ?>">...read more</a></span>
+                        <div class="card-text ellipsis">
+                            <?php echo htmlspecialchars_decode($project['BriefDesc']); ?>
                         </div>
+                        <span class=""><a href="projectDesc.php?id=<?= $project['ProjectID'] ?>">...read more</a></span>
                         <div class="card-text mt-2">
                             <div class="text-muted mb-2">
                                 <i class="fas fa-tags fa-flip-horizontal"></i>
@@ -106,7 +107,7 @@ if (mysqli_num_rows($result) > 0) {
                                 Started at: <?php echo htmlspecialchars($project['Created']); ?>
                             </div>
                         </div> <br />
-                        <span class="">By<a href="#" class="mx-1 text-primary">Adham Mustafa</a></span>
+                        <span class="">By<a href="#" class="mx-1 text-primary"><?php echo htmlspecialchars($project['FirstName'] . ' ' . $project['LastName']); ?></a></span>
                     </div>
                 </div>
             </div>
