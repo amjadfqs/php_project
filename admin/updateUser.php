@@ -25,7 +25,7 @@ if (isset($_GET['id']) && !isset($_POST['update'])) {
             echo '<div class="alert alert-primary text-center" role="alert">
             Updated Successfully
             </div>';
-            header("refresh:2 ;url=members.php");
+            header("refresh:2 ;url=index.php");
             ob_end_flush();
         } else {
             echo '<div class="alert alert-danger" role="alert">
