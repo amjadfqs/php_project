@@ -3,6 +3,7 @@ ob_start();
 $pageTitle = "Update Page";
 include '../conf/ini.php';
 include $temp . 'header.php';
+include './secureHeader.php';
 include '../conf/conn.php';
 
 if (isset($_GET['id']) && !isset($_POST['update'])) {
@@ -61,7 +62,8 @@ if (isset($_GET['id']) && !isset($_POST['update'])) {
                 </select>
             </div>
             <div class="col-3 col-md-2">
-                <button type="submit" name="update" value="submit" class="btn btn-primary text-dark w-100">Update</button>
+                <button type="submit" name="update" value="submit"
+                    class="btn btn-primary text-dark w-100">Update</button>
             </div>
         </div>
     </form>
