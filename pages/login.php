@@ -35,7 +35,7 @@ if (isset($_POST['submit'])) {
       $_SESSION['GroupID'] = $row['GroupID'];
       setcookie('user', $Uname, time() + 86400, '/');
       if ($_SESSION['GroupID'] == '1') {
-        header("Location: ../admin/members.php");
+        header("Location: ../admin/index.php");
       } else {
         header('location: index.php');
       }
@@ -44,6 +44,7 @@ if (isset($_POST['submit'])) {
     }
   }
 }
+
 mysqli_close($con);
 include $temp . 'header.php';
 ?>
