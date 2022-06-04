@@ -29,21 +29,6 @@ if (isset($_GET['tag']) && !isset($POST['filter'])) {
     }
 }
 
-$result = mysqli_query($con, $query) or die(mysqli_error($con));
-if (mysqli_num_rows($result) > 0) {
-    $projects = mysqli_fetch_all($result, MYSQLI_ASSOC);
-    mysqli_free_result($result);
-    mysqli_close($con);
-} else {
-    echo '<div class="alert alert-danger text-center" role="alert">
-                    Sorry, there is no data to display </div>';
-    echo "<div class='d-flex justify-content-center'>
-            <img src=' $img/notfound.svg'>
-        </div>";
-    exit();
-}
-
-
 
 ?>
 <div class="container">
@@ -74,9 +59,22 @@ if (mysqli_num_rows($result) > 0) {
             </div>
         </form>
     </div>
-
-
 </div>
+<?php
+$result = mysqli_query($con, $query) or die(mysqli_error($con));
+if (mysqli_num_rows($result) > 0) {
+    $projects = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    mysqli_free_result($result);
+    mysqli_close($con);
+} else {
+    echo '<div class="alert alert-danger text-center" role="alert">
+                    Sorry, there is no data to display </div>';
+    echo "<div class='d-flex justify-content-center'>
+            <img src=' $img/notfound.svg'>
+        </div>";
+    exit();
+}
+?>
 <!-- starting Card -->
 <div class="container mt-5 ">
     <div class="row ">
