@@ -3,13 +3,27 @@ $pageTitle = "Home Page";
 include '../conf/ini.php';
 include $temp . 'header.php';
 include '../conf/conn.php';
+
 if (isset($_GET['id'])) {
     $id = (int) mysqli_real_escape_string($con, $_GET['id']);
+    $id = is_numeric($id) ? $id : NULL;
     $query = "SELECT * FROM `projects` WHERE ProjectID = " . $id;
     $result = mysqli_query($con, $query);
-    $rows = mysqli_fetch_assoc($result);
-    mysqli_free_result($result);
-    mysqli_close($con);
+    if (mysqli_num_rows($result) == 1) {
+        $rows = mysqli_fetch_assoc($result);
+        mysqli_free_result($result);
+        mysqli_close($con);
+    } else {
+        echo '<div class="alert alert-danger text-center" role="alert">
+                    Sorry, there is no data to display
+                    </div>';
+        exit();
+    }
+} else {
+    echo '<div class="alert alert-danger text-center" role="alert">
+                    Sorry, there is no data to display
+                    </div>';
+    exit();
 }
 ?>
 
@@ -24,12 +38,12 @@ if (isset($_GET['id'])) {
     <div class="row d-flex align-content-md-center align-items-md-center">
         <div class="col-sm-12 col-md-9">
             <?php if (empty($rows['VidURL'])) : ?>
-                <img class="col-sm-12 col-md-9" src="../data/uploads/images/<?= $rows['Picture']; ?>" /><br />
+                <img class="col-12 col-md-12" src="../data/uploads/images/<?= $rows['Picture']; ?>" /><br />
             <?php else :
                 $url = $rows['VidURL'];
                 parse_str(parse_url($url, PHP_URL_QUERY), $my_url);
             ?>
-                <iframe width="640" height="360" src="https://www.youtube.com/embed/<?= $my_url['v']; ?>" class="col-sm-12 col-md-9" frameborder="0" allowfullscreen>
+                <iframe width="640" height="360" src="https://www.youtube.com/embed/<?= $my_url['v']; ?>" class="col-12 col-md-12" frameborder="0" allowfullscreen>
                 </iframe> <br />
             <?php endif; ?>
             <div class="mt-5 text-black-50 d-flex justify-content-center d-md-inline-block">

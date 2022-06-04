@@ -7,6 +7,13 @@ if (!isset($_SESSION['ID']) && !isset($_COOKIE['user'])) {
     //                 Please, sign in first!...
     //                 </div>';
     header('location:login.php');
+} else {
+    if ($_SESSION['GroupID'] == 0) {
+        echo '<div class="alert alert-danger text-center" role="alert">
+                    Sorry, you have to be a publisher first. <br /> Contact the Administrator
+                    </div>';
+        exit();
+    }
 }
 
 $pageTitle = "Add Project";
