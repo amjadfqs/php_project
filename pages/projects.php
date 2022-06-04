@@ -4,12 +4,31 @@ include '../conf/ini.php';
 include $temp . 'header.php';
 include '../conf/conn.php';
 
-if (isset($_GET['tag'])) {
+if (isset($_GET['tag']) && !isset($POST['filter'])) {
     $tag = $_GET['tag'];
     $query = "SELECT ProjectID, Title, BriefDesc, Picture, BriefDesc, City, Tag, Created FROM projects WHERE Tag LIKE '%$tag%'";
 } else {
-    $query = "SELECT ProjectID, Title, BriefDesc, Picture, BriefDesc, City, Tag, Created FROM projects";
+    if (isset($_POST['filter'])) {
+        if (isset($_POST['city']) && isset($_POST['Time'])) {
+            $city = addslashes($_POST['city']);
+            $time = $_POST['Time'];
+            $query = "SELECT `ProjectID`, `Title`, `BriefDesc`, `Picture`, `BriefDesc`, `City`, `Tag`, `Created` FROM `projects` WHERE `City` = '$city' ORDER BY `Created` $time";
+        } elseif (isset($_POST['city']) || isset($_POST['Time'])) {
+            if (isset($_POST['city'])) {
+                $city = addslashes($_POST['city']);
+                $query = "SELECT `ProjectID`, `Title`, `BriefDesc`, `Picture`, `BriefDesc`, `City`, `Tag`, `Created` FROM `projects` WHERE `City` = '$city'";
+            } elseif (isset($_POST['Time'])) {
+                $time = $_POST['Time'];
+                $query = "SELECT ProjectID, Title, BriefDesc, Picture, BriefDesc, City, Tag, Created FROM projects ORDER BY `Created` $time";
+            }
+        } else {
+            $query = "SELECT ProjectID, Title, BriefDesc, Picture, BriefDesc, City, Tag, Created FROM projects";
+        }
+    } else {
+        $query = "SELECT ProjectID, Title, BriefDesc, Picture, BriefDesc, City, Tag, Created FROM projects";
+    }
 }
+
 $result = mysqli_query($con, $query) or die(mysqli_error($con));
 if (mysqli_num_rows($result) > 0) {
     $projects = mysqli_fetch_all($result, MYSQLI_ASSOC);
@@ -45,12 +64,12 @@ if (mysqli_num_rows($result) > 0) {
                 <div class="col-4 col-md-2">
                     <select name="Time" class="form-select">
                         <option value="NULL" selected disabled>Time</option>
-                        <option value="Sana'a">Newest</option>
-                        <option value="Taizz">Oldest</option>
+                        <option value="DESC">Newest</option>
+                        <option value="ASC">Oldest</option>
                     </select>
                 </div>
                 <div class="col-3 col-md-2">
-                    <button type="submit" name="submit" value="submit" class="btn btn-primary text-dark w-100">Filter</button>
+                    <button type="submit" name="filter" value="submit" class="btn btn-primary text-dark w-100">Filter</button>
                 </div>
             </div>
         </form>
