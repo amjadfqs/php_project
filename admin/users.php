@@ -60,7 +60,7 @@ include '../conf/ini.php';
                                 <td>
                                         <a href='updateUser.php?id={$row['UserID']}'
                                         title='Update'><i class='fas fa-pen-alt'></i></a> | 
-                                        <a class='text-danger' href='delete.php?id={$row['UserID']}'
+                                        <a class='text-danger' href='javascript: delete_user({$row['UserID']}) '
                                         title='Delete'><i class='fas fa-trash-alt'></i></a>
                                 </td>
                             </tr>
@@ -75,5 +75,3 @@ include '../conf/ini.php';
         mysqli_close($con);
             ?>
         </div>
-
-        <?php include $temp . 'js.php'; ?>

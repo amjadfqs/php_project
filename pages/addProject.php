@@ -1,11 +1,10 @@
 <?php
+ob_start();
 include '../conf/ini.php';
 include $temp . 'header.php';
 include '../conf/conn.php';
-if (!isset($_SESSION['ID']) && !isset($_COOKIE['user'])) {
-    // echo '<div class="alert alert-danger text-center" role="alert">
-    //                 Please, sign in first!...
-    //                 </div>';
+
+if (empty($_SESSION)) {
     header('location:login.php');
 } else {
     if ($_SESSION['GroupID'] == 0) {
@@ -66,7 +65,6 @@ if (isset($_POST['submit'])) {
                 $errors['picture'] = 'Image uploaded is very large';
             }
         } else {
-            echo $_FILES['picture']['error'];
             $errors['picture'] = 'An error occurred while uploading image';
         }
     } else {
@@ -112,7 +110,11 @@ if (isset($_POST['submit'])) {
         $query = "INSERT INTO projects (User_ID, Title, Cost, VidURL, Picture, BriefDesc, Story , Risk, City, Tag, Contact) VALUES ('$_SESSION[ID]','$title', '$cost', '$url','$picture', '$brief', '$story', '$risk', '$city', '$tag', '$phone')";
         $result = mysqli_query($con, $query);
         if ($result) {
-            echo 'COOOOOOOL';
+            echo '<div class="alert alert-primary text-center" role="alert">
+                Updated Successfully
+                </div>';
+            header('location:projects.php');
+            ob_end_flush();
         } else {
             echo '<h1>System Error</h1>';
             echo '<p>' . mysqli_error($con) . '<br />Query: ' . $query . '</p>';
@@ -134,8 +136,7 @@ if (isset($_POST['submit'])) {
                             <span class="input-group-text">
                                 <i class="fas fa-heading text-muted"></i>
                             </span>
-                            <input name="title" type="text" id="title" class="form-control"
-                                value="<?= htmlspecialchars($title) ?>" />
+                            <input name="title" type="text" id="title" class="form-control" value="<?= htmlspecialchars($title) ?>" />
                             <!-- tooltip -->
                             <span class="input-group-text">
                                 <span class="tt" data-bs-placement="bottom" title="Enter your project Tile">
@@ -259,8 +260,7 @@ if (isset($_POST['submit'])) {
                                 <input name="phone" type="number" id="phone" class="form-control" value="" />
                                 <!-- tooltip -->
                                 <span class="input-group-text">
-                                    <span class="tt" data-bs-placement="bottom"
-                                        title="Pretty self explanatory really...">
+                                    <span class="tt" data-bs-placement="bottom" title="Pretty self explanatory really...">
                                         <i class="far fa-question-circle text-muted"></i>
                                     </span>
                                 </span>
@@ -273,8 +273,7 @@ if (isset($_POST['submit'])) {
                     <!-- Buttons -->
                     <div class="row mt-4 mb-2 justify-content-center gap-2 gap-md-0">
                         <div class="col-4">
-                            <button type="submit" name="submit" value="submit"
-                                class="btn btn-primary text-dark w-100">Post</button>
+                            <button type="submit" name="submit" value="submit" class="btn btn-primary text-dark w-100">Post</button>
                         </div>
                     </div>
                 </div>
@@ -285,9 +284,9 @@ if (isset($_POST['submit'])) {
 
 <?php include $temp . 'footer.php'; ?>
 <script>
-ClassicEditor
-    .create(document.querySelector('#editor'))
-    .catch(error => {
-        console.error(error);
-    });
+    ClassicEditor
+        .create(document.querySelector('#editor'))
+        .catch(error => {
+            console.error(error);
+        });
 </script>

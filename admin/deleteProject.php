@@ -23,5 +23,3 @@ if ($result) { ?>
                     Sorry there was an error
             </div>';
 } ?>
-
-<?php include $temp . 'js.php'; ?>

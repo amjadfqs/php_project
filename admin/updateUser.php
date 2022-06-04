@@ -67,5 +67,3 @@ if (isset($_GET['id']) && !isset($_POST['update'])) {
         </div>
     </form>
 </div>
-
-<?php include $temp . 'js.php'; ?>

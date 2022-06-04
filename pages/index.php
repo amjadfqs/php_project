@@ -13,28 +13,28 @@ mysqli_close($con);
     <nav class="overflow-auto">
         <ul class="d-inline-flex mt-5">
             <li class="nav-item line-before">
-                <a class="nav-link text-black" href="#">Art</a>
+                <a class="nav-link text-black" href="projects.php?tag=Art">Art</a>
             </li>
             <li class="nav-item line-before">
-                <a class="nav-link text-black" href="#">Comics</a>
+                <a class="nav-link text-black" href="projects.php?tag=Comics">Comics</a>
             </li>
             <li class="nav-item line-before">
-                <a class="nav-link text-black" href="#">Illustration</a>
+                <a class="nav-link text-black" href="projects.php?tag=Illustration">Illustration</a>
             </li>
             <li class="nav-item line-before">
-                <a class="nav-link text-black" href="#">Film</a>
+                <a class="nav-link text-black" href="projects.php?tag=Film">Film</a>
             </li>
             <li class="nav-item line-before">
-                <a class="nav-link text-black" href="#">Design</a>
+                <a class="nav-link text-black" href="projects.php?tag=Design">Design</a>
             </li>
             <li class="nav-item line-before">
-                <a class="nav-link text-black" href="#">Food</a>
+                <a class="nav-link text-black" href="projects.php?tag=Food">Food</a>
             </li>
             <li class="nav-item line-before">
-                <a class="nav-link text-black" href="#">Music</a>
+                <a class="nav-link text-black" href="projects.php?tag=Music">Music</a>
             </li>
             <li class="nav-item line-before">
-                <a class="nav-link text-black" href="#">Games</a>
+                <a class="nav-link text-black" href="projects.php?tag=Games">Games</a>
             </li>
         </ul>
     </nav>
@@ -44,12 +44,9 @@ mysqli_close($con);
 <div class="d-none d-md-block">
     <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-indicators">
-            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0"
-                class="active bg-primary" aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" class="bg-primary"
-                aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" class="bg-primary"
-                aria-label="Slide 3"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active bg-primary" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" class="bg-primary" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" class="bg-primary" aria-label="Slide 3"></button>
         </div>
         <div class="carousel-inner">
             <div class="carousel-item mb-5 active" data-bs-interval="10000">
@@ -232,30 +229,30 @@ mysqli_close($con);
 <div class="container mt-5 overflow-auto">
     <div class="d-inline-flex">
         <?php foreach ($projects as $project) : ?>
-        <div class="card mx-2 my-4 shadow" style="width: 20rem;">
-            <a href="#"><img src="../data/uploads/images/<?= $project['Picture']; ?>" class="card-img-top" alt=""></a>
-            <div class="card-body">
-                <h5 class="card-title text-primary"><?php echo htmlspecialchars($project['Title']); ?></h5>
-                <p class="card-text">
-                    <?php echo htmlspecialchars_decode($project['BriefDesc']); ?>
-                </p>
-                <div class="card-text">
-                    <div class="text-muted mb-2">
-                        <i class="fas fa-tags fa-flip-horizontal"></i>
-                        <?php echo htmlspecialchars($project['Tag']); ?>
-                    </div>
-                    <div class="text-muted mb-2">
-                        <i class="fas fa-clock"></i>
-                        Started at: <?php echo htmlspecialchars($project['Created']); ?>
-                    </div>
-                    <div class="text-muted">
-                        <i class="fas fa-location-arrow"></i>
-                        <?php echo htmlspecialchars($project['City']); ?>,Yemen
-                    </div>
-                </div> <br />
-                <span class="">By<a href="#" class="mx-1 text-primary">Adham Mustafa</a></span>
+            <div class="card mx-2 my-4 shadow" style="width: 20rem;">
+                <a href="#"><img src="../data/uploads/images/<?= $project['Picture']; ?>" class="card-img-top" alt=""></a>
+                <div class="card-body">
+                    <h5 class="card-title text-primary"><?php echo htmlspecialchars($project['Title']); ?></h5>
+                    <p class="card-text">
+                        <?php echo htmlspecialchars_decode($project['BriefDesc']); ?>
+                    </p>
+                    <div class="card-text">
+                        <div class="text-muted mb-2">
+                            <i class="fas fa-tags fa-flip-horizontal"></i>
+                            <?php echo htmlspecialchars($project['Tag']); ?>
+                        </div>
+                        <div class="text-muted mb-2">
+                            <i class="fas fa-clock"></i>
+                            Started at: <?php echo htmlspecialchars($project['Created']); ?>
+                        </div>
+                        <div class="text-muted">
+                            <i class="fas fa-location-arrow"></i>
+                            <?php echo htmlspecialchars($project['City']); ?>,Yemen
+                        </div>
+                    </div> <br />
+                    <span class="">By<a href="#" class="mx-1 text-primary">Adham Mustafa</a></span>
+                </div>
             </div>
-        </div>
         <?php endforeach; ?>
     </div>
 </div>

@@ -45,5 +45,3 @@ include './secureHeader.php';
         <!-- end nav -->
     </div>
 </div>
-<!-- <?php include $temp . 'footer.php'; ?> -->
-<?php include $temp . 'js.php'; ?>
