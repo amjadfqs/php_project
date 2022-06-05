@@ -41,13 +41,14 @@ if (isset($_GET['id'])) {
     <div class="row d-flex align-content-md-center align-items-md-center">
         <div class="col-sm-12 col-md-9">
             <?php if (empty($rows['VidURL'])) : ?>
-                <img class="col-12 col-md-9" src="../data/uploads/images/<?= $rows['Picture']; ?>" /><br />
+            <img class="col-12 col-md-9" src="../data/uploads/images/<?= $rows['Picture']; ?>" /><br />
             <?php else :
                 $url = $rows['VidURL'];
                 parse_str(parse_url($url, PHP_URL_QUERY), $my_url);
             ?>
-                <iframe width="640" height="400" src="https://www.youtube.com/embed/<?= $my_url['v']; ?>" class="col-12 col-md-9" frameborder="0" allowfullscreen>
-                </iframe> <br />
+            <iframe width="640" height="400" src="https://www.youtube.com/embed/<?= $my_url['v']; ?>"
+                class="col-12 col-md-9" frameborder="0" allowfullscreen>
+            </iframe> <br />
             <?php endif; ?>
             <div class="mt-5 text-black-50 d-flex justify-content-center align-items-center d-md-inline-block">
                 <!-- <a class="mx-2 text-decoration-none text-black-50">
@@ -81,21 +82,21 @@ if (isset($_GET['id'])) {
                         <!-- <small class="card-subtitle">pledged of US$ 26,000 goal</small> -->
                     </h5>
                     <p class="card-text">
-                        <?php echo htmlspecialchars_decode($rows['BriefDesc']); ?>
+                        <?php echo htmlspecialchars($rows['BriefDesc']); ?>
                     </p>
                     <div class="card-text">
                         <div class="text-muted mb-2">
                             <i class="fas fa-tags fa-flip-horizontal"></i>
-                            <?php echo htmlspecialchars_decode($rows['Tag']); ?>
+                            <?php echo htmlspecialchars($rows['Tag']); ?>
                         </div>
                         <div class="text-muted mb-2">
                             <i class="fas fa-clock"></i>
                             <span>Started At</span>
-                            <?php echo htmlspecialchars_decode($rows['Created']); ?>
+                            <?php echo htmlspecialchars($rows['Created']); ?>
                         </div>
                         <div class="text-muted">
                             <i class="fas fa-location-arrow"></i>
-                            <span>Yemen, </span><?php echo htmlspecialchars_decode($rows['City']); ?>
+                            <span>Yemen, </span><?php echo htmlspecialchars($rows['City']); ?>
                         </div>
                     </div> <br />
                 </div>
@@ -107,15 +108,22 @@ if (isset($_GET['id'])) {
 <br />
 <div class="container-fluid bg-secondary mt-5 p-3">
     <div class="container bg-white">
-        <ul class="nav nav-pills mb-3 d-flex justify-content-center justify-content-md-start" id="pills-tab" role="tablist">
+        <ul class="nav nav-pills mb-3 d-flex justify-content-center justify-content-md-start" id="pills-tab"
+            role="tablist">
             <li class="nav-item" role="presentation">
-                <button class="nav-link active rounded-0" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Campaign</button>
+                <button class="nav-link active rounded-0" id="pills-home-tab" data-bs-toggle="pill"
+                    data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home"
+                    aria-selected="true">Campaign</button>
             </li>
             <li class="nav-item" role="presentation">
-                <button class="nav-link rounded-0" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Updates</button>
+                <button class="nav-link rounded-0" id="pills-profile-tab" data-bs-toggle="pill"
+                    data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile"
+                    aria-selected="false">Updates</button>
             </li>
             <li class="nav-item" role="presentation">
-                <button class="nav-link rounded-0" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Comments</button>
+                <button class="nav-link rounded-0" id="pills-contact-tab" data-bs-toggle="pill"
+                    data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact"
+                    aria-selected="false">Comments</button>
             </li>
         </ul>
         <!-- campaign -->
@@ -124,7 +132,8 @@ if (isset($_GET['id'])) {
                 <div class="row">
                     <div class="d-none d-md-block col-md-4">
                         <!-- Scrollspy -->
-                        <div id="list-example" class="sticky-top d-flex justify-content-center" style="padding-top:5rem;">
+                        <div id="list-example" class="sticky-top d-flex justify-content-center"
+                            style="padding-top:5rem;">
                             <ul class="nav flex-column nav-pills menu-sidebar">
                                 <a class="nav-link" href="#list-1">Story</a>
                                 <a class="nav-link" href="#list-2">Risks</a>
@@ -185,34 +194,36 @@ if (isset($_GET['id'])) {
             <!-- comment -->
             <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
                 <?php if (isset($_COOKIE['user'])) : ?>
-                    <div class="d-none d-flex justify-content-center">
-                        <p>Only logged in users can comment</p>
-                        <a class="mx-2" href="<?= $pages ?>logout.php"> Login </a>
+                <div class="d-none d-flex justify-content-center">
+                    <p>Only logged in users can comment</p>
+                    <a class="mx-2" href="<?= $pages ?>login.php"> Login </a>
+                </div>
+                <div class="mt-5">
+                    <div class="form-floating">
+                        <textarea class="form-control" placeholder="Leave a comment here"
+                            id="floatingTextarea"></textarea>
+                        <label for="floatingTextarea">Comments</label>
                     </div>
-                    <div class="mt-5">
-                        <div class="form-floating">
-                            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
-                            <label for="floatingTextarea">Comments</label>
-                        </div>
-                        <div class="d-grid gap-2 d-md-block">
-                            <button class="btn btn-primary" type="button">Button</button>
-                        </div>
+                    <div class="d-grid gap-2 d-md-block">
+                        <button class="btn btn-primary" type="button">Button</button>
                     </div>
+                </div>
                 <?php else : ?>
-                    <div class=" d-flex justify-content-center">
-                        <p>Only logged in users can comment</p>
-                        <a class="mx-2" href="<?= $pages ?>logout.php"> Login </a>
+                <div class=" d-flex justify-content-center">
+                    <p>Only logged in users can comment</p>
+                    <a class="mx-2" href="<?= $pages ?>login.php"> Login </a>
+                </div>
+                <div class="mt-5 d-none">
+                    <div class="form-floating">
+                        <textarea class="form-control" placeholder="Leave a comment here"
+                            id="floatingTextarea"></textarea>
+                        <label for="floatingTextarea">Comments</label>
                     </div>
-                    <div class="mt-5 d-none">
-                        <div class="form-floating">
-                            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
-                            <label for="floatingTextarea">Comments</label>
-                        </div>
-                        <div class="d-grid gap-2 d-md-block">
-                            <button class="btn btn-primary" type="button">Button</button>
-                        </div>
+                    <div class="d-grid gap-2 d-md-block">
+                        <button class="btn btn-primary" type="button">Button</button>
+                    </div>
                     <?php endif ?>
-                    </div>
+                </div>
             </div>
             <!-- end comments -->
         </div>
