@@ -60,7 +60,7 @@ mysqli_close($con);
                                 Lorem ipsum dolor sit Lorem ipsum dolor sit
                                 <br /> Lorem ipsum Lorem ipsum dolor sit ?
                             </p>
-                            <a class="btn btn-primary mt-3" role="button" href="#">Start a project</a>
+                            <a class="btn btn-primary mt-3" role="button" href="<?= $pages; ?>addProject.php">Start a project</a>
                         </div>
                         <!-- to break between them -->
                         <div class="col-md-auto my-3">
@@ -138,7 +138,7 @@ mysqli_close($con);
                                 Lorem ipsum dolor sit Lorem ipsum dolor sit
                                 <br /> Lorem ipsum Lorem ipsum dolor sit ?
                             </p>
-                            <a class="btn btn-primary" role="button" href="#">Start a project</a>
+                            <a class="btn btn-primary" role="button" href="<?= $pages; ?>addProject.php">Start a project</a>
                         </div>
                     </div>
                 </div>
